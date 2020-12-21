@@ -1,0 +1,11 @@
+{
+  "name": "movies-now",
+  "version": "1.0.0",
+  "description": "Discover movies, view trailers, see what's playing in theaters, and much more!",
+  "main": "index.js",
+  "scripts": {
+
+  },
+  "author": "Joshua J. A. Daniel",
+  "license": "MIT"
+}
