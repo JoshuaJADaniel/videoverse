@@ -2,9 +2,9 @@ const lightTheme = {
     primaryColor: '#e60023',
     fontColor: '#000000',
     background: {
-        accent1: '#eeeeee',
-        accent2: '#dddddd',
-        accent3: '#cccccc'
+        level1: '#eeeeee',
+        level2: '#dddddd',
+        level3: '#cccccc'
     }
 };
 
@@ -12,9 +12,9 @@ const darkTheme = {
     primaryColor: '#e60023',
     fontColor: '#ffffff',
     background: {
-        accent1: '#111111',
-        accent2: '#222222',
-        accent3: '#333333'
+        level1: '#111111',
+        level2: '#222222',
+        level3: '#333333'
     }
 };
 
