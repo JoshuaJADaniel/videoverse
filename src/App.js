@@ -4,10 +4,6 @@ import { lightTheme, darkTheme } from './themes';
 import Sidebar from './Sidebar';
 import './App.css';
 
-const Wrapper = styled.div`
-    height: 100%;
-`;
-
 const Main = styled.div`
     height: 200vh;
     margin-left: ${props => props.theme.sidebarWidth};
@@ -27,10 +23,8 @@ const App = () => {
 
     return (
         <ThemeProvider theme={getTheme}>
-            <Wrapper>
-                <Sidebar />
-                <Main></Main>
-            </Wrapper>
+            <Sidebar />
+            <Main></Main>
         </ThemeProvider>
     );
 };
