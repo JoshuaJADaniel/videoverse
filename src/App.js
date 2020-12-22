@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from './themes';
 import Sidebar from './Sidebar';
-import './App.css';
+import './css/App.css';
 
 const Main = styled.div`
     height: 200vh;
