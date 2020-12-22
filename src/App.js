@@ -26,7 +26,7 @@ const App = () => {
     };
 
     return (
-        <ThemeProvider theme={getTheme()}>
+        <ThemeProvider theme={getTheme}>
             <Wrapper>
                 <Sidebar />
                 <Main></Main>
