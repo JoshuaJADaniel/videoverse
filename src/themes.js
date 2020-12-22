@@ -1,5 +1,10 @@
-const lightTheme = {
+const commonTheme = {
     primaryColor: '#e60023',
+    sidebarWidth: '230px'
+}
+
+const lightTheme = {
+    ...commonTheme,
     fontColor: '#000000',
     fontColorMuted: '#888888',
     fontColorNeutral: '#444444',
@@ -11,7 +16,7 @@ const lightTheme = {
 };
 
 const darkTheme = {
-    primaryColor: '#e60023',
+    ...commonTheme,
     fontColor: '#ffffff',
     fontColorMuted: '#888888',
     fontColorNeutral: '#bbbbbb',
