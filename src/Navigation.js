@@ -27,7 +27,6 @@ const NavLink = styled.a.attrs({
 })`
     height: 40px;
     font-size: 14px;
-    font-weight: 900;
     border-radius: 4px;
     padding: 0 16px !important;
     transition: all 0.2s linear;
