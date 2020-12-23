@@ -103,6 +103,18 @@ let menuItems = [
 const Navigation = () => {
     return (
         <NavUl>
+            {menuItems.map(item => {
+                return (
+                    <NavItem>
+                        <NavLink href={item.url}>
+                            <SvgContainer>
+                                {item.path}
+                            </SvgContainer>
+                            {item.title}
+                        </NavLink>
+                    </NavItem>
+                );
+            })}
         </NavUl>
     )
 };
