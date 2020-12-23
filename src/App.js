@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import styled, { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from './themes';
+import backgroundImg from './img/background.svg';
 import Sidebar from './Sidebar';
 import './css/App.css';
+
+const Background = styled.img`
+    top: -20%;
+    position: absolute;
+    width: calc(100% - ${props => props.theme.sidebarWidth});
+`;
 
 const Main = styled.div`
     height: 200vh;
@@ -24,7 +31,9 @@ const App = () => {
     return (
         <ThemeProvider theme={getTheme}>
             <Sidebar />
-            <Main></Main>
+            <Main>
+                <Background src={backgroundImg}/>
+            </Main>
         </ThemeProvider>
     );
 };
