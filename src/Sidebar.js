@@ -11,10 +11,6 @@ const Sidenav = styled.aside`
     background: ${props => props.theme.background.level2};
 `;
 
-const Navigation = styled.nav`
-    color: ${props => props.theme.fontColorNeutral};
-`;
-
 const LogoContainer = styled.div`
     padding: 24px;
 `;
@@ -36,12 +32,9 @@ const Sidebar = () => {
 
     return (
         <Sidenav>
-            <Navigation>
-                <LogoContainer>
-                    <LogoWrapper src={themeContext.logo} />
-                </LogoContainer>
-                <Divider />
-            </Navigation>
+            <LogoContainer>
+                <LogoWrapper src={themeContext.logo} />
+            </LogoContainer>
         </Sidenav>
     );
 };
