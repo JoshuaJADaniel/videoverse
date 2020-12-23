@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
+import Navigation from './Navigation';
 
 const Sidenav = styled.aside`
     top: 0;
@@ -35,6 +36,7 @@ const Sidebar = () => {
             <LogoContainer>
                 <LogoWrapper src={themeContext.logo} />
             </LogoContainer>
+            <Navigation />
         </Sidenav>
     );
 };
