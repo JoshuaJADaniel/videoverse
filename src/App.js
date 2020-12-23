@@ -12,7 +12,7 @@ const Background = styled.img`
 `;
 
 const Main = styled.div`
-    height: 200vh;
+    height: 10000px;
     margin-left: ${props => props.theme.sidebarWidth};
     background: ${props => props.theme.background.level1};
 `;
