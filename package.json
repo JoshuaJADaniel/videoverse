@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "build": "webpack",
-        "dev": "webpack serve"
+        "dev": "webpack serve",
+        "lint": "eslint --fix src/**/*.js"
     },
     "author": "Joshua J. A. Daniel",
     "license": "MIT",
