@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '../themes/themes';
-import backgroundImg from '../img/background.svg';
 import Sidebar from './Sidebar';
+import Main from './Main';
 import '../css/App.css';
-
-const Background = styled.img`
-    top: -20%;
-    position: absolute;
-    width: calc(100% - ${(props) => props.theme.sidebarWidth});
-`;
-
-const Main = styled.div`
-    height: 10000px;
-    margin-left: ${(props) => props.theme.sidebarWidth};
-    background: ${(props) => props.theme.background.level1};
-`;
 
 const App = () => {
   const [theme] = useState('dark');
@@ -25,9 +13,7 @@ const App = () => {
   return (
     <ThemeProvider theme={getTheme}>
       <Sidebar />
-      <Main>
-        <Background src={backgroundImg} />
-      </Main>
+      <Main />
     </ThemeProvider>
   );
 };
