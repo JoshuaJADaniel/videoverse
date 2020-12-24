@@ -10,3 +10,15 @@ body,
 body, #root {
     min-height: 100%;
 }
+
+body {
+    overflow: overlay;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #808080;
+}
