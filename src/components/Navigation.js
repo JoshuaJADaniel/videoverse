@@ -44,8 +44,8 @@ const NavLink = styled.a.attrs({
 
 const Navigation = () => (
   <NavUl>
-    {menuItems.map((item, index) => (
-      <NavItem key={index}>
+    {menuItems.map((item) => (
+      <NavItem key={item.title}>
         <NavLink href={item.url}>
           <SvgContainer>
             {item.path}
