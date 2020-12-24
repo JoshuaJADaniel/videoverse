@@ -21,13 +21,6 @@ const LogoWrapper = styled.img`
     height: auto;
 `;
 
-const Divider = styled.hr`
-    padding: 0;
-    margin: 0 24px;
-    border-top: 1px solid ${(props) => props.theme.background.level3};
-    border-bottom: 1px solid ${(props) => props.theme.background.level3};
-`;
-
 const Sidebar = () => {
   const themeContext = useContext(ThemeContext);
 
