@@ -59,4 +59,4 @@ const menuItems = [
   },
 ];
 
-export { menuItems };
+export default menuItems;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { menuItems } from '../data/menuItems';
+import menuItems from '../data/menuItems';
 
 const SvgContainer = styled.svg.attrs({
   xmlns: 'http://www.w3.org/2000/svg',
