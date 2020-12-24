@@ -16,7 +16,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 16px;
 }
 
 ::-webkit-scrollbar-thumb {
