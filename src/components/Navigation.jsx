@@ -4,7 +4,7 @@ import menuItems from '../data/menuItems';
 import SvgContainer from './SvgContainer';
 
 const SvgContainerCustom = styled(SvgContainer).attrs({
-  className: 'mr-4'
+  className: 'mr-4',
 })``;
 
 const NavUl = styled.ul.attrs({
