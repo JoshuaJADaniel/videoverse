@@ -24,8 +24,20 @@ const Input = styled.input.attrs({
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   background: ${(props) => props.theme.background.level3};
-  color: ${(props) => props.theme.fontColorMuted};
-  border-color: transparent;
+  caret-color: ${(props) => props.theme.fontColor};
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  
+  &::placeholder {
+    color: ${(props) => props.theme.fontColorMuted};
+  }
+  
+  &:focus {
+    box-shadow: none;
+    color: ${(props) => props.theme.fontColor};
+    background: ${(props) => props.theme.background.level3};
+  }
 `;
 
 const SvgContainerCustom = styled(SvgContainer).attrs({
