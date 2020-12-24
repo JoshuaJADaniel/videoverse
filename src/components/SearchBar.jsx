@@ -18,7 +18,7 @@ const Button = styled.button.attrs({
 
 const Input = styled.input.attrs({
   type: 'search',
-  className: 'form-control flex-grow-1',
+  className: 'form-control',
   placeholder: 'Search...',
 })`
   border-top-left-radius: 0;
