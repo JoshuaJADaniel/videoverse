@@ -4,7 +4,8 @@
     "description": "Discover movies, view trailers, see what's playing in theaters, and much more!",
     "main": "index.js",
     "scripts": {
-        "build": "webpack --config webpack.config.js"
+        "build": "webpack",
+        "dev": "webpack serve"
     },
     "author": "Joshua J. A. Daniel",
     "license": "MIT",
