@@ -9,17 +9,31 @@ const Form = styled.form.attrs({
 const Button = styled.button.attrs({
   type: 'submit',
   className: 'btn px-3 py-2',
-})``;
+})`
+    background: ${(props) => props.theme.background.level3};
+    color: ${(props) => props.theme.fontColorMuted};
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+`;
 
 const Input = styled.input.attrs({
   type: 'search',
   className: 'form-control flex-grow-1',
   placeholder: 'Search...',
-})``;
+})`
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background: ${(props) => props.theme.background.level3};
+  color: ${(props) => props.theme.fontColorMuted};
+  border-color: transparent;
+`;
 
 const SvgContainerCustom = styled(SvgContainer).attrs({
   className: 'mb-1',
-})``;
+})`
+  display: block;
+  stroke-width: 3;
+`;
 
 const SearchBar = () => (
   <Form>
