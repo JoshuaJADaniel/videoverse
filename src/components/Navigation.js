@@ -25,7 +25,7 @@ const NavItem = styled.li.attrs({
 const NavLink = styled.a.attrs({
     className: 'nav-link d-flex align-items-center'
 })`
-    height: 40px;
+    height: 45px;
     font-size: 14px;
     border-radius: 4px;
     padding: 0 16px !important;
@@ -103,9 +103,9 @@ let menuItems = [
 const Navigation = () => {
     return (
         <NavUl>
-            {menuItems.map(item => {
+            {menuItems.map((item, index) => {
                 return (
-                    <NavItem>
+                    <NavItem key={index}>
                         <NavLink href={item.url}>
                             <SvgContainer>
                                 {item.path}

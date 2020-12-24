@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled, { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from './themes';
-import backgroundImg from './img/background.svg';
+import { lightTheme, darkTheme } from '../themes/themes';
+import backgroundImg from '../img/background.svg';
 import Sidebar from './Sidebar';
-import './css/App.css';
+import '../css/App.css';
 
 const Background = styled.img`
     top: -20%;

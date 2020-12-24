@@ -1,5 +1,5 @@
-import LogoDark from './img/logo-full-dark.svg';
-import LogoLight from './img/logo-full-light.svg';
+import LogoDark from '../img/logo-full-dark.svg';
+import LogoLight from '../img/logo-full-light.svg';
 
 const commonTheme = {
     primaryColor: '#e60023',
