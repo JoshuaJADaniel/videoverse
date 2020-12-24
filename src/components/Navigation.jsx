@@ -1,19 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import menuItems from '../data/menuItems';
+import SvgContainer from './SvgContainer';
 
-const SvgContainer = styled.svg.attrs({
-  xmlns: 'http://www.w3.org/2000/svg',
-  width: '24',
-  height: '24',
-  className: 'mr-4',
-  viewBox: '0 0 24 24',
-  strokeWidth: '1.325',
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
-  stroke: 'currentColor',
-  fill: 'none',
-})`transition: all 0.2s linear`;
+const SvgContainerCustom = styled(SvgContainer).attrs({
+  className: 'mr-4'
+})``;
 
 const NavUl = styled.ul.attrs({
   className: 'navbar-nav',
@@ -47,9 +39,9 @@ const Navigation = () => (
     {menuItems.map((item) => (
       <NavItem key={item.title}>
         <NavLink href={item.url}>
-          <SvgContainer>
+          <SvgContainerCustom>
             {item.path}
-          </SvgContainer>
+          </SvgContainerCustom>
           {item.title}
         </NavLink>
       </NavItem>
