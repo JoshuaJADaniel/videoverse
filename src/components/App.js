@@ -18,11 +18,7 @@ const Main = styled.div`
 `;
 
 const App = () => {
-  const [theme, setTheme] = useState('dark');
-
-  const toggleTheme = () => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
-  };
+  const [theme] = useState('dark');
 
   const getTheme = () => (theme === 'light' ? lightTheme : darkTheme);
 
