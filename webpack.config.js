@@ -10,6 +10,10 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+    devServer: {
+        contentBase: '/',
+        port: 8080
+    },
     module: {
         rules: [
             {
@@ -33,7 +37,7 @@ module.exports = {
         }),
         new CopyPlugin({
             patterns: [
-                { from: 'public' }
+                { from: 'public/static' }
             ]
         })
     ]
