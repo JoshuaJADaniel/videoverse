@@ -64,6 +64,15 @@ let menuItems = [
         )
     },
     {
+        title: 'Top Rated',
+        url: '#',
+        path: (
+            <React.Fragment>
+                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+            </React.Fragment>
+        )
+    },
+    {
         title: 'TV Shows',
         url: '#',
         path: (
@@ -86,15 +95,6 @@ let menuItems = [
                 <line x1="2" y1="17" x2="7" y2="17" />
                 <line x1="17" y1="17" x2="22" y2="17" />
                 <line x1="17" y1="7" x2="22" y2="7" />
-            </React.Fragment>
-        )
-    },
-    {
-        title: 'Top Rated',
-        url: '#',
-        path: (
-            <React.Fragment>
-                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
             </React.Fragment>
         )
     }
