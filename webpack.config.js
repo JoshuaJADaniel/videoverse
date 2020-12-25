@@ -13,6 +13,7 @@ module.exports = {
   devServer: {
     contentBase: '/',
     port: 8080,
+    open: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
