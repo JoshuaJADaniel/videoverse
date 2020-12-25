@@ -121,19 +121,21 @@ const SvgContainerCustom = styled(SvgContainer).attrs({
 `;
 
 const SearchBar = () => (
-  <SearchForm>
-    <SearchButton>
-      <SvgContainerCustom>
-        <circle cx="11" cy="11" r="7" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </SvgContainerCustom>
-    </SearchButton>
-    <SearchInput />
+  <>
+    <SearchForm>
+      <SearchButton>
+        <SvgContainerCustom>
+          <circle cx="11" cy="11" r="7"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </SvgContainerCustom>
+      </SearchButton>
+      <SearchInput/>
+    </SearchForm>
     <ToggleDiv>
-      <input type="checkbox" />
-      <span />
+      <input type="checkbox"/>
+      <span/>
     </ToggleDiv>
-  </SearchForm>
+  </>
 );
 
 export default SearchBar;
