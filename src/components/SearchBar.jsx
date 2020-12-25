@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import SvgContainer from './SvgContainer';
 
-const Form = styled.form.attrs({
+const SearchForm = styled.form.attrs({
   className: 'd-flex px-4 py-3',
 })``;
 
-const Button = styled.button.attrs({
+const SearchButton = styled.button.attrs({
   type: 'submit',
   className: 'btn px-3 py-2',
 })`
@@ -16,7 +16,7 @@ const Button = styled.button.attrs({
     border-bottom-right-radius: 0;
 `;
 
-const Input = styled.input.attrs({
+const SearchInput = styled.input.attrs({
   type: 'search',
   className: 'form-control',
   placeholder: 'Search...',
@@ -48,15 +48,14 @@ const SvgContainerCustom = styled(SvgContainer).attrs({
 `;
 
 const SearchBar = () => (
-  <Form>
-    <Button>
+  <SearchForm>
+    <SearchButton>
       <SvgContainerCustom>
         <circle cx="11" cy="11" r="7" />
         <line x1="21" y1="21" x2="16.65" y2="16.65" />
       </SvgContainerCustom>
-    </Button>
-    <Input />
-  </Form>
+    </SearchButton>
+    <SearchInput />
 );
 
 export default SearchBar;
