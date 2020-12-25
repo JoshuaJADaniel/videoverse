@@ -84,7 +84,7 @@ const ModeToggle = () => {
   return (
     <ToggleDiv>
       <ToggleInput checked={check} onChange={() => setCheck(!check)} />
-      <ToggleSpan/>
+      <ToggleSpan />
     </ToggleDiv>
   );
 };
