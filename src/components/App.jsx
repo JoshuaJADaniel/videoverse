@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from '../themes/themes';
-import Sidebar from './Sidebar';
-import Main from './Main';
+import Sidebar from './sidebar/Sidebar';
+import Main from './main/Main';
 import '../css/App.css';
 
 const App = () => {

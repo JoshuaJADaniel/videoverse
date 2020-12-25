@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import backgroundImg from '../img/background.svg';
-import SearchBar from './SearchBar';
+import backgroundImg from '../../img/background.svg';
+import Header from '../header/Header';
 
-const Wrapper = styled.main.attrs({
-  className: 'pr-3',
-})`
+const Wrapper = styled.main`
     height: 10000px;
     margin-left: ${(props) => props.theme.sidebarWidth};
     background: ${(props) => props.theme.background.level1};
@@ -21,7 +19,7 @@ const Background = styled.img`
 const Main = () => (
   <Wrapper>
     <Background src={backgroundImg} />
-    <SearchBar />
+    <Header />
   </Wrapper>
 );
 

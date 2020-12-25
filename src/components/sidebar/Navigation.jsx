@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import menuItems from '../data/menuItems';
-import SvgContainer from './SvgContainer';
+import menuItems from '../../data/menuItems';
+import SvgContainer from '../common/SvgContainer';
 
 const SvgContainerCustom = styled(SvgContainer).attrs({
   className: 'mr-4',
