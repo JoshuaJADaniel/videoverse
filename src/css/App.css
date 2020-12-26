@@ -22,3 +22,8 @@ body {
 ::-webkit-scrollbar-thumb {
     background: #808080;
 }
+
+.carousel-inner,
+.carousel-item {
+    height: 100%;
+}
