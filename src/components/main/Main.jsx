@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import backgroundImg from '../../img/background.svg';
 import Header from '../header/Header';
+import Hero from './Hero';
 
 const Wrapper = styled.main`
     height: 10000px;
@@ -16,6 +17,7 @@ const Wrapper = styled.main`
 const Main = () => (
   <Wrapper>
     <Header />
+    <Hero />
   </Wrapper>
 );
 
