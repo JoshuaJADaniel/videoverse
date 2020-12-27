@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const menuItems = [
   {
-    title: 'Home',
-    url: '#',
+    title: "Home",
+    url: "#",
     path: (
       <>
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -12,8 +12,8 @@ const menuItems = [
     ),
   },
   {
-    title: 'Trending',
-    url: '#',
+    title: "Trending",
+    url: "#",
     path: (
       <>
         <line x1="12" y1="20" x2="12" y2="10" />
@@ -23,8 +23,8 @@ const menuItems = [
     ),
   },
   {
-    title: 'Top Rated',
-    url: '#',
+    title: "Top Rated",
+    url: "#",
     path: (
       <>
         <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
@@ -32,8 +32,8 @@ const menuItems = [
     ),
   },
   {
-    title: 'TV Shows',
-    url: '#',
+    title: "TV Shows",
+    url: "#",
     path: (
       <>
         <polyline points="17 2 12 7 7 2" />
@@ -42,8 +42,8 @@ const menuItems = [
     ),
   },
   {
-    title: 'Movies',
-    url: '#',
+    title: "Movies",
+    url: "#",
     path: (
       <>
         <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />

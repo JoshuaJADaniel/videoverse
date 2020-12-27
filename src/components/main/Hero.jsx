@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import sampleHero from '../../data/sampleHero';
+import React from "react";
+import styled from "styled-components";
+import sampleHero from "../../data/sampleHero";
 
 const CarouselWrapper = styled.div.attrs({
-  id: 'hero',
-  className: 'carousel slide pr-3',
-  'data-ride': 'carousel',
+  id: "hero",
+  className: "carousel slide pr-3",
+  "data-ride": "carousel",
 })`
   height: 85vh;
   min-height: 600px;
@@ -15,23 +15,25 @@ const CarouselIndicators = (
   <ol className="carousel-indicators">
     {sampleHero.map((val, index) => {
       if (index === 0) {
-        return <li data-target="#hero" data-slide-to={index} className="active" />
+        return (
+          <li data-target="#hero" data-slide-to={index} className="active" />
+        );
       }
 
-      return <li data-target="#hero" data-slide-to={index} />
+      return <li data-target="#hero" data-slide-to={index} />;
     })}
   </ol>
 );
 
 const getCarouselItem = (active, backgroundImg) => {
-  let classes = active ? 'carousel-item active' : 'carousel-item';
+  const classes = active ? "carousel-item active" : "carousel-item";
 
   const ImageWrapper = styled.div`
     height: 100%;
     width: 100%;
     background-size: cover;
     background-position: center;
-    background-image: url(${ backgroundImg });
+    background-image: url(${backgroundImg});
   `;
 
   return (
@@ -43,7 +45,7 @@ const getCarouselItem = (active, backgroundImg) => {
 
 const Hero = () => (
   <CarouselWrapper>
-    { CarouselIndicators }
+    {CarouselIndicators}
     <div className="carousel-inner">
       {sampleHero.map((val, index) => {
         if (index === 0) {

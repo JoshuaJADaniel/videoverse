@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import SvgContainer from '../common/SvgContainer';
+import React from "react";
+import styled from "styled-components";
+import SvgContainer from "../common/SvgContainer";
 
 const Wrapper = styled.div.attrs({
-  className: 'mr-3',
+  className: "mr-3",
 })`
   align-self: center;
   flex-shrink: 0;
@@ -11,7 +11,7 @@ const Wrapper = styled.div.attrs({
 `;
 
 const BackForwardButton = styled.button.attrs({
-  className: 'mr-1',
+  className: "mr-1",
 })`
   border: none;
   width: 40px;
@@ -19,7 +19,7 @@ const BackForwardButton = styled.button.attrs({
   border-radius: 50%;
   color: ${(props) => props.theme.fontColorMuted};
   background: ${(props) => props.theme.background.level1};
-  
+
   & svg {
     vertical-align: middle;
   }
