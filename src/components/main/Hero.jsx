@@ -15,12 +15,12 @@ const CarouselWrapper = styled.div.attrs({
 
 const CarouselIndicators = (
   <ol className="carousel-indicators">
-    {sampleHero.map((val, index) => (
+    {sampleHero.map((imgUrl, index) => (
       <li
-        key={_.kebabCase(`indicator-${val}`)}
-        data-target="#hero"
+        key={_.kebabCase(`indicator-${imgUrl}`)}
         className={index ? "" : "active"}
         data-slide-to={index}
+        data-target="#hero"
       />
     ))}
   </ol>
@@ -48,8 +48,8 @@ const Hero = () => (
   <CarouselWrapper>
     {CarouselIndicators}
     <div className="carousel-inner">
-      {sampleHero.map((val, index) => {
-        return getCarouselItem(index === 0, val);
+      {sampleHero.map((imgUrl, index) => {
+        return getCarouselItem(index === 0, imgUrl);
       })}
     </div>
     <a
