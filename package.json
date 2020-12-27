@@ -2,11 +2,11 @@
   "name": "movies-now",
   "version": "1.0.0",
   "description": "Discover movies, view trailers, see what's playing in theaters, and much more!",
-  "main": "index.js",
+  "main": "./src/index.jsx",
   "scripts": {
+    "start": "webpack serve",
     "build": "webpack",
-    "dev": "webpack serve",
-    "lint": "eslint --ext .js,.jsx src/"
+    "lint": "eslint --ext .js,.jsx src"
   },
   "author": "Joshua J. A. Daniel",
   "license": "MIT",
@@ -32,7 +32,7 @@
     "html-webpack-plugin": "^4.5.0",
     "style-loader": "^2.0.0",
     "webpack": "^5.11.0",
-    "webpack-cli": "^4.2.0",
+    "webpack-cli": "^4.3.0",
     "webpack-dev-server": "^3.11.0"
   }
 }
