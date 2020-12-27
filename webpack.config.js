@@ -7,8 +7,9 @@ module.exports = {
   entry: './src/index.jsx',
   devtool: 'eval-source-map',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
+    filename: 'js/[contenthash].bundle.js',
+    publicPath: '/'
   },
   devServer: {
     contentBase: '/',
@@ -23,15 +24,19 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(svg|jpg|png)$/,
-        use: ['file-loader'],
+        test: /\.(jpg|png|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'img'
+        },
       },
     ],
   },
