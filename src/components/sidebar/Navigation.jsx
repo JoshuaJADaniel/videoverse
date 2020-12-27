@@ -3,6 +3,8 @@ import styled from "styled-components";
 import menuItems from "../../data/menuItems";
 import SvgContainer from "../common/SvgContainer";
 
+const _ = require("lodash");
+
 const SvgContainerCustom = styled(SvgContainer).attrs({
   className: "mr-4",
 })``;
@@ -39,7 +41,7 @@ const NavLink = styled.a.attrs({
 const Navigation = () => (
   <NavUl>
     {menuItems.map((item) => (
-      <NavItem key={item.title}>
+      <NavItem key={_.kebabCase(`nav-${item.title}`)}>
         <NavLink href={item.url}>
           <SvgContainerCustom>{item.path}</SvgContainerCustom>
           {item.title}
