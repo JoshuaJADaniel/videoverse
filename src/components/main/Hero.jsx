@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import sampleHero from "../../data/sampleHero";
 
+const _ = require("lodash");
+
 const CarouselWrapper = styled.div.attrs({
   id: "hero",
   className: "carousel slide pr-3",
@@ -13,32 +15,31 @@ const CarouselWrapper = styled.div.attrs({
 
 const CarouselIndicators = (
   <ol className="carousel-indicators">
-    {sampleHero.map((val, index) => {
-      if (index === 0) {
-        return (
-          <li data-target="#hero" data-slide-to={index} className="active" />
-        );
-      }
-
-      return <li data-target="#hero" data-slide-to={index} />;
-    })}
+    {sampleHero.map((val, index) => (
+      <li
+        key={_.kebabCase(`indicator-${val}`)}
+        data-target="#hero"
+        className={index ? "" : "active"}
+        data-slide-to={index}
+      />
+    ))}
   </ol>
 );
+
+const ImageWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-image: url(${(props) => props.backgroundImg});
+`;
 
 const getCarouselItem = (active, backgroundImg) => {
   const classes = active ? "carousel-item active" : "carousel-item";
 
-  const ImageWrapper = styled.div`
-    height: 100%;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    background-image: url(${backgroundImg});
-  `;
-
   return (
-    <div className={classes}>
-      <ImageWrapper />
+    <div key={_.kebabCase(`bg-${backgroundImg}`)} className={classes}>
+      <ImageWrapper backgroundImg={backgroundImg} />
     </div>
   );
 };
@@ -48,11 +49,7 @@ const Hero = () => (
     {CarouselIndicators}
     <div className="carousel-inner">
       {sampleHero.map((val, index) => {
-        if (index === 0) {
-          return getCarouselItem(true, val);
-        }
-
-        return getCarouselItem(false, val);
+        return getCarouselItem(index === 0, val);
       })}
     </div>
     <a
