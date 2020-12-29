@@ -7,11 +7,12 @@ import Hero from "./Hero";
 const Wrapper = styled.main`
   height: 10000px;
   margin-left: ${(props) => props.theme.sidebarWidth};
-  background-color: ${(props) => props.theme.background.level1};
-  background-image: url(${backgroundImg});
-  background-repeat: repeat-y;
+  
   background-size: contain;
   background-position-y: -5%;
+  background-repeat: repeat-y;
+  background-image: url(${backgroundImg});
+  background-color: ${(props) => props.theme.background.level1};
 `;
 
 const Main = () => (
