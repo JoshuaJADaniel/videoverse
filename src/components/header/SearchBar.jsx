@@ -25,6 +25,7 @@ const SearchInput = styled.input.attrs({
   border-bottom-left-radius: 0;
   background: ${(props) => props.theme.background.level3};
   caret-color: ${(props) => props.theme.fontColor};
+  height: 100%;
   border: none;
   font-size: 18px;
   font-weight: 700;
