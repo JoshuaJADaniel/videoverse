@@ -31,6 +31,7 @@ const ImageWrapper = styled.div`
   width: 100%;
   background-size: cover;
   background-position: center;
+  box-shadow: inset 0px -300px 250px -250px black;
   background-image: url(${(props) => props.backgroundImg});
 `;
 
@@ -40,6 +41,10 @@ const getCarouselItem = (active, backgroundImg) => {
   return (
     <div key={_.kebabCase(`bg-${backgroundImg}`)} className={classes}>
       <ImageWrapper backgroundImg={backgroundImg} />
+      <div className="carousel-caption text-left">
+        <h5>Movie Title</h5>
+        <p>Description</p>
+      </div>
     </div>
   );
 };
