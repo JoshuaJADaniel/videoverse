@@ -26,6 +26,17 @@ const ToggleInput = styled.input.attrs({
   opacity: 0;
   z-index: 999;
 
+  body.using-mouse &:focus + span {
+    outline: none;
+  }
+
+  &:focus + span {
+    outline-color: -webkit-focus-ring-color;
+    outline-offset: 3px;
+    outline-style: auto;
+    outline-width: 1px;
+  }
+
   &:checked + span {
     background-color: ${(props) => props.theme.background.level3};
   }
