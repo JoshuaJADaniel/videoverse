@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Swiper, { Navigation, Scrollbar } from "swiper";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "../themes/themes";
+import GlobalStyles from "./GlobalStyles";
 import Sidebar from "./sidebar/Sidebar";
 import Main from "./main/Main";
 import "swiper/swiper-bundle.css";
-import "../css/App.css";
 
 const App = () => {
   const [theme] = useState("dark");
@@ -33,6 +33,7 @@ const App = () => {
 
   return (
     <ThemeProvider theme={getTheme}>
+      <GlobalStyles />
       <Sidebar />
       <Main />
     </ThemeProvider>
