@@ -25,8 +25,16 @@ const Row = () => {
           <div className="swiper-slide">Slide 19</div>
           <div className="swiper-slide">Slide 20</div>
         </div>
-        <button className="swiper-button-prev" />
-        <button className="swiper-button-next" />
+        <button
+          type="button"
+          aria-label="Previous"
+          className="swiper-button-prev"
+        />
+        <button
+          type="button"
+          aria-label="Next"
+          className="swiper-button-next"
+        />
         <div className="swiper-scrollbar" />
       </div>
     </section>
