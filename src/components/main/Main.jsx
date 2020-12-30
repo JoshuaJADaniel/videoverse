@@ -6,7 +6,6 @@ import Hero from "./Hero";
 import Row from "./Row";
 
 const Wrapper = styled.main`
-  height: 10000px;
   margin-left: ${(props) => props.theme.sidebarWidth};
 
   background-size: contain;
@@ -20,7 +19,10 @@ const Main = () => (
   <Wrapper>
     <Header />
     <Hero />
+    <Row title="Trending" />
     <Row title="Latest Movies" />
+    <Row title="Latest TV-Series" />
+    <Row title="Top Rated" />
   </Wrapper>
 );
 
