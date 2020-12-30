@@ -1,8 +1,20 @@
 import React from "react";
+import styled from "styled-components";
 
-const Row = () => {
+const StyledSection = styled.section.attrs({
+  className: 'm-5 p-4',
+})``;
+
+const StyledHeading = styled.h2.attrs({
+  className: 'mb-4',
+})`
+  color: ${(props) => props.theme.fontColor};
+`
+
+const Row = (props) => {
   return (
-    <section>
+    <StyledSection>
+      <StyledHeading>{props.title}</StyledHeading>
       <div className="swiper-container">
         <div className="swiper-wrapper">
           <div className="swiper-slide">Slide 1</div>
@@ -37,7 +49,7 @@ const Row = () => {
         />
         <div className="swiper-scrollbar" />
       </div>
-    </section>
+    </StyledSection>
   );
 };
 
