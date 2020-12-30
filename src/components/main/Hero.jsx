@@ -9,7 +9,7 @@ const CarouselWrapper = styled.div.attrs({
   className: "carousel slide",
   "data-ride": "carousel",
 })`
-  height: 85vh;
+  height: 80vh;
   min-height: 600px;
 `;
 
