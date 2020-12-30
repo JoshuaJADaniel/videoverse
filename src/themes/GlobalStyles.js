@@ -29,11 +29,6 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
   
-  div.swiper-container {
-    width: 100%;
-    height: 300px;
-  }
-  
   div.swiper-slide {
     width: 12rem;
     background: red;
