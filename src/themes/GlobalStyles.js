@@ -38,6 +38,14 @@ const GlobalStyles = createGlobalStyle`
     margin-right: 20px;
   }
   
+  div.swiper-scrollbar {
+    background: ${(props) => props.theme.carouselScrollbarBackground};
+  }
+  
+  div.swiper-scrollbar-drag {
+    background: ${(props) => props.theme.carouselScrollbar};
+  }
+  
   button.swiper-button-prev:after,
   button.swiper-button-next:after {
     content: '';
