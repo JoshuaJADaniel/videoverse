@@ -29,6 +29,11 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
   
+  body.using-mouse .carousel-control-prev:focus span:first-child,
+  body.using-mouse .carousel-control-next:focus span:first-child {
+    outline: 0;
+  }
+  
   .carousel-control-prev:focus span:first-child, 
   .carousel-control-next:focus span:first-child {
     outline-color: -webkit-focus-ring-color;
