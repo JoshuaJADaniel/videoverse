@@ -63,8 +63,8 @@ const GlobalStyles = createGlobalStyle`
     outline: none;
   }
   
-  button.swiper-button-prev:hover,
-  button.swiper-button-next:hover {
+  button.swiper-button-prev:not(.swiper-button-disabled):hover,
+  button.swiper-button-next:not(.swiper-button-disabled):hover {
     transform: scale(1.1);
   }
   
@@ -74,6 +74,11 @@ const GlobalStyles = createGlobalStyle`
   
   button.swiper-button-next {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' stroke-width='1.325' stroke-linecap='round' stroke-linejoin='round' stroke='currentColor' fill='none' class='sc-bdfBwQ dLlPUp'%3E%3Cpolyline points='9 4 18 12 9 20'%3E%3C/polyline%3E%3C/svg%3E");
+  }
+  
+  button.swiper-button-prev.swiper-button-disabled,
+  button.swiper-button-next.swiper-button-disabled {
+    pointer-events: all;
   }
 `;
 
