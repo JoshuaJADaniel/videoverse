@@ -18,6 +18,7 @@ const App = () => {
     new Swiper(".swiper-container", {
       direction: "horizontal",
       slidesPerView: "auto",
+      slidesPerGroup: 2,
 
       navigation: {
         nextEl: ".swiper-button-next",
