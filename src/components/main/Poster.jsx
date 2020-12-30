@@ -3,14 +3,14 @@ import styled from "styled-components";
 import getRandomPoster from "../../utils/getRandomPoster";
 
 const StyledCardWrapper = styled.div.attrs({
-  className: 'swiper-slide d-flex flex-column',
-  href: '#',
+  className: "swiper-slide d-flex flex-column",
+  href: "#",
 })`
   width: 192px;
   margin-right: 20px;
   filter: brightness(0.9);
   transition: all 0.3s ease;
-  
+
   &:hover {
     filter: brightness(1);
     text-decoration: none;
@@ -18,7 +18,7 @@ const StyledCardWrapper = styled.div.attrs({
 `;
 
 const StyledCard = styled.div.attrs({
-  className: 'card h-100 swiper-lazy',
+  className: "card h-100 swiper-lazy",
 })`
   border: none;
   overflow: hidden;
@@ -31,7 +31,7 @@ const StyledCard = styled.div.attrs({
 `;
 
 const StyledTitle = styled.p.attrs({
-  className: 'pt-3 pb-4 text-left'
+  className: "pt-3 pb-4 text-left",
 })`
   margin: 0;
   color: ${(props) => props.theme.fontColor};
@@ -39,7 +39,7 @@ const StyledTitle = styled.p.attrs({
 
 const Poster = () => (
   <StyledCardWrapper>
-    <StyledCard imgUrl={getRandomPoster()}></StyledCard>
+    <StyledCard imgUrl={getRandomPoster()} />
     <StyledTitle>Sample Movie Title</StyledTitle>
   </StyledCardWrapper>
 );
