@@ -14,6 +14,8 @@ const lightTheme = {
   fontColorNeutral: "#444444",
   scrollbarThumb: "#666666",
   scrollbarBackground: "#cccccc",
+  carouselScrollbar: "rgba(0,0,0,0.4)",
+  carouselScrollbarBackground: "rgba(0,0,0,0.1)",
   background: {
     level1: "#eeeeee",
     level2: "#dddddd",
@@ -29,6 +31,8 @@ const darkTheme = {
   fontColorNeutral: "#bbbbbb",
   scrollbarThumb: "#808080",
   scrollbarBackground: "#111111",
+  carouselScrollbar: "rgba(255,255,255,0.4)",
+  carouselScrollbarBackground: "rgba(255,255,255,0.1)",
   background: {
     level1: "#111111",
     level2: "#222222",
