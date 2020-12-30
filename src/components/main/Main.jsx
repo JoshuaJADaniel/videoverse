@@ -20,7 +20,7 @@ const Main = () => (
   <Wrapper>
     <Header />
     <Hero />
-    <Row />
+    <Row title="Latest Movies" />
   </Wrapper>
 );
 
