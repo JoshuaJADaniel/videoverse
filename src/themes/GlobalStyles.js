@@ -28,6 +28,14 @@ const GlobalStyles = createGlobalStyle`
   .carousel-item {
     height: 100%;
   }
+  
+  .carousel-control-prev:focus span:first-child, 
+  .carousel-control-next:focus span:first-child {
+    outline-color: -webkit-focus-ring-color;
+    outline-offset: 3px;
+    outline-style: auto;
+    outline-width: 1px;
+  }
     
   div.swiper-slide:not(:last-child) {
     margin-right: 20px;
