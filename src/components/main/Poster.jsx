@@ -15,6 +15,16 @@ const StyledCardWrapper = styled.a.attrs({
     filter: brightness(1);
     text-decoration: none;
   }
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &:focus p {
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-width: 1px;
+  }
 `;
 
 const StyledCard = styled.div.attrs({
@@ -31,7 +41,7 @@ const StyledCard = styled.div.attrs({
 `;
 
 const StyledTitle = styled.p.attrs({
-  className: "pt-3 pb-4 text-left",
+  className: "mt-3 mb-4 text-left",
 })`
   margin: 0;
   color: ${(props) => props.theme.fontColor};
