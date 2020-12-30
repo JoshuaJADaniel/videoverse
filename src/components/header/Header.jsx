@@ -5,7 +5,7 @@ import ModeToggle from "./ModeToggle";
 import BackForward from "./BackForward";
 
 const Wrapper = styled.header.attrs({
-  className: "d-flex pl-4 pr-5",
+  className: "d-flex pl-3 pr-4",
 })``;
 
 const Header = () => (
