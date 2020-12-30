@@ -6,7 +6,7 @@ const _ = require("lodash");
 
 const CarouselWrapper = styled.div.attrs({
   id: "hero",
-  className: "carousel slide",
+  className: "carousel slide mb-5",
   "data-ride": "carousel",
 })`
   height: 80vh;
