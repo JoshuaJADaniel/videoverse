@@ -28,12 +28,7 @@ const GlobalStyles = createGlobalStyle`
   .carousel-item {
     height: 100%;
   }
-  
-  div.swiper-slide {
-    width: 12rem;
-    background: red;
-  }
-  
+    
   div.swiper-slide:not(:last-child) {
     margin-right: 20px;
   }
