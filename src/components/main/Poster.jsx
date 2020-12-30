@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import getRandomPoster from "../../utils/getRandomPoster";
 
-const StyledCardWrapper = styled.div.attrs({
+const StyledCardWrapper = styled.a.attrs({
   className: "swiper-slide d-flex flex-column",
   href: "#",
 })`
