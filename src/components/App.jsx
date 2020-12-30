@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Swiper, { Navigation, Scrollbar } from "swiper";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "../themes/themes";
-import GlobalStyles from "./GlobalStyles";
+import GlobalStyles from "../themes/GlobalStyles";
 import Sidebar from "./sidebar/Sidebar";
 import Main from "./main/Main";
 import "swiper/swiper-bundle.css";
