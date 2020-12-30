@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Swiper, { Navigation, Scrollbar } from "swiper";
+import Swiper, { Navigation, Scrollbar, Lazy } from "swiper";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "../themes/themes";
 import GlobalStyles from "../themes/GlobalStyles";
@@ -12,13 +12,14 @@ const App = () => {
   const getTheme = () => (theme === "light" ? lightTheme : darkTheme);
 
   useEffect(() => {
-    Swiper.use([Navigation, Scrollbar]);
+    Swiper.use([Navigation, Scrollbar, Lazy]);
 
     /* eslint-disable no-new */
     new Swiper(".swiper-container", {
       direction: "horizontal",
       slidesPerView: "auto",
       slidesPerGroup: 2,
+      lazy: true,
 
       navigation: {
         nextEl: ".swiper-button-next",
