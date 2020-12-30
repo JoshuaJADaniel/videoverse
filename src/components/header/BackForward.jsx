@@ -20,6 +20,10 @@ const BackForwardButton = styled.button.attrs({
   color: ${(props) => props.theme.fontColorMuted};
   background: ${(props) => props.theme.background.level1};
 
+  body.using-mouse &:focus {
+    outline: none;
+  }
+
   & svg {
     vertical-align: middle;
   }
