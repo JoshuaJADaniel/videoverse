@@ -12,6 +12,8 @@ const lightTheme = {
   fontColor: "#000000",
   fontColorMuted: "#888888",
   fontColorNeutral: "#444444",
+  scrollbarThumb: "#666666",
+  scrollbarBackground: "#cccccc",
   background: {
     level1: "#eeeeee",
     level2: "#dddddd",
@@ -25,6 +27,8 @@ const darkTheme = {
   fontColor: "#ffffff",
   fontColorMuted: "#888888",
   fontColorNeutral: "#bbbbbb",
+  scrollbarThumb: "#808080",
+  scrollbarBackground: "#111111",
   background: {
     level1: "#111111",
     level2: "#222222",
