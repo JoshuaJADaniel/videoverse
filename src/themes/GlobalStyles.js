@@ -42,7 +42,7 @@ const GlobalStyles = createGlobalStyle`
     outline-width: 1px;
   }
     
-  div.swiper-slide:not(:last-child) {
+  a.swiper-slide:not(:last-child) {
     margin-right: 20px;
   }
   

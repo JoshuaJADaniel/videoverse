@@ -7,7 +7,6 @@ const StyledCardWrapper = styled.a.attrs({
   href: "#",
 })`
   width: 192px;
-  margin-right: 20px;
   filter: brightness(0.9);
   transition: all 0.3s ease;
 
