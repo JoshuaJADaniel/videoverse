@@ -14,11 +14,11 @@ const StyledCardWrapper = styled.a.attrs({
     filter: brightness(1);
     text-decoration: none;
   }
-  
+
   &:focus {
     outline: none;
   }
-  
+
   &:focus p {
     outline-color: -webkit-focus-ring-color;
     outline-style: auto;
