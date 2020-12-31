@@ -31,6 +31,8 @@ Main.propTypes = {
   trendingMovies: PropTypes.shape({
     results: PropTypes.arrayOf(
       PropTypes.shape({
+        overview: PropTypes.string.isRequired,
+        original_title: PropTypes.string.isRequired,
         backdrop_path: PropTypes.string.isRequired,
       })
     ),
