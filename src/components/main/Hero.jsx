@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import sampleHero from "../../data/sampleHero";
+import { getBackdropUrl } from "../../data/getApiUrls";
 
 const _ = require("lodash");
 
@@ -49,33 +51,53 @@ const getCarouselItem = (active, backgroundImg) => {
   );
 };
 
-const Hero = () => (
-  <CarouselWrapper>
-    {CarouselIndicators}
-    <div className="carousel-inner">
-      {sampleHero.map((imgUrl, index) => {
-        return getCarouselItem(index === 0, imgUrl);
-      })}
-    </div>
-    <a
-      className="carousel-control-prev"
-      href="#hero"
-      role="button"
-      data-slide="prev"
-    >
-      <span className="carousel-control-prev-icon" />
-      <span className="sr-only">Previous</span>
-    </a>
-    <a
-      className="carousel-control-next"
-      href="#hero"
-      role="button"
-      data-slide="next"
-    >
-      <span className="carousel-control-next-icon" />
-      <span className="sr-only">Next</span>
-    </a>
-  </CarouselWrapper>
-);
+const Hero = ({ trendingMovies }) => {
+  let heroSlides = [];
+  if (trendingMovies.results) {
+    heroSlides = trendingMovies.results.slice(0, 5);
+    heroSlides = heroSlides.map((data) =>
+      getBackdropUrl({ backdropPath: data.backdrop_path })
+    );
+  }
+
+  return (
+    <CarouselWrapper>
+      {CarouselIndicators}
+      <div className="carousel-inner">
+        {heroSlides.map((imgUrl, index) => {
+          return getCarouselItem(index === 0, imgUrl);
+        })}
+      </div>
+      <a
+        className="carousel-control-prev"
+        href="#hero"
+        role="button"
+        data-slide="prev"
+      >
+        <span className="carousel-control-prev-icon" />
+        <span className="sr-only">Previous</span>
+      </a>
+      <a
+        className="carousel-control-next"
+        href="#hero"
+        role="button"
+        data-slide="next"
+      >
+        <span className="carousel-control-next-icon" />
+        <span className="sr-only">Next</span>
+      </a>
+    </CarouselWrapper>
+  );
+};
+
+Hero.propTypes = {
+  trendingMovies: PropTypes.shape({
+    results: PropTypes.arrayOf(
+      PropTypes.shape({
+        backdrop_path: PropTypes.string.isRequired,
+      })
+    ),
+  }).isRequired,
+};
 
 export default Hero;
