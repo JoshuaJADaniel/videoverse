@@ -37,15 +37,25 @@ const ImageWrapper = styled.div`
   background-image: url(${(props) => props.backgroundImg});
 `;
 
-const getCarouselItem = (active, backgroundImg) => {
+const getCarouselItem = ({
+  active,
+  backgroundImg,
+  movieTitle,
+  movieOverview,
+}) => {
   const classes = active ? "carousel-item active" : "carousel-item";
 
   return (
     <div key={_.kebabCase(`bg-${backgroundImg}`)} className={classes}>
       <ImageWrapper backgroundImg={backgroundImg} />
       <div className="carousel-caption text-left">
-        <h5>Movie Title</h5>
-        <p>Description</p>
+        <h4 className="font-weight-bold">{movieTitle}</h4>
+        <p>
+          {_.truncate(movieOverview, {
+            length: 260,
+            separator: " ",
+          })}
+        </p>
       </div>
     </div>
   );
@@ -55,17 +65,21 @@ const Hero = ({ trendingMovies }) => {
   let heroSlides = [];
   if (trendingMovies.results) {
     heroSlides = trendingMovies.results.slice(0, 5);
-    heroSlides = heroSlides.map((data) =>
-      getBackdropUrl({ backdropPath: data.backdrop_path })
-    );
   }
 
   return (
     <CarouselWrapper>
       {CarouselIndicators}
       <div className="carousel-inner">
-        {heroSlides.map((imgUrl, index) => {
-          return getCarouselItem(index === 0, imgUrl);
+        {heroSlides.map((movieObject, index) => {
+          return getCarouselItem({
+            active: index === 0,
+            movieTitle: movieObject.original_title,
+            movieOverview: movieObject.overview,
+            backgroundImg: getBackdropUrl({
+              backdropPath: movieObject.backdrop_path,
+            }),
+          });
         })}
       </div>
       <a
@@ -94,6 +108,8 @@ Hero.propTypes = {
   trendingMovies: PropTypes.shape({
     results: PropTypes.arrayOf(
       PropTypes.shape({
+        overview: PropTypes.string.isRequired,
+        original_title: PropTypes.string.isRequired,
         backdrop_path: PropTypes.string.isRequired,
       })
     ),
