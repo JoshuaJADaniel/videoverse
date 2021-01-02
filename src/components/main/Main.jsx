@@ -1,7 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import backgroundImg from "../../img/background.svg";
+import styled from "styled-components";
+
+import backgroundImg from "../../images/background.svg";
+
 import Header from "../header/Header";
 import Hero from "./Hero";
 import Row from "./Row";
@@ -28,15 +30,7 @@ const Main = ({ trendingMovies }) => (
 );
 
 Main.propTypes = {
-  trendingMovies: PropTypes.shape({
-    results: PropTypes.arrayOf(
-      PropTypes.shape({
-        overview: PropTypes.string.isRequired,
-        original_title: PropTypes.string.isRequired,
-        backdrop_path: PropTypes.string.isRequired,
-      })
-    ),
-  }).isRequired,
+  trendingMovies: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Main;
