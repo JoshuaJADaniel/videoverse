@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "../themes/themes";
+
 import initializeSwiper from "../utils/initializeSwiper";
-import GlobalStyles from "../themes/GlobalStyles";
+
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/GlobalStyles";
+import lightTheme from "../themes/light";
+import darkTheme from "../themes/dark";
+
 import Sidebar from "./sidebar/Sidebar";
 
 const App = () => {
