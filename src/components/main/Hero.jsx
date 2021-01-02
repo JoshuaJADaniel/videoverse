@@ -1,10 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import sampleHero from "../../data/sampleHero";
-import { getBackdropUrl } from "../../data/getApiUrls";
-
-const _ = require("lodash");
+import { kebabCase } from "lodash";
+import styled from "styled-components";
+import getCarouselItem from "./getCarouselItem";
 
 const CarouselWrapper = styled.div.attrs({
   id: "hero",
@@ -15,69 +13,34 @@ const CarouselWrapper = styled.div.attrs({
   min-height: 600px;
 `;
 
-const CarouselIndicators = (
-  <ol className="carousel-indicators">
-    {sampleHero.map((imgUrl, index) => (
-      <li
-        key={_.kebabCase(`indicator-${imgUrl}`)}
-        className={index ? "" : "active"}
-        data-slide-to={index}
-        data-target="#hero"
-      />
-    ))}
-  </ol>
-);
-
-const ImageWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  box-shadow: inset 0px -300px 250px -250px black;
-  background-image: url(${(props) => props.backgroundImg});
-`;
-
-const getCarouselItem = ({
-  active,
-  backgroundImg,
-  movieTitle,
-  movieOverview,
-}) => {
-  const classes = active ? "carousel-item active" : "carousel-item";
-
-  return (
-    <div key={_.kebabCase(`bg-${backgroundImg}`)} className={classes}>
-      <ImageWrapper backgroundImg={backgroundImg} />
-      <div className="carousel-caption text-left">
-        <h4 className="font-weight-bold">{movieTitle}</h4>
-        <p>
-          {_.truncate(movieOverview, {
-            length: 260,
-            separator: " ",
-          })}
-        </p>
-      </div>
-    </div>
-  );
-};
-
 const Hero = ({ trendingMovies }) => {
-  let heroSlides = [];
-  if (trendingMovies.results) {
-    heroSlides = trendingMovies.results.slice(0, 5);
-  }
+  let heroSlides = trendingMovies.slice(0, 5);
+  const CarouselIndicators = (
+    <ol className="carousel-indicators">
+      {heroSlides.map((movieFullObject, index) => (
+        <li
+          key={kebabCase(`indicator-${movieFullObject.id}`)}
+          className={index ? "" : "active"}
+          data-slide-to={index}
+          data-target="#hero"
+        />
+      ))}
+    </ol>
+  );
 
   return (
     <CarouselWrapper>
       {CarouselIndicators}
       <div className="carousel-inner">
-        {heroSlides.map((movieObject, index) => {
+        {heroSlides.map((movieFullObject, index) => {
           return getCarouselItem({
             active: index === 0,
-            movieTitle: movieObject.original_title,
-            movieOverview: movieObject.overview,
+            movieTitle: movieFullObject.original_title,
+            movieOverview: movieFullObject.overview,
+            movieRuntime: movieFullObject.runtime,
+            movieYear: movieFullObject.release_date,
             backgroundImg: getBackdropUrl({
-              backdropPath: movieObject.backdrop_path,
+              backdropPath: movieFullObject.backdrop_path,
             }),
           });
         })}
@@ -105,15 +68,7 @@ const Hero = ({ trendingMovies }) => {
 };
 
 Hero.propTypes = {
-  trendingMovies: PropTypes.shape({
-    results: PropTypes.arrayOf(
-      PropTypes.shape({
-        overview: PropTypes.string.isRequired,
-        original_title: PropTypes.string.isRequired,
-        backdrop_path: PropTypes.string.isRequired,
-      })
-    ),
-  }).isRequired,
+  trendingMovies: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Hero;
