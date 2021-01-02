@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { kebabCase } from "lodash";
 import styled from "styled-components";
+import { getBackdropUrl } from "../../requests/getApiUrls";
 import getCarouselItem from "./getCarouselItem";
 
 const CarouselWrapper = styled.div.attrs({
