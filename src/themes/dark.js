@@ -1,4 +1,4 @@
-import LogoLight from "../img/logo-full-light.svg";
+import LogoLight from "../images/logo-full-light.svg";
 import commonTheme from "./common";
 
 const darkTheme = {
