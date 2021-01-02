@@ -1,15 +1,22 @@
 {
   "env": {
+    "amd": true,
+    "node": true,
     "browser": true,
     "es2021": true
   },
-  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 12,
     "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
   "plugins": ["react"],
   "rules": {}
