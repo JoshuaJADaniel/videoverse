@@ -1,27 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import initializeSwiper from "../utils/initializeSwiper";
-
-import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../styles/GlobalStyles";
-import lightTheme from "../themes/light";
-import darkTheme from "../themes/dark";
-
-import Sidebar from "./sidebar/Sidebar";
+import Home from "../pages/Home";
 
 const App = () => {
-  const [theme] = useState("dark");
-  const getTheme = () => (theme === "light" ? lightTheme : darkTheme);
-
-  useEffect(() => {
-    initializeSwiper();
-  }, []);
-
   return (
-    <ThemeProvider theme={getTheme}>
-      <GlobalStyles />
-      <Sidebar />
-    </ThemeProvider>
+    <Router>
+      <Switch>
+        <Route path="/" component={Home} exact />
+      </Switch>
+    </Router>
   );
 };
 
