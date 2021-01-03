@@ -44,7 +44,7 @@ const StaticHero = ({
 const CarouselSlide = styled.div.attrs({
   className: "carousel slide",
 })`
-  height: 80vh;
+  height: 85vh;
 `;
 
 const CarouselInner = styled.div.attrs({
