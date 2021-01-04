@@ -21,7 +21,7 @@ const StaticHero = ({ data }) => {
             <CarouselRatingWrapper>
               <Rating rating={rating} outOf={outOf} />
             </CarouselRatingWrapper>
-            <CarouselCaptionTitle>{title ?? "Title"}</CarouselCaptionTitle>
+            <CarouselCaptionTitle>{title}</CarouselCaptionTitle>
             <CarouselCaptionDetails>{details}</CarouselCaptionDetails>
           </CarouselCaptionWrapper>
         </CarouselItem>
