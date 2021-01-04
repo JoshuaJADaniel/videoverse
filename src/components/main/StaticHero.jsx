@@ -7,7 +7,6 @@ import getRandomBackdrop from "../../utils/getRandomBackdrop";
 import Rating from "./Rating";
 
 const StaticHero = ({ data }) => {
-  console.log(data);
   const { title, year, genres, runtime, backdropUrl, rating, outOf } = data;
   const details = compact([year, genres, runtime]).join(" • ");
 
