@@ -6,34 +6,24 @@ import getRandomBackdrop from "../../utils/getRandomBackdrop";
 
 import Rating from "./Rating";
 
-const StaticHero = ({
-  movieTitle,
-  movieYear,
-  movieGenres,
-  movieRuntime,
-  backgroundImage,
-  rating,
-  outOf,
-}) => {
-  let movieDetails = compact([movieYear, movieGenres, movieRuntime]).join(
-    " • "
-  );
+const StaticHero = ({ data }) => {
+  console.log(data);
+  const { title, year, genres, runtime, backdropUrl, rating, outOf } = data;
+  const details = compact([year, genres, runtime]).join(" • ");
 
   return (
     <CarouselSlide>
       <CarouselInner>
         <CarouselItem>
           <CarouselBackgroundImage
-            backgroundImage={backgroundImage ?? getRandomBackdrop()}
+            backgroundImage={backdropUrl ?? getRandomBackdrop()}
           />
           <CarouselCaptionWrapper>
             <CarouselRatingWrapper>
               <Rating rating={rating} outOf={outOf} />
             </CarouselRatingWrapper>
-            <CarouselCaptionTitle>
-              {movieTitle ?? "Movie Title"}
-            </CarouselCaptionTitle>
-            <CarouselCaptionDetails>{movieDetails}</CarouselCaptionDetails>
+            <CarouselCaptionTitle>{title ?? "Title"}</CarouselCaptionTitle>
+            <CarouselCaptionDetails>{details}</CarouselCaptionDetails>
           </CarouselCaptionWrapper>
         </CarouselItem>
       </CarouselInner>
