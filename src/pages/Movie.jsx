@@ -37,7 +37,6 @@ const Movie = () => {
           runtime: res.data.runtime,
           rating: res.data.vote_average,
           tagline: res.data.tagline,
-          outOf: 10,
         };
 
         setMovieDetails(updatedMovieDetails);
@@ -69,7 +68,6 @@ const Movie = () => {
         <StaticHero
           backgroundImage={getMovieBackdropUrl(movieDetails.backdropPath)}
           rating={movieDetails.rating}
-          outOf={movieDetails.outOf}
           movieTitle={movieDetails.title}
           movieYear={movieDetails.year}
           movieGenres={movieDetails.genres && movieDetails.genres.join(" | ")}
