@@ -7,8 +7,8 @@ import getRandomBackdrop from "../../utils/getRandomBackdrop";
 import Rating from "./Rating";
 
 const StaticHero = ({ data }) => {
-  const { title, year, genres, runtime, backdropUrl, rating, outOf } = data;
-  const details = compact([year, genres, runtime]).join(" • ");
+  const { title, year, genresText, runtime, backdropUrl, rating, outOf } = data;
+  const details = compact([year, genresText, runtime]).join(" • ");
 
   return (
     <CarouselSlide>
