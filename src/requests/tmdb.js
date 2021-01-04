@@ -1,8 +1,8 @@
 import axios from "axios";
-import { API_URL } from "../data/configs";
+import { TMDB_URL } from "../data/configs";
 
 const tmdb = axios.create({
-  baseURL: API_URL,
+  baseURL: TMDB_URL,
 });
 
 export default tmdb;
