@@ -9,12 +9,14 @@ import darkTheme from "../themes/dark";
 import tmdb from "../requests/tmdb";
 import { getMovieDetailsPath } from "../requests/getTmdbEndpointPaths";
 import { getMovieBackdropUrl } from "../requests/getTmdbEndpointUrls";
+import extractMovieDetails from "../utils/extractMovieDetails";
 
-import LoadingScreen from "../components/common/LoadingScreen";
 import MainWrapper from "../components/main/MainWrapper";
 import StaticHero from "../components/main/StaticHero";
 import Sidebar from "../components/sidebar/Sidebar";
 import Header from "../components/header/Header";
+
+import Loading from "./Loading";
 
 const Movie = () => {
   const { id } = useParams();
@@ -28,18 +30,7 @@ const Movie = () => {
     tmdb
       .get(getMovieDetailsPath(id))
       .then((res) => {
-        let updatedMovieDetails = {
-          backdropPath: res.data.backdrop_path,
-          title: res.data.title,
-          overview: res.data.overview,
-          year: res.data.release_date,
-          genres: res.data.genres.map((item) => item.name),
-          runtime: res.data.runtime,
-          rating: res.data.vote_average,
-          tagline: res.data.tagline,
-        };
-
-        setMovieDetails(updatedMovieDetails);
+        setMovieDetails(extractMovieDetails(res.data));
         setTimeout(() => setLoading(false), 500);
       })
       .catch(() => {
@@ -48,15 +39,7 @@ const Movie = () => {
   }, []);
 
   if (loading) {
-    return (
-      <ThemeProvider theme={getTheme}>
-        <GlobalStyles />
-        <Sidebar />
-        <MainWrapper>
-          <LoadingScreen />
-        </MainWrapper>
-      </ThemeProvider>
-    );
+    return <Loading />;
   }
 
   return (
@@ -65,14 +48,7 @@ const Movie = () => {
       <Sidebar />
       <MainWrapper>
         <Header />
-        <StaticHero
-          backgroundImage={getMovieBackdropUrl(movieDetails.backdropPath)}
-          rating={movieDetails.rating}
-          movieTitle={movieDetails.title}
-          movieYear={movieDetails.year}
-          movieGenres={movieDetails.genres && movieDetails.genres.join(" | ")}
-          movieRuntime={`${movieDetails.runtime} mins`}
-        />
+        <StaticHero data={movieDetails} />
       </MainWrapper>
     </ThemeProvider>
   );
