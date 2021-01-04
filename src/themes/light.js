@@ -4,13 +4,21 @@ import commonTheme from "./common";
 const lightTheme = {
   ...commonTheme,
   logo: LogoDark,
+
   fontColor: "#000000",
   fontColorMuted: "#888888",
   fontColorNeutral: "#444444",
+
+  posterTitleColor: "#ffffff",
+  posterDetailsColor: "#cccccc",
+  posterBadgeBackground: "#262626",
+
   scrollbarThumb: "#666666",
   scrollbarBackground: "#cccccc",
+
   carouselScrollbar: "rgba(0,0,0,0.4)",
   carouselScrollbarBackground: "rgba(0,0,0,0.1)",
+
   background: {
     level1: "#eeeeee",
     level2: "#dddddd",
