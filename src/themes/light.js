@@ -37,6 +37,8 @@ const lightTheme = {
 
   searchFieldColor: "#bbbbbb",
   searchFieldColorHover: "#ffffff",
+
+  toggleModeOutlineColor: "#bbbbbb",
 };
 
 export default lightTheme;

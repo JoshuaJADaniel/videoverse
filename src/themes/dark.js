@@ -37,6 +37,8 @@ const darkTheme = {
 
   searchFieldColor: "#bbbbbb",
   searchFieldColorHover: "#ffffff",
+
+  toggleModeOutlineColor: "#bbbbbb",
 };
 
 export default darkTheme;
