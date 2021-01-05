@@ -27,7 +27,7 @@ const menuItems = [
     url: "#",
     path: (
       <>
-        <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
+        <path d="M14 7V3a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 20H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
       </>
     ),
   },
@@ -88,8 +88,8 @@ const menuItems = [
     url: "#",
     path: (
       <>
-        <polyline points="17 2 12 7 7 2" />
-        <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
+        <polyline points="17 0 12 4 7 0" />
+        <rect x="2" y="4" width="20" height="14" rx="2" ry="2" />
       </>
     ),
   },
