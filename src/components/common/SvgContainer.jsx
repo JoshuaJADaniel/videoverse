@@ -10,8 +10,6 @@ const SvgContainer = styled.svg.attrs({
   strokeLinejoin: "round",
   stroke: "currentColor",
   fill: "none",
-})`
-  transition: all 0.2s linear;
-`;
+})``;
 
 export default SvgContainer;
