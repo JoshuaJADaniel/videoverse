@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
-import Navigation from "./Navigation";
+import Navigation from "components/sidebar/Navigation";
 
 const Sidebar = () => {
   const themeContext = useContext(ThemeContext);
@@ -24,7 +24,7 @@ const Wrapper = styled.aside`
   position: fixed;
 
   z-index: 1;
-  background: ${(props) => props.theme.background.level2};
+  background: ${(props) => props.theme.sidebarBackground};
 `;
 
 const LogoContainer = styled.div`
