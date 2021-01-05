@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../styles/GlobalStyles";
-import lightTheme from "../themes/light";
-import darkTheme from "../themes/dark";
+import GlobalStyles from "styles/GlobalStyles";
+import lightTheme from "themes/light";
+import darkTheme from "themes/dark";
 
-import LoadingScreen from "../components/common/LoadingScreen";
-import MainWrapper from "../components/main/MainWrapper";
-import Sidebar from "../components/sidebar/Sidebar";
+import LoadingContainer from "components/common/LoadingContainer";
+import MainWrapper from "components/main/MainWrapper";
+import Sidebar from "components/sidebar/Sidebar";
 
 const Loading = () => {
   const [theme] = useState("dark");
@@ -18,7 +18,7 @@ const Loading = () => {
       <GlobalStyles />
       <Sidebar />
       <MainWrapper>
-        <LoadingScreen />
+        <LoadingContainer />
       </MainWrapper>
     </ThemeProvider>
   );
