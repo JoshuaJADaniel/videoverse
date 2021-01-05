@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import getRandomPoster from "utils/getRandomPoster";
 import accessibilityOutline from "styles/accessibilityOutline";
@@ -13,6 +14,14 @@ const Poster = ({ imageUrl, linkUrl, title, subtitle, badge }) => (
     </Details>
   </Wrapper>
 );
+
+Poster.propTypes = {
+  imageUrl: PropTypes.string.isRequired,
+  linkUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  badge: PropTypes.string.isRequired,
+};
 
 const Wrapper = styled.a.attrs({
   className: "swiper-slide d-flex flex-column",
