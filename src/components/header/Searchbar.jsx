@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SvgContainer from "components/common/SvgContainer";
 
-const SearchBar = () => (
+const Searchbar = () => (
   <SearchForm>
     <SearchButton>
       <CustomSvgContainer>
@@ -69,4 +69,4 @@ const CustomSvgContainer = styled(SvgContainer).attrs({
   stroke-width: 3;
 `;
 
-export default SearchBar;
+export default Searchbar;

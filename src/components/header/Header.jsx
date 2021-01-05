@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import SearchBar from "components/header/SearchBar";
+import Searchbar from "components/header/Searchbar";
 import ToggleMode from "components/header/ToggleMode";
 import NavigateHistory from "components/header/NavigateHistory";
 
 const Header = () => (
   <Wrapper>
     <NavigateHistory />
-    <SearchBar />
+    <Searchbar />
     <ToggleMode />
   </Wrapper>
 );
