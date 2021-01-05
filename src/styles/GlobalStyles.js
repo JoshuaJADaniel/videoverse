@@ -22,6 +22,10 @@ const GlobalStyles = createGlobalStyle`
   
   ::-webkit-scrollbar-thumb {
     background: ${(props) => props.theme.scrollbarThumb};
+
+    &:hover {
+      background: ${(props) => props.theme.scrollbarThumbHover};
+    }
   }
   
   .carousel-inner,
