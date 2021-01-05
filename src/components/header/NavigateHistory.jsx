@@ -34,8 +34,8 @@ const NavigationButton = styled.button.attrs({
   border: none;
   border-radius: 50%;
 
-  color: ${(props) => props.theme.fontColorMuted};
-  background: ${(props) => props.theme.background.level1};
+  background: transparent;
+  color: ${(props) => props.theme.navigateHistoryColor};
 
   body.using-mouse &:focus {
     outline: none;
