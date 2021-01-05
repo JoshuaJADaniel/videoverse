@@ -35,7 +35,6 @@ const NavigationButton = styled.button.attrs({
   border-radius: 50%;
 
   background: transparent;
-  color: ${(props) => props.theme.navigateHistoryColor};
 
   body.using-mouse &:focus {
     outline: none;
@@ -43,6 +42,13 @@ const NavigationButton = styled.button.attrs({
 
   & svg {
     vertical-align: middle;
+    color: ${(props) => props.theme.navigateHistoryColor};
+    transition: all ${(props) => props.theme.defaultTransition};
+
+    &:hover {
+      color: ${(props) => props.theme.navigateHistoryColorHover};
+      stroke-width: 2;
+    }
   }
 `;
 

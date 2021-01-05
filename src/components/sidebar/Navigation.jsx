@@ -43,6 +43,10 @@ const NavLink = styled.a.attrs({
   font-size: 14px;
   color: ${(props) => props.theme.sidebarColor};
 
+  & svg {
+    transition: stroke-width ${(props) => props.theme.defaultTransition};
+  }
+
   &:hover {
     color: ${(props) => props.theme.sidebarColorHover};
 

@@ -27,15 +27,14 @@ const SearchButton = styled.button.attrs({
 
   color: ${(props) => props.theme.searchButtonColor};
   background: ${(props) => props.theme.searchbarBackground};
+  transition: all ${(props) => props.theme.defaultTransition};
 
   &:hover {
     color: ${(props) => props.theme.searchButtonColorHover};
-    background: ${(props) => props.theme.searchbarBackgroundHover};
   }
 `;
 
 const SearchInput = styled.input.attrs({
-  type: "search",
   className: "form-control",
   placeholder: "Search...",
 })`
@@ -48,8 +47,10 @@ const SearchInput = styled.input.attrs({
   font-size: 18px;
   font-weight: 700;
 
+  color: ${(props) => props.theme.searchFieldColor};
   caret-color: ${(props) => props.theme.searchFieldColor};
   background: ${(props) => props.theme.searchbarBackground};
+  transition: background ${(props) => props.theme.defaultTransition};
 
   &::placeholder {
     color: ${(props) => props.theme.searchFieldColor};
@@ -58,7 +59,7 @@ const SearchInput = styled.input.attrs({
   &:focus {
     box-shadow: none;
     color: ${(props) => props.theme.searchFieldColorHover};
-    background: ${(props) => props.theme.searchbarBackgroundHover};
+    background: ${(props) => props.theme.searchbarBackground};
   }
 `;
 

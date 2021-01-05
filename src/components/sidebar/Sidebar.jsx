@@ -25,6 +25,7 @@ const Wrapper = styled.aside`
 
   z-index: 1;
   background: ${(props) => props.theme.sidebarBackground};
+  transition: background ${(props) => props.theme.defaultTransition};
 `;
 
 const LogoContainer = styled.div`
