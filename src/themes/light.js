@@ -12,9 +12,9 @@ const lightTheme = {
   fontColorMuted: "#888888",
   fontColorNeutral: "#444444",
 
-  posterTitleColor: "#ffffff",
-  posterDetailsColor: "#cccccc",
-  posterBadgeBackground: "#262626",
+  posterTitleColor: "#000000",
+  posterDetailsColor: "#414141",
+  posterBadgeBackground: "#ffffff",
 
   scrollbarThumb: "#b7b7b7",
   scrollbarThumbHover: "#a7a7a7",
