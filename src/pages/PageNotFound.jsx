@@ -4,7 +4,9 @@ import styled from "styled-components";
 const PageNotFound = () => (
   <>
     <Title>Page not found</Title>
-    <Subtitle>We're sorry, we couldn't find the page you requested.</Subtitle>
+    <Subtitle>
+      We&#39;re sorry, we couldn&#39;t find the page you requested.
+    </Subtitle>
   </>
 );
 
