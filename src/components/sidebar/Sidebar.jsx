@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import styled, { ThemeContext } from "styled-components";
 import Navigation from "components/sidebar/Navigation";
+import logoImage from "images/logo-image.svg";
 
 const Sidebar = () => {
   const themeContext = useContext(ThemeContext);
@@ -8,7 +9,8 @@ const Sidebar = () => {
   return (
     <Wrapper>
       <LogoContainer>
-        <LogoWrapper src={themeContext.logo} />
+        <LogoImageWrapper src={logoImage} />
+        <LogoTextWrapper src={themeContext.logoText} />
       </LogoContainer>
       <Navigation />
     </Wrapper>
@@ -28,13 +30,25 @@ const Wrapper = styled.aside`
   transition: background ${(props) => props.theme.defaultTransition};
 `;
 
-const LogoContainer = styled.div`
-  padding: 24px;
+const LogoContainer = styled.div.attrs({
+  className: "d-flex align-items-center",
+})`
+  padding: 22px;
 `;
 
-const LogoWrapper = styled.img`
-  width: 100%;
-  height: auto;
+const LogoImageWrapper = styled.img`
+  width: 28px;
+  height: 28px;
+
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  margin-right: 18px;
+`;
+
+const LogoTextWrapper = styled.img`
+  height: 20px;
+  width: auto;
 `;
 
 export default Sidebar;
