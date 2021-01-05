@@ -13,32 +13,30 @@ const lightTheme = {
   posterDetailsColor: "#cccccc",
   posterBadgeBackground: "#262626",
 
-  scrollbarThumb: "#666666",
-  scrollbarBackground: "#cccccc",
+  scrollbarThumb: "#b7b7b7",
+  scrollbarThumbHover: "#a7a7a7",
+  scrollbarBackground: "#f8f8f8",
 
   carouselScrollbar: "rgba(0,0,0,0.4)",
   carouselScrollbarBackground: "rgba(0,0,0,0.1)",
 
-  defaultBackground: "#111111",
-  sidebarBackground: "#222222",
-  sidebarBackgroundHover: "#333333",
+  defaultBackground: "#f8f8f8",
+  sidebarBackground: "#ffffff",
 
-  sidebarColor: "#bbbbbb",
-  sidebarColorHover: "#ffffff",
+  sidebarColor: "#646464",
+  sidebarColorHover: "#000000",
 
-  navigateHistoryColor: "#bbbbbb",
-  navigateHistoryColorHover: "#ffffff",
+  navigateHistoryColor: "#777777",
+  navigateHistoryColorHover: "#000000",
 
-  searchbarBackground: "#111111",
-  searchbarBackgroundHover: "#222222",
+  searchbarBackground: "#ffffff",
+  searchButtonColor: "#8f8f8f",
+  searchButtonColorHover: "#000000",
 
-  searchButtonColor: "#bbbbbb",
-  searchButtonColorHover: "#ffffff",
+  searchFieldColor: "#8f8f8f",
+  searchFieldColorHover: "#000000",
 
-  searchFieldColor: "#bbbbbb",
-  searchFieldColorHover: "#ffffff",
-
-  toggleModeOutlineColor: "#bbbbbb",
+  toggleModeOutlineColor: "#c8c8c8",
 };
 
 export default lightTheme;

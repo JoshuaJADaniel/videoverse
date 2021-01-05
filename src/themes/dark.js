@@ -14,6 +14,7 @@ const darkTheme = {
   posterBadgeBackground: "#262626",
 
   scrollbarThumb: "#808080",
+  scrollbarThumbHover: "#919191",
   scrollbarBackground: "#111111",
 
   carouselScrollbar: "rgba(255,255,255,0.4)",
@@ -21,24 +22,21 @@ const darkTheme = {
 
   defaultBackground: "#111111",
   sidebarBackground: "#222222",
-  sidebarBackgroundHover: "#333333",
 
   sidebarColor: "#bbbbbb",
   sidebarColorHover: "#ffffff",
 
-  navigateHistoryColor: "#bbbbbb",
+  navigateHistoryColor: "#a5a5a5",
   navigateHistoryColorHover: "#ffffff",
 
-  searchbarBackground: "#111111",
-  searchbarBackgroundHover: "#222222",
-
+  searchbarBackground: "#333333",
   searchButtonColor: "#bbbbbb",
   searchButtonColorHover: "#ffffff",
 
   searchFieldColor: "#bbbbbb",
   searchFieldColorHover: "#ffffff",
 
-  toggleModeOutlineColor: "#bbbbbb",
+  toggleModeOutlineColor: "#6e6e6e",
 };
 
 export default darkTheme;
