@@ -46,9 +46,12 @@ const Wrapper = styled.a.attrs({
   }
 `;
 
-const Card = styled.div.attrs({
+const Card = styled.div.attrs((props) => ({
   className: "card",
-})`
+  style: {
+    backgroundImage: `url(${props.imageUrl})`,
+  },
+}))`
   width: ${(props) => props.theme.posterWidth};
   height: ${(props) => props.theme.posterHeight};
 
@@ -57,7 +60,6 @@ const Card = styled.div.attrs({
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url(${(props) => props.imageUrl});
 `;
 
 const Details = styled.div.attrs({
