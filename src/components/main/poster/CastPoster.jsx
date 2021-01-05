@@ -8,7 +8,7 @@ const CastPoster = ({ name, character, imageUrl, linkToProfile }) => {
     <Poster
       title={name || "Unknown"}
       imageUrl={imageUrl || getRandomPoster()}
-      subtitle={character ? `\"${character}\"` : '"Unknown"'}
+      subtitle={character ? `"${character}"` : '"Unknown"'}
       linkUrl={linkToProfile}
       badge="Cast"
     />
