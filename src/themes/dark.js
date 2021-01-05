@@ -5,6 +5,9 @@ const darkTheme = {
   ...commonTheme,
   logo: LogoLight,
 
+  heroTitleColor: "#ffffff",
+  heroDetailsColor: "#cccccc",
+
   fontColor: "#ffffff",
   fontColorMuted: "#888888",
   fontColorNeutral: "#bbbbbb",

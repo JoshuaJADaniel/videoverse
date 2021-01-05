@@ -5,6 +5,9 @@ const lightTheme = {
   ...commonTheme,
   logo: LogoDark,
 
+  heroTitleColor: "#000000",
+  heroDetailsColor: "#393939",
+
   fontColor: "#000000",
   fontColorMuted: "#888888",
   fontColorNeutral: "#444444",
