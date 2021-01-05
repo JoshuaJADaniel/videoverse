@@ -10,9 +10,9 @@ const CastPoster = ({ name, character, imageUrl, linkToProfile }) => {
 
   return (
     <Poster
-      title={name || "Unknown"}
+      title={character ? `"${character}"` : '"Unknown"'}
+      subtitle={name || "Unknown"}
       imageUrl={memoizedImageUrl}
-      subtitle={character ? `"${character}"` : '"Unknown"'}
       linkUrl={linkToProfile}
       badge="Cast"
     />
