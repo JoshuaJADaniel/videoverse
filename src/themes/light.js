@@ -23,8 +23,8 @@ const lightTheme = {
   carouselScrollbar: "rgba(0,0,0,0.4)",
   carouselScrollbarBackground: "rgba(0,0,0,0.1)",
 
-  defaultBackground: "#f8f8f8",
-  sidebarBackground: "#ffffff",
+  defaultBackground: "#ffffff",
+  sidebarBackground: "#ededed",
 
   sidebarColor: "#646464",
   sidebarColorHover: "#000000",
@@ -32,7 +32,7 @@ const lightTheme = {
   navigateHistoryColor: "#777777",
   navigateHistoryColorHover: "#000000",
 
-  searchbarBackground: "#ffffff",
+  searchbarBackground: "#ededed",
   searchButtonColor: "#8f8f8f",
   searchButtonColorHover: "#000000",
 
