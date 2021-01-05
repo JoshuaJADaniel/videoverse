@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import SearchBar from "./SearchBar";
-import ToggleMode from "./ToggleMode";
-import NavigateHistory from "./NavigateHistory";
+import SearchBar from "components/header/SearchBar";
+import ToggleMode from "components/header/ToggleMode";
+import NavigateHistory from "components/header/NavigateHistory";
 
 const Header = () => (
   <Wrapper>

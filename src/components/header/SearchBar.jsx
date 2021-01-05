@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SvgContainer from "../common/SvgContainer";
+import SvgContainer from "components/common/SvgContainer";
 
 const SearchBar = () => (
   <SearchForm>

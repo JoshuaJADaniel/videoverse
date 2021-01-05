@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import accessibilityOutline from "../../styles/accessibilityOutline";
+import accessibilityOutline from "styles/accessibilityOutline";
 
 const ToggleMode = () => {
   const [check, setCheck] = useState(true);
