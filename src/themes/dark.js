@@ -28,6 +28,15 @@ const darkTheme = {
 
   navigateHistoryColor: "#bbbbbb",
   navigateHistoryColorHover: "#ffffff",
+
+  searchbarBackground: "#111111",
+  searchbarBackgroundHover: "#222222",
+
+  searchButtonColor: "#bbbbbb",
+  searchButtonColorHover: "#ffffff",
+
+  searchFieldColor: "#bbbbbb",
+  searchFieldColorHover: "#ffffff",
 };
 
 export default darkTheme;
