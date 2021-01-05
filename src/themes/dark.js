@@ -19,11 +19,12 @@ const darkTheme = {
   carouselScrollbar: "rgba(255,255,255,0.4)",
   carouselScrollbarBackground: "rgba(255,255,255,0.1)",
 
-  background: {
-    level1: "#111111",
-    level2: "#222222",
-    level3: "#333333",
-  },
+  defaultBackground: "#111111",
+  sidebarBackground: "#222222",
+  sidebarBackgroundHover: "#333333",
+
+  sidebarColor: "#bbbbbb",
+  sidebarColorHover: "#ffffff",
 };
 
 export default darkTheme;

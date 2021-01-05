@@ -19,11 +19,12 @@ const lightTheme = {
   carouselScrollbar: "rgba(0,0,0,0.4)",
   carouselScrollbarBackground: "rgba(0,0,0,0.1)",
 
-  background: {
-    level1: "#eeeeee",
-    level2: "#dddddd",
-    level3: "#cccccc",
-  },
+  defaultBackground: "#111111",
+  sidebarBackground: "#222222",
+  sidebarBackgroundHover: "#333333",
+
+  sidebarColor: "#bbbbbb",
+  sidebarColorHover: "#ffffff",
 };
 
 export default lightTheme;
