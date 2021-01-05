@@ -1,4 +1,4 @@
-import { getMovieBackdropUrl } from "../requests/getTmdbEndpointUrls";
+import { getMovieBackdropUrl } from "requests/getTmdbEndpointUrls";
 
 const extractMovieDetails = (movieObject) => {
   let movieDetails = {
