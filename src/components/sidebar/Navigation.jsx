@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import menuItems from "../../data/menuItems";
-import SvgContainer from "../common/SvgContainer";
+import menuItems from "data/menuItems";
+import SvgContainer from "components/common/SvgContainer";
 import { kebabCase } from "lodash";
 
 const Navigation = () => (
@@ -38,13 +38,13 @@ const NavLink = styled.a.attrs({
   padding: 0 16px !important;
 
   border-radius: 4px;
-  transition: all 0.2s linear;
+  transition: color ${(props) => props.theme.defaultTransition};
 
   font-size: 14px;
-  color: ${(props) => props.theme.fontColorNeutral};
+  color: ${(props) => props.theme.sidebarColor};
 
   &:hover {
-    color: ${(props) => props.theme.fontColor};
+    color: ${(props) => props.theme.sidebarColorHover};
 
     & svg {
       stroke-width: 2;
