@@ -3,7 +3,7 @@ const commonTheme = {
 
   sidebarWidth: "230px",
 
-  defaultTransition: "0.3s ease-in-out",
+  defaultTransition: "0.25s ease-in-out",
 
   posterWidth: "185px",
   posterHeight: "278px",
