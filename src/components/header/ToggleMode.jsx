@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import accessibilityOutline from "styles/accessibilityOutline";
 
-const ToggleMode = () => {
-  const [check, setCheck] = useState(true);
+const ToggleMode = ({ mode, setMode }) => (
+  <ToggleDiv>
+    <ToggleInput checked={mode} onChange={() => setMode(!mode)} />
+    <ToggleSpan />
+  </ToggleDiv>
+);
 
-  return (
-    <ToggleDiv>
-      <ToggleInput checked={check} onChange={() => setCheck(!check)} />
-      <ToggleSpan />
-    </ToggleDiv>
-  );
+ToggleMode.propTypes = {
+  mode: PropTypes.bool.isRequired,
+  setMode: PropTypes.func.isRequired,
 };
 
 const ToggleDiv = styled.div.attrs({
@@ -51,12 +53,12 @@ const ToggleInput = styled.input.attrs({
   }
 
   &:checked + span {
-    background-color: ${(props) => props.theme.background.level3};
+    background-color: #000;
   }
 
   &:checked + span:before {
     transform: translate(55px, -25px);
-    background-color: ${(props) => props.theme.background.level3};
+    background-color: #000;
   }
 
   &:checked + span:after {
@@ -78,7 +80,7 @@ const ToggleSpan = styled.span`
   border-radius: 50px;
   background-color: #fff;
   transition: 0.2s ease background-color, 0.2s ease opacity;
-  box-shadow: 0 0 0 2px ${(props) => props.theme.fontColorMuted};
+  box-shadow: 0 0 0 2px ${(props) => props.theme.toggleModeOutlineColor};
 
   &:before,
   &:after {
@@ -105,7 +107,7 @@ const ToggleSpan = styled.span`
     left: 4px;
     z-index: 0;
 
-    background-color: ${(props) => props.theme.background.level3};
+    background-color: #000;
   }
 `;
 
