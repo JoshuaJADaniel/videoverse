@@ -13,7 +13,10 @@ const Section = ({ title, subtitle, children }) => (
 Section.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
+  ]),
 };
 
 const Wrapper = styled.section.attrs({
