@@ -72,14 +72,17 @@ const CarouselBackgroundImage = styled.div`
   background-position: center;
   background-image: url(${(props) => props.imageUrl});
 
-  box-shadow: inset 0px -400px 200px -200px
+  box-shadow: inset 0px -450px 200px -200px
     ${(props) => props.theme.defaultBackground};
   transition: box-shadow ${(props) => props.theme.defaultTransition};
 `;
 
 const CarouselCaptionWrapper = styled.div.attrs({
   className: "carousel-caption text-left",
-})``;
+})`
+  left: 72px;
+  right: 72px;
+`;
 
 const CarouselRatingWrapper = styled.div.attrs({
   className: "mb-2",
