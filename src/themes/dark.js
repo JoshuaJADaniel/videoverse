@@ -1,9 +1,9 @@
-import LogoLight from "../images/logo-full-light.svg";
-import commonTheme from "./common";
+import LogoLight from "images/logo-text-light.svg";
+import commonTheme from "themes/common";
 
 const darkTheme = {
   ...commonTheme,
-  logo: LogoLight,
+  logoText: LogoLight,
 
   heroTitleColor: "#ffffff",
   heroDetailsColor: "#cccccc",
