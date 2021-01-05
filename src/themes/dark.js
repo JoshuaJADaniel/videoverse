@@ -25,6 +25,9 @@ const darkTheme = {
 
   sidebarColor: "#bbbbbb",
   sidebarColorHover: "#ffffff",
+
+  navigateHistoryColor: "#bbbbbb",
+  navigateHistoryColorHover: "#ffffff",
 };
 
 export default darkTheme;

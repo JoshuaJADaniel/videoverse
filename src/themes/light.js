@@ -25,6 +25,9 @@ const lightTheme = {
 
   sidebarColor: "#bbbbbb",
   sidebarColorHover: "#ffffff",
+
+  navigateHistoryColor: "#bbbbbb",
+  navigateHistoryColorHover: "#ffffff",
 };
 
 export default lightTheme;
