@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const LoadingScreen = () => (
+const LoadingContainer = () => (
   <Wrapper>
     <Loader />
     <SrSpan>Loading..</SrSpan>
@@ -12,7 +12,6 @@ const Wrapper = styled.div.attrs({
   className: "d-flex justify-content-center align-items-center",
 })`
   height: 100vh;
-  background: ${(props) => props.theme.background.level3};
 `;
 
 const Loader = styled.div.attrs({
@@ -28,4 +27,4 @@ const SrSpan = styled.span.attrs({
   className: "sr-only",
 })``;
 
-export default LoadingScreen;
+export default LoadingContainer;
