@@ -1,26 +1,29 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useMemo } from "react";
 import { compact } from "lodash";
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
-import getRandomBackdrop from "../../utils/getRandomBackdrop";
-
-import Rating from "./Rating";
+import Rating from "components/main/Rating";
+import getRandomBackdrop from "utils/getRandomBackdrop";
 
 const StaticHero = ({ data }) => {
-  const { title, year, genresText, runtime, backdropUrl, rating, outOf } = data;
+  const { title, year, genresText, runtime, imageUrl, rating, outOf } = data;
   const details = compact([year, genresText, runtime]).join(" • ");
+  const memoizedImageUrl = useMemo(() => imageUrl || getRandomBackdrop(), [
+    imageUrl,
+  ]);
 
   return (
     <CarouselSlide>
       <CarouselInner>
         <CarouselItem>
-          <CarouselBackgroundImage
-            backgroundImage={backdropUrl ?? getRandomBackdrop()}
-          />
+          <CarouselBackgroundImage imageUrl={memoizedImageUrl} />
           <CarouselCaptionWrapper>
-            <CarouselRatingWrapper>
-              <Rating rating={rating} outOf={outOf} />
-            </CarouselRatingWrapper>
+            {rating && (
+              <CarouselRatingWrapper>
+                <Rating rating={rating} outOf={outOf ?? 10} />
+              </CarouselRatingWrapper>
+            )}
             <CarouselCaptionTitle>{title}</CarouselCaptionTitle>
             <CarouselCaptionDetails>{details}</CarouselCaptionDetails>
           </CarouselCaptionWrapper>
@@ -28,6 +31,19 @@ const StaticHero = ({ data }) => {
       </CarouselInner>
     </CarouselSlide>
   );
+};
+
+StaticHero.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genresText: PropTypes.string.isRequired,
+    year: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    runtime: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
+    backdropUrl: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    outOf: PropTypes.number,
+  }),
 };
 
 const CarouselSlide = styled.div.attrs({
@@ -54,10 +70,10 @@ const CarouselBackgroundImage = styled.div`
 
   background-size: cover;
   background-position: center;
-  background-image: url(${(props) => props.backgroundImage});
+  background-image: url(${(props) => props.imageUrl});
 
   box-shadow: inset 0px -400px 200px -200px
-    ${(props) => props.theme.background.level1};
+    ${(props) => props.theme.defaultBackground};
 `;
 
 const CarouselCaptionWrapper = styled.div.attrs({
