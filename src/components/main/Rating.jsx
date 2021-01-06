@@ -25,9 +25,9 @@ Rating.propTypes = {
   outOf: PropTypes.number.isRequired,
 };
 
-const RatingWrapper = styled.div.attrs({
-  className: "text-warning",
-})`
+const RatingWrapper = styled.div`
+  color: ${(props) => props.theme.primaryColor};
+
   & svg {
     margin-right: 8px;
     fill: currentColor;
