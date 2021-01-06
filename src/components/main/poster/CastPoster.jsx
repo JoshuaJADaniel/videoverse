@@ -20,9 +20,9 @@ const CastPoster = ({ name, character, imageUrl, linkToProfile }) => {
 };
 
 CastPoster.propTypes = {
-  name: PropTypes.string,
-  imageUrl: PropTypes.string,
-  character: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  character: PropTypes.string.isRequired,
   linkToProfile: PropTypes.string.isRequired,
 };
 
