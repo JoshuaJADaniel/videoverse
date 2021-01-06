@@ -13,21 +13,18 @@ const CastSection = ({ cast }) => {
     return (
       <Section title="Cast">
         <Row>
-          {cast.map(
-            ({ name, gender, character, profile_path }) =>
-              name && (
-                <CastPoster
-                  key={kebabCase(name)}
-                  name={name}
-                  gender={gender || 1}
-                  character={character || ""}
-                  linkToProfile={"#"}
-                  imageUrl={
-                    (profile_path && getProfilePosterUrl(profile_path)) || ""
-                  }
-                />
-              )
-          )}
+          {cast.map(({ name, gender, character, profile_path }) => (
+            <CastPoster
+              key={kebabCase(`${name} ${character}`)}
+              name={name}
+              gender={gender || 1}
+              character={character || ""}
+              linkToProfile={"#"}
+              imageUrl={
+                (profile_path && getProfilePosterUrl(profile_path)) || ""
+              }
+            />
+          ))}
         </Row>
       </Section>
     );
