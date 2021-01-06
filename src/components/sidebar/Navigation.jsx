@@ -9,17 +9,13 @@ const Navigation = () => (
     {menuItems.map((item) => (
       <NavItem key={kebabCase(`nav-${item.title}`)}>
         <NavLink href={item.url}>
-          <CustomSvgContainer>{item.path}</CustomSvgContainer>
+          <SvgContainer>{item.path}</SvgContainer>
           {item.title}
         </NavLink>
       </NavItem>
     ))}
   </NavUl>
 );
-
-const CustomSvgContainer = styled(SvgContainer).attrs({
-  className: "mr-4",
-})``;
 
 const NavUl = styled.ul.attrs({
   className: "navbar-nav",
@@ -45,6 +41,7 @@ const NavLink = styled.a.attrs({
 
   & svg {
     transition: stroke-width ${(props) => props.theme.defaultTransition};
+    margin-right: 18px;
   }
 
   &:hover {
