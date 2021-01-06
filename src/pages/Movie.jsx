@@ -14,6 +14,7 @@ import {
 } from "requests/getTmdbEndpointPaths";
 
 import CastSection from "components/main/section/CastSection";
+import CrewSection from "components/main/section/CrewSection";
 import StaticHero from "components/main/hero/StaticHero";
 import MainWrapper from "components/main/MainWrapper";
 import Sidebar from "components/sidebar/Sidebar";
@@ -27,6 +28,7 @@ const Movie = () => {
   const [dark, setDark] = useState(true);
   const [loading, setLoading] = useState(true);
   const [castDetails, setCastDetails] = useState([]);
+  const [crewDetails, setCrewDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState({});
   const getTheme = () => (dark ? darkTheme : lightTheme);
 
@@ -47,6 +49,10 @@ const Movie = () => {
         if (res.data.cast) {
           setCastDetails(res.data.cast.slice(0, 15));
         }
+
+        if (res.data.crew) {
+          setCrewDetails(res.data.crew.slice(0, 15));
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -65,6 +71,7 @@ const Movie = () => {
         <Header mode={dark} setMode={setDark} />
         <StaticHero data={movieDetails} />
         <CastSection cast={castDetails} />
+        <CrewSection crew={crewDetails} />
       </MainWrapper>
     </ThemeProvider>
   );
