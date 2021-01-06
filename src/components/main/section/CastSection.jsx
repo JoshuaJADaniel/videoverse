@@ -16,7 +16,7 @@ const CastSection = ({ cast }) => {
           {cast.map(({ name, gender, character, profile_path }) => (
             <CastPoster
               key={kebabCase(`${name} ${character}`)}
-              name={name}
+              name={name || ""}
               gender={gender || 1}
               character={character || ""}
               linkToProfile={"#"}

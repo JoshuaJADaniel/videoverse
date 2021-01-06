@@ -16,7 +16,7 @@ const CrewSection = ({ crew }) => {
           {crew.map(({ name, gender, job, profile_path }) => (
             <CrewPoster
               key={kebabCase(`${name} ${job}`)}
-              name={name}
+              name={name || ""}
               job={job || ""}
               gender={gender || 1}
               linkToProfile={"#"}
