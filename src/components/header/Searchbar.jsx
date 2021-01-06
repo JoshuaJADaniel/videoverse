@@ -27,7 +27,7 @@ const SearchButton = styled.button.attrs({
 
   color: ${(props) => props.theme.searchButtonColor};
   background: ${(props) => props.theme.searchbarBackground};
-  transition: all ${(props) => props.theme.defaultTransition};
+  transition: color ${(props) => props.theme.defaultTransition};
 
   &:hover {
     color: ${(props) => props.theme.searchButtonColorHover};
@@ -50,7 +50,6 @@ const SearchInput = styled.input.attrs({
   color: ${(props) => props.theme.searchFieldColor};
   caret-color: ${(props) => props.theme.searchFieldColor};
   background: ${(props) => props.theme.searchbarBackground};
-  transition: background ${(props) => props.theme.defaultTransition};
 
   &::placeholder {
     color: ${(props) => props.theme.searchFieldColor};

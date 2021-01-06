@@ -22,8 +22,6 @@ const Wrapper = styled.main`
   background-repeat: repeat-y;
   background-image: url(${backgroundImage});
   background-color: ${(props) => props.theme.defaultBackground};
-
-  transition: background-color ${(props) => props.theme.defaultTransition};
 `;
 
 export default MainWrapper;

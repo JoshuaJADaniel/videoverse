@@ -43,7 +43,6 @@ const RatingText = styled.p`
 
   font-size: 20px;
   color: ${(props) => props.theme.heroDetailsColor};
-  transition: color ${(props) => props.theme.defaultTransition};
 `;
 
 export default Rating;

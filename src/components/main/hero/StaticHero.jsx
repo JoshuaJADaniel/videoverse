@@ -74,7 +74,6 @@ const CarouselBackgroundImage = styled.div`
 
   box-shadow: inset 0px -450px 200px -200px
     ${(props) => props.theme.defaultBackground};
-  transition: box-shadow ${(props) => props.theme.defaultTransition};
 `;
 
 const CarouselCaptionWrapper = styled.div.attrs({
@@ -88,7 +87,6 @@ const CarouselRatingWrapper = styled.div.attrs({
   className: "mb-2",
 })`
   color: ${(props) => props.theme.heroDetailsColor} !important;
-  transition: color ${(props) => props.theme.defaultTransition};
 `;
 
 const CarouselCaptionTitle = styled.h1.attrs({
@@ -96,14 +94,12 @@ const CarouselCaptionTitle = styled.h1.attrs({
 })`
   font-weight: bold;
   color: ${(props) => props.theme.heroTitleColor};
-  transition: color ${(props) => props.theme.defaultTransition};
 `;
 
 const CarouselCaptionDetails = styled.h6.attrs({
   className: "h5",
 })`
   color: ${(props) => props.theme.heroDetailsColor};
-  transition: color ${(props) => props.theme.defaultTransition};
 `;
 
 export default StaticHero;
