@@ -11,7 +11,7 @@ const CastPoster = ({ name, character, imageUrl, linkToProfile, gender }) => {
 
   return (
     <Poster
-      title={`"${character}"` || "Unknown"}
+      title={(character && `"${character}"`) || `"Unknown"`}
       subtitle={name || "Unknown"}
       imageUrl={memoizedImageUrl}
       linkUrl={linkToProfile}
