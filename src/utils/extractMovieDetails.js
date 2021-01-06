@@ -12,7 +12,7 @@ const extractMovieDetails = (movieObject) => {
     genres: movieObject.genres.map((item) => item.name),
 
     backdropPath: movieObject.backdrop_path,
-    backdropUrl: getMovieBackdropUrl(movieObject.backdrop_path),
+    imageUrl: getMovieBackdropUrl(movieObject.backdrop_path),
   };
 
   movieDetails.genresText = movieDetails.genres.join(" | ");

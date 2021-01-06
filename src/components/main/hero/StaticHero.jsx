@@ -40,7 +40,7 @@ StaticHero.propTypes = {
     year: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     runtime: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
       .isRequired,
-    backdropUrl: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
     rating: PropTypes.number,
     outOf: PropTypes.number,
   }),
