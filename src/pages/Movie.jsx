@@ -79,12 +79,13 @@ const Movie = () => {
       <MainWrapper>
         <Header mode={dark} setMode={setDark} />
         <StaticHero data={movieDetails} />
-        <Separator verticalSpace={80} />
+        <Separator verticalSpace={40} />
         <CastSection cast={castDetails} />
-        <Separator verticalSpace={40} />
+        <Separator verticalSpace={70} />
         <CrewSection crew={crewDetails} />
-        <Separator verticalSpace={40} />
+        <Separator verticalSpace={70} />
         <MovieSection title="Related Movies" moviesBasic={relatedMovies} />
+        <Separator verticalSpace={100} />
       </MainWrapper>
     </ThemeProvider>
   );
