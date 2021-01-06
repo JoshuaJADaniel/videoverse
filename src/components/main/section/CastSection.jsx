@@ -17,7 +17,7 @@ const CastSection = ({ cast }) => {
             <CastPoster
               key={kebabCase(person.name)}
               name={person.name}
-              character={`"${person.character}"`}
+              character={person.character}
               imageUrl={
                 person.profile_path && getProfilePosterUrl(person.profile_path)
               }
