@@ -43,7 +43,7 @@ const LogoImageWrapper = styled.img`
   flex-grow: 0;
   flex-shrink: 0;
 
-  margin-right: 18px;
+  margin-right: 14px;
 `;
 
 const LogoTextWrapper = styled.img`
