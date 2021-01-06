@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { kebabCase } from "lodash";
 
-import { getProfilePosterUrl } from "requests/getTmdbEndpointUrls";
+import { getPosterImageUrl } from "requests/getTmdbEndpointUrls";
 
 import Row from "components/main/Row";
 import Section from "components/main/section/Section";
@@ -20,9 +20,7 @@ const CrewSection = ({ crew }) => {
               job={job || ""}
               gender={gender || 1}
               linkToProfile={"#"}
-              imageUrl={
-                (profile_path && getProfilePosterUrl(profile_path)) || ""
-              }
+              imageUrl={(profile_path && getPosterImageUrl(profile_path)) || ""}
             />
           ))}
         </Row>
