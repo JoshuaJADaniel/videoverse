@@ -2,29 +2,33 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
-import GlobalStyles from "../styles/GlobalStyles";
-import lightTheme from "../themes/light";
-import darkTheme from "../themes/dark";
+import GlobalStyles from "styles/GlobalStyles";
+import lightTheme from "themes/light";
+import darkTheme from "themes/dark";
 
-import tmdb from "../requests/tmdb";
-import { getMovieDetailsPath } from "../requests/getTmdbEndpointPaths";
-import { getMovieBackdropUrl } from "../requests/getTmdbEndpointUrls";
-import extractMovieDetails from "../utils/extractMovieDetails";
+import tmdb from "requests/tmdb";
+import extractMovieDetails from "utils/extractMovieDetails";
+import {
+  getMovieDetailsPath,
+  getCastDetailsPath,
+} from "requests/getTmdbEndpointPaths";
 
-import MainWrapper from "../components/main/MainWrapper";
-import StaticHero from "../components/main/StaticHero";
-import Sidebar from "../components/sidebar/Sidebar";
-import Header from "../components/header/Header";
+import CastSection from "components/main/section/CastSection";
+import StaticHero from "components/main/hero/StaticHero";
+import MainWrapper from "components/main/MainWrapper";
+import Sidebar from "components/sidebar/Sidebar";
+import Header from "components/header/Header";
 
-import Loading from "./Loading";
+import Loading from "pages/Loading";
 
 const Movie = () => {
   const { id } = useParams();
   const history = useHistory();
-  const [theme] = useState("dark");
+  const [dark, setDark] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [castDetails, setCastDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState({});
-  const getTheme = () => (theme === "light" ? lightTheme : darkTheme);
+  const getTheme = () => (dark ? darkTheme : lightTheme);
 
   useEffect(() => {
     tmdb
@@ -35,6 +39,17 @@ const Movie = () => {
       })
       .catch(() => {
         setTimeout(() => history.push("/404"), 500);
+      });
+
+    tmdb
+      .get(getCastDetailsPath(id))
+      .then((res) => {
+        if (res.data.cast) {
+          setCastDetails(res.data.cast.slice(0, 15));
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
@@ -47,8 +62,9 @@ const Movie = () => {
       <GlobalStyles />
       <Sidebar />
       <MainWrapper>
-        <Header />
+        <Header mode={dark} setMode={setDark} />
         <StaticHero data={movieDetails} />
+        <CastSection cast={castDetails} />
       </MainWrapper>
     </ThemeProvider>
   );
