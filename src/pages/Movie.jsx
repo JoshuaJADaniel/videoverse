@@ -9,16 +9,19 @@ import darkTheme from "themes/dark";
 import tmdb from "requests/tmdb";
 import extractMovieDetails from "utils/extractMovieDetails";
 import {
+  getRelatedMoviesPath,
   getMovieDetailsPath,
   getCastDetailsPath,
 } from "requests/getTmdbEndpointPaths";
 
+import MovieSection from "components/main/section/MovieSection";
 import CastSection from "components/main/section/CastSection";
 import CrewSection from "components/main/section/CrewSection";
 import StaticHero from "components/main/hero/StaticHero";
 import MainWrapper from "components/main/MainWrapper";
 import Sidebar from "components/sidebar/Sidebar";
 import Header from "components/header/Header";
+import Separator from "components/common/Separator";
 
 import Loading from "pages/Loading";
 
@@ -30,6 +33,7 @@ const Movie = () => {
   const [castDetails, setCastDetails] = useState([]);
   const [crewDetails, setCrewDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState({});
+  const [relatedMovies, setRelatedMovies] = useState([]);
   const getTheme = () => (dark ? darkTheme : lightTheme);
 
   useEffect(() => {
@@ -39,9 +43,7 @@ const Movie = () => {
         setMovieDetails(extractMovieDetails(res.data));
         setTimeout(() => setLoading(false), 500);
       })
-      .catch(() => {
-        setTimeout(() => history.push("/404"), 500);
-      });
+      .catch(() => setTimeout(() => history.push("/404"), 500));
 
     tmdb
       .get(getCastDetailsPath(id))
@@ -54,9 +56,16 @@ const Movie = () => {
           setCrewDetails(res.data.crew.slice(0, 15));
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
+
+    tmdb
+      .get(getRelatedMoviesPath(id))
+      .then((res) => {
+        if (res.data.results) {
+          setRelatedMovies(res.data.results);
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   if (loading) {
@@ -70,8 +79,12 @@ const Movie = () => {
       <MainWrapper>
         <Header mode={dark} setMode={setDark} />
         <StaticHero data={movieDetails} />
+        <Separator verticalSpace={80} />
         <CastSection cast={castDetails} />
+        <Separator verticalSpace={40} />
         <CrewSection crew={crewDetails} />
+        <Separator verticalSpace={40} />
+        <MovieSection title="Related Movies" moviesBasic={relatedMovies} />
       </MainWrapper>
     </ThemeProvider>
   );
