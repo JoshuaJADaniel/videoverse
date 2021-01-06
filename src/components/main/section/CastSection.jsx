@@ -13,18 +13,21 @@ const CastSection = ({ cast }) => {
     return (
       <Section title="Cast">
         <Row>
-          {cast.map((person) => (
-            <CastPoster
-              key={kebabCase(person.name)}
-              name={person.name}
-              character={person.character}
-              gender={person.gender}
-              imageUrl={
-                person.profile_path && getProfilePosterUrl(person.profile_path)
-              }
-              linkToProfile={"#"}
-            />
-          ))}
+          {cast.map(
+            ({ name, gender, character, profile_path }) =>
+              name && (
+                <CastPoster
+                  key={kebabCase(name)}
+                  name={name}
+                  gender={gender || 1}
+                  character={character || ""}
+                  linkToProfile={"#"}
+                  imageUrl={
+                    (profile_path && getProfilePosterUrl(profile_path)) || ""
+                  }
+                />
+              )
+          )}
         </Row>
       </Section>
     );
@@ -39,6 +42,7 @@ CastSection.propTypes = {
       name: PropTypes.string,
       character: PropTypes.string,
       profile_path: PropTypes.string,
+      gender: PropTypes.number,
     })
   ),
 };
