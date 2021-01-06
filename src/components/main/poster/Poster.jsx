@@ -63,11 +63,11 @@ const Card = styled.div.attrs((props) => ({
 `;
 
 const Details = styled.div.attrs({
-  className: "d-flex justify-content-between align-items-center",
+  className: "d-flex justify-content-between align-items-start",
 })``;
 
 const Title = styled.p.attrs({
-  className: "my-2 text-left",
+  className: "my-2 text-left text-nowrap text-truncate",
 })`
   color: ${(props) => props.theme.posterTitleColor};
 `;
