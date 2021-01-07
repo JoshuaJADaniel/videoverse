@@ -19,7 +19,7 @@ const CrewSection = ({ crew }) => {
               name={name || ""}
               job={job || ""}
               gender={gender || 1}
-              linkToProfile={`person/${personId}`}
+              linkToProfile={`/person/${personId}`}
               imageUrl={(profile_path && getPosterImageUrl(profile_path)) || ""}
             />
           ))}
