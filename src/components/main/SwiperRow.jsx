@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import initializeSwiper from "utils/initializeSwiper";
 
-const Row = ({ children }) => {
+const SwiperRow = ({ children }) => {
   useEffect(() => {
     initializeSwiper();
   }, []);
@@ -21,11 +21,11 @@ const Row = ({ children }) => {
   );
 };
 
-Row.propTypes = {
+SwiperRow.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
 };
 
-export default Row;
+export default SwiperRow;
