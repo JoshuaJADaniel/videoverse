@@ -4,7 +4,7 @@ import { kebabCase } from "lodash";
 
 import { getPosterImageUrl } from "requests/getTmdbEndpointUrls";
 
-import Row from "components/main/Row";
+import SwiperRow from "components/main/SwiperRow";
 import Section from "components/main/section/Section";
 import CastPoster from "components/main/poster/CastPoster";
 
@@ -12,7 +12,7 @@ const CastSection = ({ cast }) => {
   if (cast.length) {
     return (
       <Section title="Cast">
-        <Row>
+        <SwiperRow>
           {cast.map(
             ({ id: personId, name, gender, character, profile_path }) => (
               <CastPoster
@@ -27,7 +27,7 @@ const CastSection = ({ cast }) => {
               />
             )
           )}
-        </Row>
+        </SwiperRow>
       </Section>
     );
   }

@@ -4,7 +4,7 @@ import { kebabCase } from "lodash";
 
 import { getPosterImageUrl } from "requests/getTmdbEndpointUrls";
 
-import Row from "components/main/Row";
+import SwiperRow from "components/main/SwiperRow";
 import Section from "components/main/section/Section";
 import CrewPoster from "components/main/poster/CrewPoster";
 
@@ -12,7 +12,7 @@ const CrewSection = ({ crew }) => {
   if (crew.length) {
     return (
       <Section title="Crew">
-        <Row>
+        <SwiperRow>
           {crew.map(({ id: personId, name, gender, job, profile_path }) => (
             <CrewPoster
               key={kebabCase(`${name} ${job}`)}
@@ -23,7 +23,7 @@ const CrewSection = ({ crew }) => {
               imageUrl={(profile_path && getPosterImageUrl(profile_path)) || ""}
             />
           ))}
-        </Row>
+        </SwiperRow>
       </Section>
     );
   }

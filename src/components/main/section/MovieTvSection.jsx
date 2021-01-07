@@ -6,7 +6,7 @@ import { kebabCase } from "lodash";
 import { getPosterImageUrl } from "requests/getTmdbEndpointUrls";
 import createMovieTvSubtitle from "utils/createMovieTvSubtitle";
 
-import SwiperRow from "components/main/Row";
+import SwiperRow from "components/main/SwiperRow";
 import Section from "components/main/section/Section";
 import MoviePoster from "components/main/poster/MoviePoster";
 import TvPoster from "components/main/poster/TvPoster";
