@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import Poster from "components/main/poster/Poster";
-import MoviePlaceholder from "images/poster-movie-tv.png";
+import moviePlaceholder from "images/poster-movie-tv.png";
 
 const MoviePoster = ({
   title,
@@ -10,7 +10,7 @@ const MoviePoster = ({
   linkToMovie,
   responsive,
 }) => {
-  const memoizedImageUrl = useMemo(() => imageUrl || MoviePlaceholder, [
+  const memoizedImageUrl = useMemo(() => imageUrl || moviePlaceholder, [
     imageUrl,
   ]);
 
