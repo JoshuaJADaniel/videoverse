@@ -88,6 +88,7 @@ const Badge = styled.p.attrs({
   color: ${(props) => props.theme.posterDetailsColor};
   background: ${(props) => props.theme.posterBadgeBackground};
   border: 1px solid ${(props) => props.theme.posterDetailsColor};
+  transition: none;
 `;
 
 export default Poster;
