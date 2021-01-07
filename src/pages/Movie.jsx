@@ -16,7 +16,7 @@ import {
   getMovieVideosPath,
 } from "requests/getTmdbEndpointPaths";
 
-import FullWidthVideo from "components/common/FullWidthVideo";
+import YoutubeVideo from "components/common/YoutubeVideo";
 import MovieSection from "components/main/section/MovieSection";
 import CastSection from "components/main/section/CastSection";
 import CrewSection from "components/main/section/CrewSection";
@@ -100,7 +100,7 @@ const Movie = () => {
             <Section title={"Overview"}>
               <p>{movieDetails.overview}</p>
               <Separator verticalSpace={20} />
-              {trailer && <FullWidthVideo youtubeEmbedLink={trailer} />}
+              {trailer && <YoutubeVideo youtubeEmbedLink={trailer} />}
             </Section>
             <Separator verticalSpace={70} />
           </>

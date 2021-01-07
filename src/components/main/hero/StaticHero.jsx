@@ -3,7 +3,7 @@ import { compact } from "lodash";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import Rating from "components/main/Rating";
+import Rating from "components/main/hero/Rating";
 import getRandomBackdrop from "utils/getRandomBackdrop";
 
 const StaticHero = ({ data }) => {
