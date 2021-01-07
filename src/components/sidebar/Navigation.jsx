@@ -5,10 +5,10 @@ import SvgContainer from "components/common/SvgContainer";
 import { kebabCase } from "lodash";
 
 const Navigation = () => (
-  <NavUl>
+  <NavUl className="navbar-nav">
     {menuItems.map((item) => (
-      <NavItem key={kebabCase(`nav-${item.title}`)}>
-        <NavLink href={item.url}>
+      <NavItem key={kebabCase(`nav-${item.title}`)} className="nav-item">
+        <NavLink href={item.url} className="nav-link d-flex align-items-center">
           <SvgContainer>{item.path}</SvgContainer>
           {item.title}
         </NavLink>
@@ -17,19 +17,13 @@ const Navigation = () => (
   </NavUl>
 );
 
-const NavUl = styled.ul.attrs({
-  className: "navbar-nav",
-})`
+const NavUl = styled.ul`
   margin: 0 8px;
 `;
 
-const NavItem = styled.li.attrs({
-  className: "nav-item",
-})``;
+const NavItem = styled.li``;
 
-const NavLink = styled.a.attrs({
-  className: "nav-link d-flex align-items-center",
-})`
+const NavLink = styled.a`
   height: 45px;
   padding: 0 16px !important;
 
