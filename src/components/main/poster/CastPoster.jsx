@@ -5,13 +5,13 @@ import getProfilePlaceholder from "utils/getProfilePlaceholder";
 
 const CastPoster = ({ name, character, imageUrl, linkToProfile, gender }) => {
   const memoizedImageUrl = useMemo(
-    () => imageUrl || getProfilePlaceholder(gender === 1),
+    () => imageUrl || getProfilePlaceholder(gender),
     [imageUrl]
   );
 
   return (
     <Poster
-      title={(character && `"${character}"`) || `"Unknown"`}
+      title={`"${character || "Unknown"}"`}
       subtitle={name || "Unknown"}
       imageUrl={memoizedImageUrl}
       linkUrl={linkToProfile}
