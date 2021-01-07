@@ -8,17 +8,21 @@ import darkTheme from "themes/dark";
 
 import tmdb from "requests/tmdb";
 import extractMovieDetails from "utils/extractMovieDetails";
+import extractTrailerEmbedUrl from "utils/extractTrailerEmbedUrl";
 import {
   getRelatedMoviesPath,
   getMovieDetailsPath,
   getCastDetailsPath,
+  getMovieVideosPath,
 } from "requests/getTmdbEndpointPaths";
 
+import FullWidthVideo from "components/common/FullWidthVideo";
 import MovieSection from "components/main/section/MovieSection";
 import CastSection from "components/main/section/CastSection";
 import CrewSection from "components/main/section/CrewSection";
 import StaticHero from "components/main/hero/StaticHero";
 import MainWrapper from "components/main/MainWrapper";
+import Section from "components/main/section/Section";
 import Sidebar from "components/sidebar/Sidebar";
 import Header from "components/header/Header";
 import Separator from "components/common/Separator";
@@ -29,6 +33,7 @@ const Movie = () => {
   const { id } = useParams();
   const history = useHistory();
   const [dark, setDark] = useState(true);
+  const [trailer, setTrailer] = useState("");
   const [loading, setLoading] = useState(true);
   const [castDetails, setCastDetails] = useState([]);
   const [crewDetails, setCrewDetails] = useState([]);
@@ -66,6 +71,16 @@ const Movie = () => {
         }
       })
       .catch((err) => console.log(err));
+
+    tmdb
+      .get(getMovieVideosPath(id))
+      .then((res) => {
+        let trailerUrl = extractTrailerEmbedUrl(res.data.results);
+        if (trailerUrl) {
+          setTrailer(trailerUrl);
+        }
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   if (loading) {
@@ -80,6 +95,16 @@ const Movie = () => {
         <Header mode={dark} setMode={setDark} />
         <StaticHero data={movieDetails} />
         <Separator verticalSpace={40} />
+        {movieDetails.overview && (
+          <>
+            <Section title={"Overview"}>
+              <p>{movieDetails.overview}</p>
+              <Separator verticalSpace={20} />
+              {trailer && <FullWidthVideo youtubeEmbedLink={trailer} />}
+            </Section>
+            <Separator verticalSpace={70} />
+          </>
+        )}
         <CastSection cast={castDetails} />
         <Separator verticalSpace={70} />
         <CrewSection crew={crewDetails} />
