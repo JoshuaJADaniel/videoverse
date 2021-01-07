@@ -21,7 +21,10 @@ const NavUl = styled.ul`
   margin: 0 8px;
 `;
 
-const NavItem = styled.li``;
+const NavItem = styled.li`
+  margin: 0;
+  padding: 0;
+`;
 
 const NavLink = styled.a`
   height: 45px;
