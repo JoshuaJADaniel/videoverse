@@ -1,10 +1,16 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import Poster from "components/main/poster/Poster";
-import getRandomPoster from "utils/getRandomPoster";
+import MoviePlaceholder from "images/poster-movie.png";
 
-const MoviePoster = ({ title, subtitle, imageUrl, linkToMovie }) => {
-  const memoizedImageUrl = useMemo(() => imageUrl || getRandomPoster(), [
+const MoviePoster = ({
+  title,
+  subtitle,
+  imageUrl,
+  linkToMovie,
+  responsive,
+}) => {
+  const memoizedImageUrl = useMemo(() => imageUrl || MoviePlaceholder, [
     imageUrl,
   ]);
 
@@ -15,6 +21,7 @@ const MoviePoster = ({ title, subtitle, imageUrl, linkToMovie }) => {
       imageUrl={memoizedImageUrl}
       linkUrl={linkToMovie}
       badge="Movie"
+      responsive={responsive}
     />
   );
 };
@@ -24,6 +31,7 @@ MoviePoster.propTypes = {
   subtitle: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   linkToMovie: PropTypes.string.isRequired,
+  responsive: PropTypes.bool,
 };
 
 export default MoviePoster;
