@@ -17,7 +17,7 @@ import {
 } from "requests/getTmdbEndpointPaths";
 
 import YoutubeVideo from "components/common/YoutubeVideo";
-import MovieSection from "components/main/section/MovieSection";
+import MovieTvSection from "components/main/section/MovieTvSection";
 import CastSection from "components/main/section/CastSection";
 import CrewSection from "components/main/section/CrewSection";
 import StaticHero from "components/main/hero/StaticHero";
@@ -70,7 +70,12 @@ const Movie = () => {
       .get(getRelatedMoviesPath(movieId))
       .then((res) => {
         if (res.data.results) {
-          setRelatedMovies(res.data.results);
+          setRelatedMovies(
+            res.data.results.map((movieObject) => {
+              movieObject.media_type = "movie";
+              return movieObject;
+            })
+          );
         }
       })
       .catch((err) => console.log(err));
@@ -116,7 +121,10 @@ const Movie = () => {
         <Separator verticalSpace={50} />
         <CrewSection crew={crewDetails} />
         <Separator verticalSpace={50} />
-        <MovieSection title="Related Movies" moviesBasic={relatedMovies} />
+        <MovieTvSection
+          title="Related Movies"
+          movieTvBasicData={relatedMovies}
+        />
       </MainWrapper>
     </ThemeProvider>
   );
