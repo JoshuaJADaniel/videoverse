@@ -36,7 +36,23 @@ const Person = () => {
       .get(getPersonCreditsPath(personId))
       .then((res) => {
         if (res.data.cast && res.data.crew) {
-          setCredits(res.data.cast.concat(res.data.crew));
+          let moviesBasic = res.data.cast.concat(res.data.crew);
+
+          // Filter movies since a person may be part of the cast and the crew.
+          // This leads to duplicate movies (with respect to ID) causing issues
+          // since ID is being used as a key prop.
+          // This also filters movies that have no title (TMDB issue).
+          const idSet = new Set();
+          moviesBasic = moviesBasic.filter(({ id, title }) => {
+            if (id && title && !idSet.has(id)) {
+              idSet.add(id);
+              return true;
+            }
+
+            return false;
+          });
+
+          setCredits(moviesBasic);
         }
       })
       .catch((err) => console.log(err));
