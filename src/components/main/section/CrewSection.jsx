@@ -13,13 +13,13 @@ const CrewSection = ({ crew }) => {
     return (
       <Section title="Crew">
         <Row>
-          {crew.map(({ name, gender, job, profile_path }) => (
+          {crew.map(({ id: personId, name, gender, job, profile_path }) => (
             <CrewPoster
               key={kebabCase(`${name} ${job}`)}
               name={name || ""}
               job={job || ""}
               gender={gender || 1}
-              linkToProfile={"#"}
+              linkToProfile={`person/${personId}`}
               imageUrl={(profile_path && getPosterImageUrl(profile_path)) || ""}
             />
           ))}
@@ -34,6 +34,7 @@ const CrewSection = ({ crew }) => {
 CrewSection.propTypes = {
   crew: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       name: PropTypes.string,
       character: PropTypes.string,
       profile_path: PropTypes.string,
