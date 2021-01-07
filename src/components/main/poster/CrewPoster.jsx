@@ -5,7 +5,7 @@ import getProfilePlaceholder from "utils/getProfilePlaceholder";
 
 const CrewPoster = ({ name, job, imageUrl, linkToProfile, gender }) => {
   const memoizedImageUrl = useMemo(
-    () => imageUrl || getProfilePlaceholder(gender === 1),
+    () => imageUrl || getProfilePlaceholder(gender),
     [imageUrl]
   );
 
