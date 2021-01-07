@@ -4,9 +4,9 @@ import styled from "styled-components";
 import getRandomPoster from "utils/getRandomPoster";
 import accessibilityOutline from "styles/accessibilityOutline";
 
-const Poster = ({ imageUrl, linkUrl, title, subtitle, badge }) => (
-  <Wrapper href={linkUrl ?? "#"}>
-    <Card imageUrl={imageUrl ?? getRandomPoster()} />
+const Poster = ({ imageUrl, linkUrl, title, subtitle, badge, responsive }) => (
+  <Wrapper href={linkUrl ?? "#"} responsive={responsive}>
+    <Card imageUrl={imageUrl ?? getRandomPoster()} responsive={responsive} />
     <Title>{title}</Title>
     <Details>
       <Subtitle>{subtitle}</Subtitle>
@@ -21,13 +21,16 @@ Poster.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
   badge: PropTypes.string.isRequired,
+  responsive: PropTypes.bool,
 };
 
-const Wrapper = styled.a.attrs({
-  className: "swiper-slide d-flex flex-column",
-})`
+const Wrapper = styled.a.attrs((props) => ({
+  className: `${
+    (props.responsive && "col-2") || "swiper-slide"
+  } d-flex flex-column`,
+}))`
   height: auto;
-  width: ${(props) => props.theme.posterWidth};
+  width: ${(props) => !props.responsive && props.theme.posterWidth};
 
   filter: brightness(0.85);
   transition: filter ${(props) => props.theme.defaultTransition};
@@ -52,8 +55,8 @@ const Card = styled.div.attrs((props) => ({
     backgroundImage: `url(${props.imageUrl})`,
   },
 }))`
-  width: ${(props) => props.theme.posterWidth};
-  height: ${(props) => props.theme.posterHeight};
+  width: ${(props) => !props.responsive && props.theme.posterWidth};
+  padding-bottom: 150%;
 
   border: none;
 
