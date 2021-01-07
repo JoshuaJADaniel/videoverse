@@ -103,9 +103,13 @@ const Movie = () => {
             <Section title={"Overview"}>
               <p>{movieDetails.overview}</p>
               <Separator verticalSpace={25} />
-              {trailer && <YoutubeVideo youtubeEmbedLink={trailer} />}
+              {(trailer && (
+                <>
+                  <YoutubeVideo youtubeEmbedLink={trailer} />
+                  <Separator verticalSpace={75} />
+                </>
+              )) || <Separator verticalSpace={40} />}
             </Section>
-            <Separator verticalSpace={75} />
           </>
         )}
         <CastSection cast={castDetails} />
