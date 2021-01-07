@@ -11,8 +11,8 @@ const CrewPoster = ({ name, job, imageUrl, linkToProfile, gender }) => {
 
   return (
     <Poster
-      title={job}
-      subtitle={name}
+      title={job || "Unknown"}
+      subtitle={name || "Unknown"}
       imageUrl={memoizedImageUrl}
       linkUrl={linkToProfile}
       badge="Crew"
