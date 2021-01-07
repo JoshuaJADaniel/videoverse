@@ -30,7 +30,7 @@ import Separator from "components/common/Separator";
 import Loading from "pages/Loading";
 
 const Movie = () => {
-  const { id } = useParams();
+  const { id: movieId } = useParams();
   const history = useHistory();
   const [dark, setDark] = useState(true);
   const [trailer, setTrailer] = useState("");
@@ -43,7 +43,7 @@ const Movie = () => {
 
   useEffect(() => {
     tmdb
-      .get(getMovieDetailsPath(id))
+      .get(getMovieDetailsPath(movieId))
       .then((res) => {
         setMovieDetails(extractMovieDetails(res.data));
         setTimeout(() => setLoading(false), 500);
@@ -51,7 +51,7 @@ const Movie = () => {
       .catch(() => setTimeout(() => history.push("/404"), 500));
 
     tmdb
-      .get(getCastDetailsPath(id))
+      .get(getCastDetailsPath(movieId))
       .then((res) => {
         if (res.data.cast) {
           setCastDetails(res.data.cast.slice(0, 15));
@@ -64,7 +64,7 @@ const Movie = () => {
       .catch((err) => console.log(err));
 
     tmdb
-      .get(getRelatedMoviesPath(id))
+      .get(getRelatedMoviesPath(movieId))
       .then((res) => {
         if (res.data.results) {
           setRelatedMovies(res.data.results);
@@ -73,7 +73,7 @@ const Movie = () => {
       .catch((err) => console.log(err));
 
     tmdb
-      .get(getMovieVideosPath(id))
+      .get(getMovieVideosPath(movieId))
       .then((res) => {
         let trailerUrl = extractTrailerEmbedUrl(res.data.results);
         if (trailerUrl) {
