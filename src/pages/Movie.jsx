@@ -97,21 +97,21 @@ const Movie = () => {
       <MainWrapper>
         <Header mode={dark} setMode={setDark} />
         <StaticHero data={movieDetails} />
-        <Separator verticalSpace={40} />
+        <Separator verticalSpace={50} />
         {movieDetails.overview && (
           <>
             <Section title={"Overview"}>
               <p>{movieDetails.overview}</p>
-              <Separator verticalSpace={20} />
+              <Separator verticalSpace={25} />
               {trailer && <YoutubeVideo youtubeEmbedLink={trailer} />}
             </Section>
-            <Separator verticalSpace={70} />
+            <Separator verticalSpace={75} />
           </>
         )}
         <CastSection cast={castDetails} />
-        <Separator verticalSpace={70} />
+        <Separator verticalSpace={50} />
         <CrewSection crew={crewDetails} />
-        <Separator verticalSpace={70} />
+        <Separator verticalSpace={50} />
         <MovieSection title="Related Movies" moviesBasic={relatedMovies} />
         <Separator verticalSpace={100} />
       </MainWrapper>
