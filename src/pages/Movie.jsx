@@ -113,7 +113,6 @@ const Movie = () => {
         <CrewSection crew={crewDetails} />
         <Separator verticalSpace={50} />
         <MovieSection title="Related Movies" moviesBasic={relatedMovies} />
-        <Separator verticalSpace={100} />
       </MainWrapper>
     </ThemeProvider>
   );

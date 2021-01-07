@@ -15,6 +15,7 @@ MainWrapper.propTypes = {
 const Wrapper = styled.main`
   height: auto;
   min-height: 100vh;
+  padding-bottom: 100px;
   margin-left: ${(props) => props.theme.sidebarWidth};
 
   background-size: 100%;
