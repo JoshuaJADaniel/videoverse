@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import SvgContainer from "../common/SvgContainer";
+import SvgContainer from "components/common/SvgContainer";
 
 const Rating = ({ rating, outOf }) => {
   if (rating) {
