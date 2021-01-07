@@ -12,9 +12,17 @@ const getRelatedMoviesPath = (movieId) =>
 const getMovieVideosPath = (movieId) =>
   `${TMDB_URL}/movie/${movieId}/videos?api_key=${TMDB_KEY}`;
 
+const getPersonPath = (personId) =>
+  `${TMDB_URL}/person/${personId}?api_key=${TMDB_KEY}`;
+
+const getPersonCreditsPath = (personId) =>
+  `${TMDB_URL}/person/${personId}/combined_credits?api_key=${TMDB_KEY}`;
+
 export {
   getMovieDetailsPath,
   getCastDetailsPath,
   getRelatedMoviesPath,
   getMovieVideosPath,
+  getPersonPath,
+  getPersonCreditsPath,
 };
