@@ -12,7 +12,7 @@ import GlobalStyles from "styles/GlobalStyles";
 import lightTheme from "themes/light";
 import darkTheme from "themes/dark";
 
-import MovieSection from "components/main/section/MovieSection";
+import MovieTvSection from "components/main/section/MovieTvSection";
 import Separator from "components/common/Separator";
 import MainWrapper from "components/main/MainWrapper";
 import Sidebar from "components/sidebar/Sidebar";
@@ -36,23 +36,30 @@ const Person = () => {
       .get(getPersonCreditsPath(personId))
       .then((res) => {
         if (res.data.cast && res.data.crew) {
-          let moviesBasic = res.data.cast.concat(res.data.crew);
+          let movieTvBasicData = res.data.cast.concat(res.data.crew);
 
-          // Filter movies since a person may be part of the cast and the crew.
-          // This leads to duplicate movies (with respect to ID) causing issues
-          // since ID is being used as a key prop.
-          // This also filters movies that have no title (TMDB issue).
-          const idSet = new Set();
-          moviesBasic = moviesBasic.filter(({ id, title }) => {
-            if (id && title && !idSet.has(id)) {
-              idSet.add(id);
-              return true;
+          // Filter since a person may be part of the cast and the crew.This
+          // leads to duplicates (with respect to ID) causing issues since ID is
+          // being used as a key prop.
+          const movieIdSet = new Set();
+          const tvIdSet = new Set();
+          movieTvBasicData = movieTvBasicData.filter(({ id, media_type }) => {
+            if (media_type === "movie") {
+              if (!movieIdSet.has(id)) {
+                movieIdSet.add(id);
+                return true;
+              }
+            } else {
+              if (!tvIdSet.has(id)) {
+                tvIdSet.add(id);
+                return true;
+              }
             }
 
             return false;
           });
 
-          setCredits(moviesBasic);
+          setCredits(movieTvBasicData);
         }
       })
       .catch((err) => console.log(err));
@@ -65,7 +72,11 @@ const Person = () => {
       <MainWrapper>
         <Header mode={dark} setMode={setDark} />
         <Separator verticalSpace={50} />
-        <MovieSection title="Known For" moviesBasic={credits} responsive />
+        <MovieTvSection
+          title="Known For"
+          movieTvBasicData={credits}
+          responsive
+        />
       </MainWrapper>
     </ThemeProvider>
   );
