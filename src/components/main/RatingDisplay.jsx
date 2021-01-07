@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import SvgContainer from "components/common/SvgContainer";
 
-const Rating = ({ rating, outOf }) => {
+const RatingDisplay = ({ rating, outOf }) => {
   if (rating) {
     return (
       <RatingWrapper>
@@ -20,7 +20,7 @@ const Rating = ({ rating, outOf }) => {
   return null;
 };
 
-Rating.propTypes = {
+RatingDisplay.propTypes = {
   rating: PropTypes.number.isRequired,
   outOf: PropTypes.number.isRequired,
 };
@@ -45,4 +45,4 @@ const RatingText = styled.p`
   color: ${(props) => props.theme.heroDetailsColor};
 `;
 
-export default Rating;
+export default RatingDisplay;
