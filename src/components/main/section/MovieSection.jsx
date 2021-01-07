@@ -13,10 +13,16 @@ import MoviePoster from "components/main/poster/MoviePoster";
 const MovieSection = ({ title, moviesBasic, responsive }) => {
   if (moviesBasic.length) {
     const content = moviesBasic.map(
-      ({ id: movieId, title, poster_path, vote_average, release_date }) => (
+      ({
+        id: movieId,
+        title: movieTitle,
+        poster_path,
+        vote_average,
+        release_date,
+      }) => (
         <MoviePoster
-          key={kebabCase(title)}
-          title={title || "Unknown"}
+          key={kebabCase(`${title}-${movieId}`)}
+          title={movieTitle || "Unknown"}
           subtitle={createMovieSubtitle(release_date, vote_average)}
           linkToMovie={`/movie/${movieId}`}
           imageUrl={(poster_path && getPosterImageUrl(poster_path)) || ""}
