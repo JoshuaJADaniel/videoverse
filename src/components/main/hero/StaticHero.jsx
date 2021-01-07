@@ -3,7 +3,7 @@ import { compact } from "lodash";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import Rating from "components/main/hero/Rating";
+import RatingDisplay from "components/main/RatingDisplay";
 import getRandomBackdrop from "utils/getRandomBackdrop";
 
 const StaticHero = ({ data }) => {
@@ -21,7 +21,7 @@ const StaticHero = ({ data }) => {
           <CarouselCaptionWrapper>
             {rating && (
               <CarouselRatingWrapper>
-                <Rating rating={rating} outOf={outOf ?? 10} />
+                <RatingDisplay rating={rating} outOf={outOf ?? 10} />
               </CarouselRatingWrapper>
             )}
             <CarouselCaptionTitle>{title}</CarouselCaptionTitle>
