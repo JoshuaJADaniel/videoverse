@@ -4,7 +4,7 @@ import styled from "styled-components";
 const LoadingContainer = () => (
   <Wrapper>
     <Loader />
-    <SrSpan>Loading..</SrSpan>
+    <SrSpan>Loading...</SrSpan>
   </Wrapper>
 );
 
