@@ -14,12 +14,12 @@ const MovieSection = ({ title, moviesBasic }) => {
       <Section title={title}>
         <Row>
           {moviesBasic.map(
-            ({ title, poster_path, vote_average, release_date }) => (
+            ({ id, title, poster_path, vote_average, release_date }) => (
               <MoviePoster
                 key={kebabCase(title)}
                 title={title || "Unknown"}
                 subtitle={getSubtitle(release_date, vote_average)}
-                linkToMovie={"#"}
+                linkToMovie={`/movie/${id}`}
                 imageUrl={(poster_path && getPosterImageUrl(poster_path)) || ""}
               />
             )
@@ -42,6 +42,7 @@ MovieSection.propTypes = {
   title: PropTypes.string.isRequired,
   moviesBasic: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       title: PropTypes.string,
       poster_path: PropTypes.string,
       release_date: PropTypes.string,
