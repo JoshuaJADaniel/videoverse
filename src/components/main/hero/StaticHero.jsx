@@ -50,6 +50,7 @@ const CarouselSlide = styled.div.attrs({
   className: "carousel slide",
 })`
   height: 85vh;
+  min-height: 700px;
 `;
 
 const CarouselInner = styled.div.attrs({
@@ -79,8 +80,8 @@ const CarouselBackgroundImage = styled.div`
 const CarouselCaptionWrapper = styled.div.attrs({
   className: "carousel-caption text-left",
 })`
-  left: 72px;
-  right: 72px;
+  left: 96px;
+  right: 96px;
 `;
 
 const CarouselRatingWrapper = styled.div.attrs({

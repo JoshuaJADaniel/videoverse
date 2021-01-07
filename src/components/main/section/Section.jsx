@@ -20,7 +20,7 @@ Section.propTypes = {
 };
 
 const Wrapper = styled.section.attrs({
-  className: "mx-5 px-4",
+  className: "mx-5 px-5",
 })`
   color: ${(props) => props.theme.fontColor};
 `;
