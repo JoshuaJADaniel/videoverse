@@ -12,8 +12,8 @@ const TvPoster = ({ title, subtitle, imageUrl, linkToTvShow, responsive }) => {
       subtitle={subtitle}
       imageUrl={memoizedImageUrl}
       linkUrl={linkToTvShow}
-      badge="TV Show"
       responsive={responsive}
+      badge="TV Show"
     />
   );
 };

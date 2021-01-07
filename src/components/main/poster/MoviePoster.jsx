@@ -20,8 +20,8 @@ const MoviePoster = ({
       subtitle={subtitle}
       imageUrl={memoizedImageUrl}
       linkUrl={linkToMovie}
-      badge="Movie"
       responsive={responsive}
+      badge="Movie"
     />
   );
 };
