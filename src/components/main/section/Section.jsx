@@ -34,7 +34,7 @@ const Subtitle = styled.h6.attrs({
 })``;
 
 const ChildrenWrapper = styled.div.attrs({
-  className: "mt-3",
+  className: "mt-4",
 })``;
 
 export default Section;
