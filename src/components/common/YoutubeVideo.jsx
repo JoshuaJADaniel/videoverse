@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const FullWidthVideo = ({ youtubeEmbedLink }) => (
+const YoutubeVideo = ({ youtubeEmbedLink }) => (
   <Wrapper>
     <iframe
       width="1280"
@@ -15,7 +15,7 @@ const FullWidthVideo = ({ youtubeEmbedLink }) => (
   </Wrapper>
 );
 
-FullWidthVideo.propTypes = {
+YoutubeVideo.propTypes = {
   youtubeEmbedLink: PropTypes.string.isRequired,
 };
 
@@ -34,4 +34,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default FullWidthVideo;
+export default YoutubeVideo;
