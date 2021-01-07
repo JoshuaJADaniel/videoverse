@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import getRandomPoster from "utils/getRandomPoster";
-import accessibilityOutline from "styles/accessibilityOutline";
 
 const Poster = ({ imageUrl, linkUrl, title, subtitle, badge, responsive }) => (
-  <Wrapper href={linkUrl ?? "#"} responsive={responsive}>
-    <Card imageUrl={imageUrl ?? getRandomPoster()} responsive={responsive} />
+  <Wrapper href={linkUrl} responsive={responsive}>
+    <Card imageUrl={imageUrl} responsive={responsive} />
     <Title>{title}</Title>
     <Details>
       <Subtitle>{subtitle}</Subtitle>
@@ -44,8 +42,8 @@ const Wrapper = styled.a.attrs((props) => ({
     outline: none;
   }
 
-  &:focus p:first-child {
-    ${accessibilityOutline}
+  &:focus p:not(:last-child) {
+    text-decoration: underline;
   }
 `;
 
