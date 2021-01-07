@@ -13,20 +13,16 @@ const CastSection = ({ cast }) => {
     return (
       <Section title="Cast">
         <SwiperRow>
-          {cast.map(
-            ({ id: personId, name, gender, character, profile_path }) => (
-              <CastPoster
-                key={kebabCase(`${name} ${character}`)}
-                name={name || ""}
-                gender={gender || 1}
-                character={character || ""}
-                linkToProfile={`/person/${personId}`}
-                imageUrl={
-                  (profile_path && getPosterImageUrl(profile_path)) || ""
-                }
-              />
-            )
-          )}
+          {cast.map(({ id, name, gender, character, profile_path }) => (
+            <CastPoster
+              key={kebabCase(`${name}-${character}`)}
+              name={name || ""}
+              gender={gender || 1}
+              character={character || ""}
+              linkToProfile={`/person/${id}`}
+              imageUrl={(profile_path && getPosterImageUrl(profile_path)) || ""}
+            />
+          ))}
         </SwiperRow>
       </Section>
     );
