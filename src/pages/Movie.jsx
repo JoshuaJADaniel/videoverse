@@ -40,25 +40,28 @@ const Movie = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [relatedMovies, setRelatedMovies] = useState([]);
   const getTheme = () => (dark ? darkTheme : lightTheme);
+  const loadingDelay = 500;
+  const maxCastLength = 15;
+  const maxCrewLength = 15;
 
   useEffect(() => {
     tmdb
       .get(getMovieDetailsPath(movieId))
       .then((res) => {
         setMovieDetails(extractMovieDetails(res.data));
-        setTimeout(() => setLoading(false), 500);
+        setTimeout(() => setLoading(false), loadingDelay);
       })
-      .catch(() => setTimeout(() => history.push("/404"), 500));
+      .catch(() => setTimeout(() => history.push("/404"), loadingDelay));
 
     tmdb
       .get(getCastDetailsPath(movieId))
       .then((res) => {
         if (res.data.cast) {
-          setCastDetails(res.data.cast.slice(0, 15));
+          setCastDetails(res.data.cast.slice(0, maxCastLength));
         }
 
         if (res.data.crew) {
-          setCrewDetails(res.data.crew.slice(0, 15));
+          setCrewDetails(res.data.crew.slice(0, maxCrewLength));
         }
       })
       .catch((err) => console.log(err));
