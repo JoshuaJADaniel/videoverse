@@ -14,12 +14,13 @@ MainWrapper.propTypes = {
 
 const Wrapper = styled.main`
   height: auto;
-  min-height: 100vh;
+  min-height: 1000%;
   padding-bottom: 100px;
   margin-left: ${(props) => props.theme.sidebarWidth};
 
-  background-size: 100%;
+  background-size: 120%;
   background-position-y: -5%;
+  background-position-x: center;
   background-repeat: repeat-y;
   background-image: url(${backgroundImage});
   background-color: ${(props) => props.theme.defaultBackground};
