@@ -106,7 +106,9 @@ const Movie = () => {
         {movieDetails.overview && (
           <>
             <Section title={"Overview"}>
-              <p>{movieDetails.overview}</p>
+              <p style={{ lineHeight: 1.7, whiteSpace: "pre-line" }}>
+                {movieDetails.overview}
+              </p>
               <Separator verticalSpace={25} />
               {(trailer && (
                 <>
