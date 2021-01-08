@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import GlobalStyles from "styles/GlobalStyles";
 import lightTheme from "themes/light";
 import darkTheme from "themes/dark";
@@ -104,20 +104,16 @@ const Movie = () => {
         <StaticHero data={movieDetails} />
         <Separator verticalSpace={50} />
         {movieDetails.overview && (
-          <>
-            <Section title={"Overview"}>
-              <p style={{ lineHeight: 1.7, whiteSpace: "pre-line" }}>
-                {movieDetails.overview}
-              </p>
-              <Separator verticalSpace={25} />
-              {(trailer && (
-                <>
-                  <YoutubeVideo youtubeEmbedLink={trailer} />
-                  <Separator verticalSpace={75} />
-                </>
-              )) || <Separator verticalSpace={40} />}
-            </Section>
-          </>
+          <Section title={"Overview"}>
+            <Overview>{movieDetails.overview}</Overview>
+            <Separator verticalSpace={25} />
+            {(trailer && (
+              <>
+                <YoutubeVideo youtubeEmbedLink={trailer} />
+                <Separator verticalSpace={75} />
+              </>
+            )) || <Separator verticalSpace={40} />}
+          </Section>
         )}
         <CastSection cast={castDetails} />
         <Separator verticalSpace={50} />
@@ -131,5 +127,10 @@ const Movie = () => {
     </ThemeProvider>
   );
 };
+
+const Overview = styled.p`
+  line-height: 1.7;
+  white-space: pre-line;
+`;
 
 export default Movie;
