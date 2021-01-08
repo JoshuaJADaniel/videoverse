@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Section = ({ title, subtitle, children }) => (
   <Wrapper>
-    <Title>{title}</Title>
+    {title && <Title>{title}</Title>}
     {subtitle && <Subtitle>{subtitle}</Subtitle>}
     {children && <ChildrenWrapper>{children}</ChildrenWrapper>}
   </Wrapper>
