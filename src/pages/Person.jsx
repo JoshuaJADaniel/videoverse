@@ -17,11 +17,13 @@ import Separator from "components/common/Separator";
 import MainWrapper from "components/main/MainWrapper";
 import Sidebar from "components/sidebar/Sidebar";
 import Header from "components/header/Header";
+import Loading from "pages/Loading";
 
 const Person = () => {
   const { id: personId } = useParams();
   const [dark, setDark] = useState(true);
   const [credits, setCredits] = useState([]);
+  const [loading, setLoading] = useState(true);
   const loadingDelay = 500;
 
   const getTheme = () => (dark ? darkTheme : lightTheme);
@@ -29,7 +31,10 @@ const Person = () => {
   useEffect(() => {
     tmdb
       .get(getPersonPath(personId))
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+        setTimeout(() => setLoading(false), loadingDelay);
+      })
       .catch(() => setTimeout(() => history.push("/404"), loadingDelay));
 
     tmdb
@@ -64,6 +69,10 @@ const Person = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <ThemeProvider theme={getTheme}>
