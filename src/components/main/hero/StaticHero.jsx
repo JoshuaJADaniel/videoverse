@@ -19,7 +19,7 @@ const StaticHero = ({ data }) => {
         <CarouselItem>
           <CarouselBackgroundImage imageUrl={memoizedImageUrl} />
           <CarouselCaptionWrapper>
-            {rating && (
+            {rating !== 0 && (
               <CarouselRatingWrapper>
                 <RatingDisplay rating={rating} outOf={outOf ?? 10} />
               </CarouselRatingWrapper>
