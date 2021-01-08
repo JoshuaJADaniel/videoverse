@@ -4,7 +4,10 @@ import { trimStart } from "lodash";
 const getMovieBackdropUrl = (backgroundPath) =>
   `${TMDB_IMAGE_URL}/w1280/${trimStart(backgroundPath, "/")}`;
 
-const getPosterImageUrl = (profilePath) =>
-  `${TMDB_IMAGE_URL}/w185/${trimStart(profilePath, "/")}`;
+const getPosterImageUrl = (profilePath, highRes) =>
+  `${TMDB_IMAGE_URL}/${highRes ? "w500" : "w185"}/${trimStart(
+    profilePath,
+    "/"
+  )}`;
 
 export { getMovieBackdropUrl, getPosterImageUrl };
