@@ -10,7 +10,10 @@ const extractMovieDetails = (movieObject) => {
     runtime: movieObject.runtime && `${movieObject.runtime} mins`,
     genres: movieObject.genres.map((item) => item.name),
 
-    imageUrl: getMovieBackdropUrl(movieObject.backdrop_path),
+    imageUrl:
+      (movieObject.backdrop_path &&
+        getMovieBackdropUrl(movieObject.backdrop_path)) ||
+      "",
   };
 
   movieDetails.genresText = movieDetails.genres.join(" | ");
