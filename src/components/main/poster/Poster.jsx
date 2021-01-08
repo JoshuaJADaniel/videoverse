@@ -74,7 +74,7 @@ const Title = styled.p.attrs({
 `;
 
 const Subtitle = styled.p.attrs({
-  className: "pb-1",
+  className: "pb-1 mr-2",
 })`
   font-size: 14px;
   color: ${(props) => props.theme.posterDetailsColor};
