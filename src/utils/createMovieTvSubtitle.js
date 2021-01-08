@@ -1,7 +1,12 @@
-const createMovieTvSubtitle = (release_date, vote_average) =>
-  (release_date &&
-    vote_average &&
-    `${release_date.split("-")[0]} • ${vote_average}/10`) ||
-  "No Rating";
+import { compact } from "lodash";
+
+const createMovieTvSubtitle = (releaseDate, voteAverage) => {
+  const subtitle = [
+    releaseDate && releaseDate.split("-")[0],
+    voteAverage && `${voteAverage}/10`,
+  ];
+
+  return compact(subtitle).join(" • ") || "No Rating";
+};
 
 export default createMovieTvSubtitle;
