@@ -98,7 +98,7 @@ const CarouselCaptionTitle = styled.h1.attrs({
 `;
 
 const CarouselCaptionDetails = styled.h6.attrs({
-  className: "h5",
+  className: "h5 ml-1",
 })`
   color: ${(props) => props.theme.heroDetailsColor};
 `;
