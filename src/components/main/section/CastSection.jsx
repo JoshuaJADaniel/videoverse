@@ -17,7 +17,7 @@ const CastSection = ({ cast }) => {
             <CastPoster
               key={kebabCase(`${name}-${character}`)}
               name={name || ""}
-              gender={gender || 1}
+              gender={gender ?? 0}
               character={character || ""}
               linkToProfile={`/person/${id}`}
               imageUrl={(profile_path && getPosterImageUrl(profile_path)) || ""}

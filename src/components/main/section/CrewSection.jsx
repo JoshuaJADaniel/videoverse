@@ -13,13 +13,13 @@ const CrewSection = ({ crew }) => {
     return (
       <Section title="Crew">
         <SwiperRow>
-          {crew.map(({ id: personId, name, gender, job, profile_path }) => (
+          {crew.map(({ id, name, gender, job, profile_path }) => (
             <CrewPoster
-              key={kebabCase(`${name} ${job}`)}
+              key={kebabCase(`${name}-${job}`)}
               name={name || ""}
               job={job || ""}
-              gender={gender || 1}
-              linkToProfile={`/person/${personId}`}
+              gender={gender ?? 0}
+              linkToProfile={`/person/${id}`}
               imageUrl={(profile_path && getPosterImageUrl(profile_path)) || ""}
             />
           ))}
