@@ -15,7 +15,7 @@ const MovieTvSection = ({ title, movieTvBasicData, responsive }) => {
   if (movieTvBasicData.length) {
     const content = movieTvBasicData.map(
       ({
-        id: movieTvId,
+        id,
         name: tvTitle,
         title: movieTitle,
         poster_path,
@@ -26,19 +26,19 @@ const MovieTvSection = ({ title, movieTvBasicData, responsive }) => {
       }) =>
         media_type === "movie" ? (
           <MoviePoster
-            key={kebabCase(`${title}-movie-${movieTvId}`)}
+            key={kebabCase(`${title}-movie-${id}`)}
             title={movieTitle || "Unknown"}
             subtitle={createMovieTvSubtitle(movieRelease, vote_average)}
-            linkToMovie={`/movie/${movieTvId}`}
+            linkToMovie={`/movie/${id}`}
             imageUrl={(poster_path && getPosterImageUrl(poster_path)) || ""}
             responsive={responsive}
           />
         ) : (
           <TvPoster
-            key={kebabCase(`${title}-tv-${movieTvId}`)}
+            key={kebabCase(`${title}-tv-${id}`)}
             title={tvTitle || "Unknown"}
             subtitle={createMovieTvSubtitle(tvRelease, vote_average)}
-            linkToTvShow={`/tv-show/${movieTvId}`}
+            linkToTvShow={`/tv-show/${id}`}
             imageUrl={(poster_path && getPosterImageUrl(poster_path)) || ""}
             responsive={responsive}
           />
