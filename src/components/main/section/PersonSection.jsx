@@ -93,7 +93,9 @@ const ProfileDetailsWrapper = styled.div.attrs({
 
 const ProfileName = styled.h1.attrs({
   className: "mb-3",
-})``;
+})`
+  font-weight: bold;
+`;
 
 const ProfileDetail = styled.h3.attrs({
   className: "px-3 py-2 mr-3 badge",
