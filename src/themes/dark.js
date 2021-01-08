@@ -15,6 +15,7 @@ const darkTheme = {
   posterTitleColor: "#ffffff",
   posterDetailsColor: "#cccccc",
   posterBadgeBackground: "#262626",
+  profileBadgeBackground: "#333333",
 
   scrollbarThumb: "#808080",
   scrollbarThumbHover: "#919191",
