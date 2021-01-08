@@ -13,8 +13,9 @@ import lightTheme from "themes/light";
 import darkTheme from "themes/dark";
 
 import MovieTvSection from "components/main/section/MovieTvSection";
-import Separator from "components/common/Separator";
+import PersonSection from "components/main/section/PersonSection";
 import MainWrapper from "components/main/MainWrapper";
+import Separator from "components/common/Separator";
 import Sidebar from "components/sidebar/Sidebar";
 import Header from "components/header/Header";
 import Loading from "pages/Loading";
@@ -23,6 +24,7 @@ const Person = () => {
   const { id: personId } = useParams();
   const [dark, setDark] = useState(true);
   const [credits, setCredits] = useState([]);
+  const [personDetails, setPersonDetails] = useState({});
   const [loading, setLoading] = useState(true);
   const loadingDelay = 500;
 
@@ -32,8 +34,10 @@ const Person = () => {
     tmdb
       .get(getPersonPath(personId))
       .then((res) => {
-        console.log(res.data);
-        setTimeout(() => setLoading(false), loadingDelay);
+        setTimeout(() => {
+          setPersonDetails(res.data);
+          setLoading(false);
+        }, loadingDelay);
       })
       .catch(() => setTimeout(() => history.push("/404"), loadingDelay));
 
@@ -80,7 +84,9 @@ const Person = () => {
       <Sidebar />
       <MainWrapper>
         <Header mode={dark} setMode={setDark} />
-        <Separator verticalSpace={50} />
+        <Separator verticalSpace={20} />
+        <PersonSection personData={personDetails} />
+        <Separator verticalSpace={80} />
         <MovieTvSection
           title="Known For"
           movieTvBasicData={credits}
