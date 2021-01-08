@@ -2,14 +2,14 @@ import React, { useMemo } from "react";
 import { compact } from "lodash";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import backdropPlaceholder from "images/backdrop-movie-tv.png";
 
 import RatingDisplay from "components/main/RatingDisplay";
-import getRandomBackdrop from "utils/getRandomBackdrop";
 
 const StaticHero = ({ data }) => {
   const { title, year, genresText, runtime, imageUrl, rating, outOf } = data;
   const details = compact([year, genresText, runtime]).join(" • ");
-  const memoizedImageUrl = useMemo(() => imageUrl || getRandomBackdrop(), [
+  const memoizedImageUrl = useMemo(() => imageUrl || backdropPlaceholder, [
     imageUrl,
   ]);
 
