@@ -41,7 +41,7 @@ const extractMediaDetails = (media) => {
     seasons: media.seasons,
   };
 
-  return media;
+  return mediaDetails;
 };
 
 export default extractMediaDetails;
