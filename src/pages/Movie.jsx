@@ -16,7 +16,7 @@ import {
   getMovieCreditDetailsPath,
 } from "requests/getTmdbEndpointPaths";
 
-import MovieTvSection from "components/main/section/MovieTvSection";
+import MediaSection from "components/main/section/MediaSection";
 import CastSection from "components/main/section/CastSection";
 import CrewSection from "components/main/section/CrewSection";
 import YoutubeVideo from "components/common/YoutubeVideo";
@@ -71,9 +71,10 @@ const Movie = () => {
       .then((res) => {
         if (res.data.results) {
           setRelatedMovies(
-            res.data.results.map((movieObject) => {
-              movieObject.media_type = "movie";
-              return movieObject;
+            res.data.results.map((movie) => {
+              let newMovie = extractMediaDetails(movie);
+              newMovie.mediaType = "movie";
+              return newMovie;
             })
           );
         }
@@ -83,9 +84,8 @@ const Movie = () => {
     tmdb
       .get(getMovieVideosPath(movieId))
       .then((res) => {
-        let trailerUrl = extractTrailerEmbedUrl(res.data.results);
-        if (trailerUrl) {
-          setTrailer(trailerUrl);
+        if (res.data.results) {
+          setTrailer(extractTrailerEmbedUrl(res.data.results));
         }
       })
       .catch((err) => console.log(err));
@@ -119,10 +119,7 @@ const Movie = () => {
         <Separator verticalSpace={50} />
         <CrewSection crew={crewDetails} />
         <Separator verticalSpace={50} />
-        <MovieTvSection
-          title="Related Movies"
-          movieTvBasicData={relatedMovies}
-        />
+        <MediaSection title="Related Movies" movieTvBasicData={relatedMovies} />
       </MainWrapper>
     </ThemeProvider>
   );
