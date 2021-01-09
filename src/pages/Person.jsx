@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import tmdb from "requests/tmdb";
 import {
   getPersonCreditsPath,
-  getPersonPath,
+  getPersonDetailsPath,
 } from "requests/getTmdbEndpointPaths";
 
 import { ThemeProvider } from "styled-components";
@@ -12,8 +12,8 @@ import GlobalStyles from "styles/GlobalStyles";
 import lightTheme from "themes/light";
 import darkTheme from "themes/dark";
 
-import MovieTvSection from "components/main/section/MovieTvSection";
 import PersonSection from "components/main/section/PersonSection";
+import MediaSection from "components/main/section/MediaSection";
 import MainWrapper from "components/main/MainWrapper";
 import Separator from "components/common/Separator";
 import Sidebar from "components/sidebar/Sidebar";
@@ -21,7 +21,7 @@ import Header from "components/header/Header";
 import Loading from "pages/Loading";
 
 const Person = () => {
-  const { id: personId } = useParams();
+  const { personId } = useParams();
   const [dark, setDark] = useState(true);
   const [credits, setCredits] = useState([]);
   const [personDetails, setPersonDetails] = useState({});
@@ -32,7 +32,7 @@ const Person = () => {
 
   useEffect(() => {
     tmdb
-      .get(getPersonPath(personId))
+      .get(getPersonDetailsPath(personId))
       .then((res) => {
         setTimeout(() => {
           setPersonDetails(res.data);
@@ -87,11 +87,7 @@ const Person = () => {
         <Separator verticalSpace={20} />
         <PersonSection personData={personDetails} />
         <Separator verticalSpace={80} />
-        <MovieTvSection
-          title="Known For"
-          movieTvBasicData={credits}
-          responsive
-        />
+        <MediaSection title="Known For" movieTvBasicData={credits} responsive />
       </MainWrapper>
     </ThemeProvider>
   );
