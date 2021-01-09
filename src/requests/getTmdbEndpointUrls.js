@@ -1,7 +1,7 @@
 import { TMDB_IMAGE_URL } from "data/configs";
 import { trimStart } from "lodash";
 
-const getMovieBackdropUrl = (backgroundPath) =>
+const getBackdropImageUrl = (backgroundPath) =>
   `${TMDB_IMAGE_URL}/w1280/${trimStart(backgroundPath, "/")}`;
 
 const getPosterImageUrl = (profilePath, highRes) =>
@@ -10,4 +10,4 @@ const getPosterImageUrl = (profilePath, highRes) =>
     "/"
   )}`;
 
-export { getMovieBackdropUrl, getPosterImageUrl };
+export { getBackdropImageUrl, getPosterImageUrl };
