@@ -1,9 +1,9 @@
 import { compact } from "lodash";
 
-const createPosterSubtitle = (releaseDate, voteAverage) => {
+const createPosterSubtitle = (releaseDate, rating) => {
   const subtitle = [
     releaseDate && releaseDate.split("-")[0],
-    voteAverage && `${voteAverage}/10`,
+    rating && `${rating}/10`,
   ];
 
   return compact(subtitle).join(" • ") || "No Rating";
