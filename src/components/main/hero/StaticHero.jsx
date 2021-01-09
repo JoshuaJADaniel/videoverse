@@ -2,13 +2,15 @@ import React, { useMemo } from "react";
 import { compact } from "lodash";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import backdropPlaceholder from "images/backdrop-movie-tv.png";
+import backdropPlaceholder from "images/backdrop-placeholder.png";
 
 import RatingDisplay from "components/main/RatingDisplay";
 
 const StaticHero = ({ data }) => {
-  const { title, year, genresText, runtime, imageUrl, rating, outOf } = data;
-  const details = compact([year, genresText, runtime]).join(" • ");
+  const { title, releaseDate, genres, runtime, imageUrl, rating } = data;
+  const details = compact([releaseDate, genres.join(" | "), runtime]).join(
+    " • "
+  );
   const memoizedImageUrl = useMemo(() => imageUrl || backdropPlaceholder, [
     imageUrl,
   ]);
@@ -21,7 +23,7 @@ const StaticHero = ({ data }) => {
           <CarouselCaptionWrapper>
             {rating !== 0 && (
               <CarouselRatingWrapper>
-                <RatingDisplay rating={rating} outOf={outOf ?? 10} />
+                <RatingDisplay rating={rating} outOf={10} />
               </CarouselRatingWrapper>
             )}
             <CarouselCaptionTitle>{title}</CarouselCaptionTitle>
@@ -36,13 +38,13 @@ const StaticHero = ({ data }) => {
 StaticHero.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    genresText: PropTypes.string.isRequired,
-    year: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
     runtime: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
       .isRequired,
     imageUrl: PropTypes.string.isRequired,
-    rating: PropTypes.number,
-    outOf: PropTypes.number,
+    rating: PropTypes.number.isRequired,
   }),
 };
 
