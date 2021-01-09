@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "pages/Home";
+import Tv from "pages/Tv";
 import Movie from "pages/Movie";
-import TvShow from "pages/TvShow";
 import Person from "pages/Person";
+import BrowseTv from "pages/BrowseTv";
 import BrowseMovies from "pages/BrowseMovies";
-import BrowseTvShows from "pages/BrowseTvShows";
 import PageNotFound from "pages/PageNotFound";
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
           <Home />
         </Route>
         <Route exact path="/tv/:tvId">
-          <TvShow />
+          <Tv />
         </Route>
         <Route exact path="/movie/:movieId">
           <Movie />
@@ -26,7 +26,7 @@ const App = () => {
           <Person />
         </Route>
         <Route exact path="/browse/tv">
-          <BrowseTvShows />
+          <BrowseTv />
         </Route>
         <Route exact path="/browse/movies">
           <BrowseMovies />
