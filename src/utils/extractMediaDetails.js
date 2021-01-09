@@ -27,7 +27,8 @@ const extractMediaDetails = (media) => {
     runtime:
       (media.runtime && getRuntime([media.runtime])) ||
       (media.episode_run_time && getRuntime(media.episode_run_time)),
-    imageUrl: media.backdrop_path && getBackdropImageUrl(media.backdrop_path),
+    imageUrl:
+      (media.backdrop_path && getBackdropImageUrl(media.backdrop_path)) || "",
 
     // Specific to movies
     budget: media.budget,
