@@ -16,20 +16,20 @@ const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exact path="/movie/:id">
-          <Movie />
-        </Route>
-        <Route exact path="/tv-show/:id">
+        <Route exact path="/tv/:tvId">
           <TvShow />
         </Route>
-        <Route exact path="/person/:id">
+        <Route exact path="/movie/:movieId">
+          <Movie />
+        </Route>
+        <Route exact path="/person/:personId">
           <Person />
+        </Route>
+        <Route exact path="/browse/tv">
+          <BrowseTvShows />
         </Route>
         <Route exact path="/browse/movies">
           <BrowseMovies />
-        </Route>
-        <Route exact path="/browse/tv-shows">
-          <BrowseTvShows />
         </Route>
         <Route path="*">
           <PageNotFound />
