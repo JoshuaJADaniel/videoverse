@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import Poster from "components/main/poster/Poster";
-import tvPlaceholder from "images/poster-movie-tv.png";
+import tvPlaceholder from "images/poster-placeholder.png";
 
 const TvPoster = ({ title, subtitle, imageUrl, linkToTvShow, responsive }) => {
   const memoizedImageUrl = useMemo(() => imageUrl || tvPlaceholder, [imageUrl]);

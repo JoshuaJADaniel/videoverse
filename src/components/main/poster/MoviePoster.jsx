@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import Poster from "components/main/poster/Poster";
-import moviePlaceholder from "images/poster-movie-tv.png";
+import moviePlaceholder from "images/poster-placeholder.png";
 
 const MoviePoster = ({
   title,
