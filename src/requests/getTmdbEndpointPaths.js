@@ -1,28 +1,49 @@
-import { TMDB_KEY, TMDB_URL } from "data/configs";
+import { TMDB_KEY } from "data/configs";
+
+// Media details
+const getTvDetailsPath = (tvId) =>
+  `/tv/${tvId}?api_key=${TMDB_KEY}&language=en-US`;
 
 const getMovieDetailsPath = (movieId) =>
-  `${TMDB_URL}/movie/${movieId}?api_key=${TMDB_KEY}`;
+  `/movie/${movieId}?api_key=${TMDB_KEY}&language=en-US`;
 
-const getCastDetailsPath = (movieId) =>
-  `${TMDB_URL}/movie/${movieId}/credits?api_key=${TMDB_KEY}`;
+// Media credits details
+const getTvCreditDetailsPath = (tvId) =>
+  `/tv/${tvId}/credits?api_key=${TMDB_KEY}`;
+
+const getMovieCreditDetailsPath = (movieId) =>
+  `/movie/${movieId}/credits?api_key=${TMDB_KEY}`;
+
+// Related media
+const getRelatedTvPath = (tvId) =>
+  `/tv/${tvId}/recommendations?api_key=${TMDB_KEY}`;
 
 const getRelatedMoviesPath = (movieId) =>
-  `${TMDB_URL}/movie/${movieId}/recommendations?api_key=${TMDB_KEY}`;
+  `/movie/${movieId}/recommendations?api_key=${TMDB_KEY}`;
+
+// Media videos (trailers, bloopers, etc.)
+const getTvVideosPath = (tvId) =>
+  `/tv/${tvId}/videos?api_key=${TMDB_KEY}&language=en-US`;
 
 const getMovieVideosPath = (movieId) =>
-  `${TMDB_URL}/movie/${movieId}/videos?api_key=${TMDB_KEY}`;
+  `/movie/${movieId}/videos?api_key=${TMDB_KEY}&language=en-US`;
 
-const getPersonPath = (personId) =>
-  `${TMDB_URL}/person/${personId}?api_key=${TMDB_KEY}`;
+// Person details/credits
+const getPersonDetailsPath = (personId) =>
+  `/person/${personId}?api_key=${TMDB_KEY}`;
 
 const getPersonCreditsPath = (personId) =>
-  `${TMDB_URL}/person/${personId}/combined_credits?api_key=${TMDB_KEY}`;
+  `/person/${personId}/combined_credits?api_key=${TMDB_KEY}`;
 
 export {
+  getTvDetailsPath,
   getMovieDetailsPath,
-  getCastDetailsPath,
+  getTvCreditDetailsPath,
+  getMovieCreditDetailsPath,
+  getRelatedTvPath,
   getRelatedMoviesPath,
+  getTvVideosPath,
   getMovieVideosPath,
-  getPersonPath,
+  getPersonDetailsPath,
   getPersonCreditsPath,
 };
