@@ -7,30 +7,30 @@ import lightTheme from "themes/light";
 import darkTheme from "themes/dark";
 
 import tmdb from "requests/tmdb";
-import extractMovieDetails from "utils/extractMovieDetails";
+import extractMediaDetails from "utils/extractMediaDetails";
 import extractTrailerEmbedUrl from "utils/extractTrailerEmbedUrl";
 import {
-  getRelatedMoviesPath,
-  getMovieDetailsPath,
-  getCastDetailsPath,
   getMovieVideosPath,
+  getMovieDetailsPath,
+  getRelatedMoviesPath,
+  getMovieCreditDetailsPath,
 } from "requests/getTmdbEndpointPaths";
 
-import YoutubeVideo from "components/common/YoutubeVideo";
 import MovieTvSection from "components/main/section/MovieTvSection";
 import CastSection from "components/main/section/CastSection";
 import CrewSection from "components/main/section/CrewSection";
+import YoutubeVideo from "components/common/YoutubeVideo";
 import StaticHero from "components/main/hero/StaticHero";
 import MainWrapper from "components/main/MainWrapper";
 import Section from "components/main/section/Section";
+import Separator from "components/common/Separator";
 import Sidebar from "components/sidebar/Sidebar";
 import Header from "components/header/Header";
-import Separator from "components/common/Separator";
 
 import Loading from "pages/Loading";
 
 const Movie = () => {
-  const { id: movieId } = useParams();
+  const { movieId } = useParams();
   const history = useHistory();
   const [dark, setDark] = useState(true);
   const [trailer, setTrailer] = useState("");
@@ -48,13 +48,13 @@ const Movie = () => {
     tmdb
       .get(getMovieDetailsPath(movieId))
       .then((res) => {
-        setMovieDetails(extractMovieDetails(res.data));
+        setMovieDetails(extractMediaDetails(res.data));
         setTimeout(() => setLoading(false), loadingDelay);
       })
       .catch(() => setTimeout(() => history.push("/404"), loadingDelay));
 
     tmdb
-      .get(getCastDetailsPath(movieId))
+      .get(getMovieCreditDetailsPath(movieId))
       .then((res) => {
         if (res.data.cast) {
           setCastDetails(res.data.cast.slice(0, maxCastLength));
