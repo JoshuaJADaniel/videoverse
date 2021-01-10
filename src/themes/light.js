@@ -15,7 +15,7 @@ const lightTheme = {
   posterTitleColor: "#000000",
   posterDetailsColor: "#414141",
   posterBadgeBackground: "#ffffff",
-  profileBadgeBackground: "#e6e6e6",
+  defaultBadgeBackground: "#e6e6e6",
 
   scrollbarThumb: "#b7b7b7",
   scrollbarThumbHover: "#a7a7a7",
