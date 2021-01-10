@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import tmdb from "requests/tmdb";
+import extractMediaDetails from "utils/extractMediaDetails";
+import extractPersonDetails from "utils/extractPersonDetails";
 import {
   getPersonCreditsPath,
   getPersonDetailsPath,
@@ -22,6 +24,7 @@ import Loading from "pages/Loading";
 
 const Person = () => {
   const { personId } = useParams();
+  const history = useHistory();
   const [dark, setDark] = useState(true);
   const [credits, setCredits] = useState([]);
   const [personDetails, setPersonDetails] = useState({});
@@ -35,7 +38,7 @@ const Person = () => {
       .get(getPersonDetailsPath(personId))
       .then((res) => {
         setTimeout(() => {
-          setPersonDetails(res.data);
+          setPersonDetails(extractPersonDetails(res.data));
           setLoading(false);
         }, loadingDelay);
       })
@@ -45,15 +48,17 @@ const Person = () => {
       .get(getPersonCreditsPath(personId))
       .then((res) => {
         if (res.data.cast && res.data.crew) {
-          let movieTvBasicData = res.data.cast.concat(res.data.crew);
+          let mediaDetails = res.data.cast
+            .concat(res.data.crew)
+            .map((media) => extractMediaDetails(media));
 
           // Filter since a person may be part of the cast and the crew.This
           // leads to duplicates (with respect to ID) causing issues since ID is
-          // being used as a key prop.
+          // being used as a key prop. Note that movie & TV ID can match.
           const movieIdSet = new Set();
           const tvIdSet = new Set();
-          movieTvBasicData = movieTvBasicData.filter(({ id, media_type }) => {
-            if (media_type === "movie") {
+          mediaDetails = mediaDetails.filter(({ id, mediaType }) => {
+            if (mediaType === "movie") {
               if (!movieIdSet.has(id)) {
                 movieIdSet.add(id);
                 return true;
@@ -68,7 +73,7 @@ const Person = () => {
             return false;
           });
 
-          setCredits(movieTvBasicData);
+          setCredits(mediaDetails);
         }
       })
       .catch((err) => console.log(err));
@@ -87,7 +92,7 @@ const Person = () => {
         <Separator verticalSpace={20} />
         <PersonSection personData={personDetails} />
         <Separator verticalSpace={80} />
-        <MediaSection title="Known For" movieTvBasicData={credits} responsive />
+        <MediaSection title="Known For" mediaData={credits} responsive />
       </MainWrapper>
     </ThemeProvider>
   );
