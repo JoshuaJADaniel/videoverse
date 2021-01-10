@@ -14,7 +14,7 @@ const getCarouselItem = (media, badges, active, standalone) => {
     <div key={kebabCase(`hero-${id}`)} className={classes}>
       <CarouselBackgroundImage backdropImage={backdropImage} />
       <CarouselCaption standalone={standalone}>
-        {rating && (
+        {rating !== 0 && (
           <>
             <RatingDisplay rating={rating} outOf={10} />
             <Separator verticalSpace={15} />
