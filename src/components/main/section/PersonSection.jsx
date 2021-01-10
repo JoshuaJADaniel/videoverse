@@ -1,13 +1,9 @@
-import React, { useMemo } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import getGenderText from "utils/getGenderText";
-import { getPosterImageUrl } from "/requests/getTmdbEndpointUrls";
-
 import Section from "components/main/section/Section";
 import Separator from "components/common/Separator";
-import getProfilePlaceholder from "../../../utils/getProfilePlaceholder";
 
 const PersonSection = ({ personData }) => {
   const {
@@ -16,34 +12,25 @@ const PersonSection = ({ personData }) => {
     biography,
     birthday,
     deathday,
-    profile_path,
-    place_of_birth,
-    known_for_department,
+    department,
+    placeOfBirth,
+    posterImageHighRes,
   } = personData;
-
-  const memoizedImageUrl = useMemo(
-    () =>
-      (profile_path && getPosterImageUrl(profile_path, true)) ||
-      getProfilePlaceholder(gender, true),
-    [personData.profile_path]
-  );
 
   return (
     <Section>
       <BootstrapRow>
         <ProfilePhotoWrapper>
-          <ProfilePhoto imageUrl={memoizedImageUrl} />
+          <ProfilePhoto posterImage={posterImageHighRes} />
         </ProfilePhotoWrapper>
         <ProfileDetailsWrapper>
           <ProfileName>{name}</ProfileName>
-          <ProfileDetail>Gender: {getGenderText(gender)}</ProfileDetail>
-          {place_of_birth && (
-            <ProfileDetail>Born: {place_of_birth}</ProfileDetail>
-          )}
+          <ProfileDetail>Gender: {gender}</ProfileDetail>
+          {placeOfBirth && <ProfileDetail>Born: {placeOfBirth}</ProfileDetail>}
           {birthday && <ProfileDetail>Born on: {birthday}</ProfileDetail>}
           {deathday && <ProfileDetail>Died on: {deathday}</ProfileDetail>}
-          {known_for_department && (
-            <ProfileDetail>Department: {known_for_department}</ProfileDetail>
+          {department && (
+            <ProfileDetail>Department: {department}</ProfileDetail>
           )}
           <Separator verticalSpace={10} />
           <Separator line />
@@ -59,13 +46,13 @@ const PersonSection = ({ personData }) => {
 PersonSection.propTypes = {
   personData: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    gender: PropTypes.number,
-    biography: PropTypes.string,
-    birthday: PropTypes.string,
-    deathday: PropTypes.string,
-    profile_path: PropTypes.string,
-    place_of_birth: PropTypes.string,
-    known_for_department: PropTypes.string,
+    gender: PropTypes.string.isRequired,
+    biography: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    deathday: PropTypes.string.isRequired,
+    department: PropTypes.string.isRequired,
+    posterImage: PropTypes.string.isRequired,
+    placeOfBirth: PropTypes.string.isRequired,
   }).isRequired,
 };
 
@@ -82,7 +69,7 @@ const ProfilePhoto = styled.div`
   width: auto;
   padding-bottom: 150%;
   border-radius: 5px;
-  background-image: url(${(props) => props.imageUrl});
+  background-image: url(${(props) => props.posterImage});
   background-position: center;
   background-size: cover;
 `;
