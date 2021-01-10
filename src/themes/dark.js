@@ -12,6 +12,10 @@ const darkTheme = {
   fontColorMuted: "#888888",
   fontColorNeutral: "#bbbbbb",
 
+  buttonBackground: "#000000",
+  buttonBackgroundHover: "#333333",
+  buttonColor: "#00ecca",
+
   posterTitleColor: "#ffffff",
   posterDetailsColor: "#cccccc",
   posterBadgeBackground: "#262626",

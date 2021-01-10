@@ -1,5 +1,5 @@
 const commonTheme = {
-  primaryColor: "#00cbad",
+  primaryColor: "#00ecca",
 
   sidebarWidth: "230px",
 

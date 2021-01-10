@@ -8,6 +8,10 @@ const lightTheme = {
   heroTitleColor: "#000000",
   heroDetailsColor: "#393939",
 
+  buttonBackground: "#00ecca",
+  buttonBackgroundHover: "#00d9b8",
+  buttonColor: "#000000",
+
   fontColor: "#000000",
   fontColorMuted: "#888888",
   fontColorNeutral: "#444444",
