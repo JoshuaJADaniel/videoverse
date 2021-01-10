@@ -7,8 +7,8 @@ import Hero from "components/main/hero/Hero";
 
 const StaticHero = ({ data }) => {
   const badges = compact([
-    data.mediaType,
     data.releaseDate,
+    data.mediaType && (data.mediaType === "movie" ? "Movie" : "TV Show"),
     data.runtime,
     ...data.genres,
   ]);
