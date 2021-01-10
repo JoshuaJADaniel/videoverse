@@ -1,26 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { kebabCase } from "lodash";
-import styled from "styled-components";
-import { getBackdropUrl } from "../../requests/getApiUrls";
-import getCarouselItem from "../../utils/getCarouselItem";
+import { kebabCase, compact } from "lodash";
 
-const CarouselWrapper = styled.div.attrs({
-  id: "hero",
-  className: "carousel slide mb-5",
-  "data-ride": "carousel",
-})`
-  height: 80vh;
-  min-height: 600px;
-`;
+import Hero from "components/main/hero/Hero";
+import getCarouselItem from "utils/getCarouselItem";
 
-const CarouselHero = ({ trendingMovies }) => {
-  let heroSlides = trendingMovies.slice(0, 5);
+const CarouselHero = ({ mediaDetails }) => {
+  let heroSlides = mediaDetails.slice(0, 5);
   const CarouselIndicators = (
     <ol className="carousel-indicators">
-      {heroSlides.map((movieFullObject, index) => (
+      {heroSlides.map((media, index) => (
         <li
-          key={kebabCase(`indicator-${movieFullObject.id}`)}
+          key={kebabCase(`indicator-${media.id}`)}
           className={index ? "" : "active"}
           data-slide-to={index}
           data-target="#hero"
@@ -30,46 +21,38 @@ const CarouselHero = ({ trendingMovies }) => {
   );
 
   return (
-    <CarouselWrapper>
+    <Hero multislide>
       {CarouselIndicators}
       <div className="carousel-inner">
-        {heroSlides.map((movieFullObject, index) => {
-          return getCarouselItem({
-            active: index === 0,
-            movieTitle: movieFullObject.original_title,
-            movieOverview: movieFullObject.overview,
-            movieRuntime: movieFullObject.runtime,
-            movieYear: movieFullObject.release_date,
-            backgroundImg: getBackdropUrl({
-              backdropPath: movieFullObject.backdrop_path,
-            }),
-          });
+        {heroSlides.map((media, index) => {
+          const badges = compact([
+            media.releaseDate.split("-")[0],
+            media.mediaType &&
+              (media.mediaType === "movie" ? "Movie" : "TV Show"),
+            media.originalLanguage &&
+              `Original Language: ${media.originalLanguage.toUpperCase()}`,
+          ]);
+
+          return getCarouselItem(media, badges, index === 0);
         })}
       </div>
-      <a
-        className="carousel-control-prev"
-        href="#hero"
-        role="button"
-        data-slide="prev"
-      >
-        <span className="carousel-control-prev-icon" />
-        <span className="sr-only">Previous</span>
-      </a>
-      <a
-        className="carousel-control-next"
-        href="#hero"
-        role="button"
-        data-slide="next"
-      >
-        <span className="carousel-control-next-icon" />
-        <span className="sr-only">Next</span>
-      </a>
-    </CarouselWrapper>
+    </Hero>
   );
 };
 
 CarouselHero.propTypes = {
-  trendingMovies: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  mediaDetails: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+      overview: PropTypes.string.isRequired,
+      releaseDate: PropTypes.string.isRequired,
+      backdropImage: PropTypes.string.isRequired,
+      originalLanguage: PropTypes.string.isRequired,
+      mediaType: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default CarouselHero;
