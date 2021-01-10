@@ -29,7 +29,7 @@ const CrewSection = ({ crew }) => {
 };
 
 CrewSection.propTypes = {
-  cast: PropTypes.arrayOf(
+  crew: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       job: PropTypes.string.isRequired,

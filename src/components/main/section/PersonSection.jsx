@@ -51,8 +51,8 @@ PersonSection.propTypes = {
     birthday: PropTypes.string.isRequired,
     deathday: PropTypes.string.isRequired,
     department: PropTypes.string.isRequired,
-    posterImage: PropTypes.string.isRequired,
     placeOfBirth: PropTypes.string.isRequired,
+    posterImageHighRes: PropTypes.string.isRequired,
   }).isRequired,
 };
 
