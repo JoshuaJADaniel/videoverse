@@ -1,25 +1,21 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { compact } from "lodash";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import backdropPlaceholder from "images/backdrop-placeholder.png";
 
 import RatingDisplay from "components/main/RatingDisplay";
 
 const StaticHero = ({ data }) => {
-  const { title, releaseDate, genres, runtime, imageUrl, rating } = data;
+  const { title, releaseDate, genres, runtime, backdropImage, rating } = data;
   const details = compact([releaseDate, genres.join(" | "), runtime]).join(
     " • "
   );
-  const memoizedImageUrl = useMemo(() => imageUrl || backdropPlaceholder, [
-    imageUrl,
-  ]);
 
   return (
     <CarouselSlide>
       <CarouselInner>
         <CarouselItem>
-          <CarouselBackgroundImage imageUrl={memoizedImageUrl} />
+          <CarouselBackgroundImage backdropImage={backdropImage} />
           <CarouselCaptionWrapper>
             {rating !== 0 && (
               <CarouselRatingWrapper>
@@ -38,13 +34,11 @@ const StaticHero = ({ data }) => {
 StaticHero.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-    releaseDate: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-      .isRequired,
-    runtime: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-      .isRequired,
-    imageUrl: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
+    runtime: PropTypes.string.isRequired,
+    releaseDate: PropTypes.string.isRequired,
+    backdropImage: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   }),
 };
 
@@ -73,7 +67,7 @@ const CarouselBackgroundImage = styled.div`
 
   background-size: cover;
   background-position: center;
-  background-image: url(${(props) => props.imageUrl});
+  background-image: url(${(props) => props.backdropImage});
 
   box-shadow: inset 0px -450px 200px -200px
     ${(props) => props.theme.defaultBackground};
