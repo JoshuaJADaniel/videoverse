@@ -28,6 +28,14 @@ const getTvVideosPath = (tvId) =>
 const getMovieVideosPath = (movieId) =>
   `/movie/${movieId}/videos?api_key=${TMDB_KEY}&language=en-US`;
 
+// Media latest
+const getLatestTvPath = () => `/tv/latest?api_key=${TMDB_KEY}`;
+
+const getLatestMoviesPath = () => `/movie/latest?api_key=${TMDB_KEY}`;
+
+// Media trending
+const getTrendingMediaPath = () => `/trending/all/week?api_key=${TMDB_KEY}`;
+
 // Person details/credits
 const getPersonDetailsPath = (personId) =>
   `/person/${personId}?api_key=${TMDB_KEY}`;
@@ -44,6 +52,9 @@ export {
   getRelatedMoviesPath,
   getTvVideosPath,
   getMovieVideosPath,
+  getLatestTvPath,
+  getLatestMoviesPath,
+  getTrendingMediaPath,
   getPersonDetailsPath,
   getPersonCreditsPath,
 };
