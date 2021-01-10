@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import Section from "components/main/section/Section";
 import Separator from "components/common/Separator";
+import Badge from "components/common/Badge";
 
 const PersonSection = ({ personData }) => {
   const {
@@ -25,13 +26,11 @@ const PersonSection = ({ personData }) => {
         </ProfilePhotoWrapper>
         <ProfileDetailsWrapper>
           <ProfileName>{name}</ProfileName>
-          <ProfileDetail>Gender: {gender}</ProfileDetail>
-          {placeOfBirth && <ProfileDetail>Born: {placeOfBirth}</ProfileDetail>}
-          {birthday && <ProfileDetail>Born on: {birthday}</ProfileDetail>}
-          {deathday && <ProfileDetail>Died on: {deathday}</ProfileDetail>}
-          {department && (
-            <ProfileDetail>Department: {department}</ProfileDetail>
-          )}
+          <Badge>Gender: {gender}</Badge>
+          {placeOfBirth && <Badge>Born: {placeOfBirth}</Badge>}
+          {birthday && <Badge>Born on: {birthday}</Badge>}
+          {deathday && <Badge>Died on: {deathday}</Badge>}
+          {department && <Badge>Department: {department}</Badge>}
           <Separator verticalSpace={10} />
           <Separator line />
           <BiographyText>
@@ -82,15 +81,6 @@ const ProfileName = styled.h1.attrs({
   className: "mb-3",
 })`
   font-weight: bold;
-`;
-
-const ProfileDetail = styled.h3.attrs({
-  className: "px-3 py-2 mr-3 badge",
-})`
-  font-size: 16px;
-  color: ${(props) => props.theme.fontColor};
-  background: ${(props) => props.theme.profileBadgeBackground};
-  transition: none;
 `;
 
 const BiographyText = styled.p.attrs({
