@@ -48,7 +48,9 @@ const Tv = () => {
     tmdb
       .get(getTvDetailsPath(tvId))
       .then((res) => {
-        setTvDetails(extractMediaDetails(res.data));
+        let newTvDetails = extractMediaDetails(res.data);
+        newTvDetails.mediaType = "tv";
+        setTvDetails(newTvDetails);
         setTimeout(() => setLoading(false), loadingDelay);
       })
       .catch(() => setTimeout(() => history.push("/404"), loadingDelay));

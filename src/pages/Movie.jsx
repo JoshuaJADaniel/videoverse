@@ -48,7 +48,9 @@ const Movie = () => {
     tmdb
       .get(getMovieDetailsPath(movieId))
       .then((res) => {
-        setMovieDetails(extractMediaDetails(res.data));
+        let newMovieDetails = extractMediaDetails(res.data);
+        newMovieDetails.mediaType = "movie";
+        setMovieDetails(newMovieDetails);
         setTimeout(() => setLoading(false), loadingDelay);
       })
       .catch(() => setTimeout(() => history.push("/404"), loadingDelay));
