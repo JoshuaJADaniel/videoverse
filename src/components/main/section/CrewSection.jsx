@@ -9,7 +9,7 @@ import CrewPoster from "components/main/poster/CrewPoster";
 const CrewSection = ({ crew }) => {
   if (crew.length) {
     return (
-      <Section title="Cast">
+      <Section title="Crew">
         <SwiperRow>
           {crew.map(({ id, name, job, posterImage }) => (
             <CrewPoster
