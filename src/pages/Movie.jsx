@@ -8,6 +8,7 @@ import darkTheme from "themes/dark";
 
 import tmdb from "requests/tmdb";
 import extractMediaDetails from "utils/extractMediaDetails";
+import extractPersonDetails from "utils/extractPersonDetails";
 import extractTrailerEmbedUrl from "utils/extractTrailerEmbedUrl";
 import {
   getMovieVideosPath,
@@ -57,11 +58,19 @@ const Movie = () => {
       .get(getMovieCreditDetailsPath(movieId))
       .then((res) => {
         if (res.data.cast) {
-          setCastDetails(res.data.cast.slice(0, maxCastLength));
+          setCastDetails(
+            res.data.cast
+              .slice(0, maxCastLength)
+              .map((person) => extractPersonDetails(person))
+          );
         }
 
         if (res.data.crew) {
-          setCrewDetails(res.data.crew.slice(0, maxCrewLength));
+          setCrewDetails(
+            res.data.crew
+              .slice(0, maxCrewLength)
+              .map((person) => extractPersonDetails(person))
+          );
         }
       })
       .catch((err) => console.log(err));
@@ -119,7 +128,7 @@ const Movie = () => {
         <Separator verticalSpace={50} />
         <CrewSection crew={crewDetails} />
         <Separator verticalSpace={50} />
-        <MediaSection title="Related Movies" movieTvBasicData={relatedMovies} />
+        <MediaSection title="Related Movies" mediaData={relatedMovies} />
       </MainWrapper>
     </ThemeProvider>
   );
