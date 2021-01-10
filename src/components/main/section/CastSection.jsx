@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { kebabCase } from "lodash";
 
-import { getPosterImageUrl } from "requests/getTmdbEndpointUrls";
-
 import SwiperRow from "components/main/SwiperRow";
 import Section from "components/main/section/Section";
 import CastPoster from "components/main/poster/CastPoster";
@@ -13,14 +11,13 @@ const CastSection = ({ cast }) => {
     return (
       <Section title="Cast">
         <SwiperRow>
-          {cast.map(({ id, name, gender, character, profile_path }) => (
+          {cast.map(({ id, name, character, posterImage }) => (
             <CastPoster
               key={kebabCase(`${name}-${character}`)}
-              name={name || ""}
-              gender={gender ?? 0}
-              character={character || ""}
+              name={name}
+              character={character}
               linkToProfile={`/person/${id}`}
-              imageUrl={(profile_path && getPosterImageUrl(profile_path)) || ""}
+              posterImage={posterImage}
             />
           ))}
         </SwiperRow>
@@ -35,11 +32,10 @@ CastSection.propTypes = {
   cast: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      name: PropTypes.string,
-      character: PropTypes.string,
-      profile_path: PropTypes.string,
-      gender: PropTypes.number,
-    })
+      name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+      posterImage: PropTypes.string.isRequired,
+    }).isRequired
   ),
 };
 
