@@ -2,9 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Poster = ({ imageUrl, linkUrl, title, subtitle, badge, responsive }) => (
+const Poster = ({
+  posterImage,
+  linkUrl,
+  title,
+  subtitle,
+  badge,
+  responsive,
+}) => (
   <Wrapper href={linkUrl} responsive={responsive}>
-    <Card imageUrl={imageUrl} responsive={responsive} />
+    <Card posterImage={posterImage} responsive={responsive} />
     <Title>{title}</Title>
     <Details>
       <Subtitle>{subtitle}</Subtitle>
@@ -14,7 +21,7 @@ const Poster = ({ imageUrl, linkUrl, title, subtitle, badge, responsive }) => (
 );
 
 Poster.propTypes = {
-  imageUrl: PropTypes.string.isRequired,
+  posterImage: PropTypes.string.isRequired,
   linkUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
@@ -50,7 +57,7 @@ const Wrapper = styled.a.attrs((props) => ({
 const Card = styled.div.attrs((props) => ({
   className: "card",
   style: {
-    backgroundImage: `url(${props.imageUrl})`,
+    backgroundImage: `url(${props.posterImage})`,
   },
 }))`
   width: ${(props) => !props.responsive && props.theme.posterWidth};
