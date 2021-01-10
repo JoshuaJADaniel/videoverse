@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import GlobalStyles from "styles/GlobalStyles";
 import lightTheme from "themes/light";
 import darkTheme from "themes/dark";
@@ -29,6 +29,7 @@ import Sidebar from "components/sidebar/Sidebar";
 import Header from "components/header/Header";
 
 import Loading from "pages/Loading";
+import OverviewSection from "../components/main/section/OverviewSection";
 
 const Movie = () => {
   const { movieId } = useParams();
@@ -112,18 +113,7 @@ const Movie = () => {
         <Header mode={dark} setMode={setDark} />
         <StaticHero data={movieDetails} />
         <Separator verticalSpace={50} />
-        {movieDetails.overview && (
-          <Section title={"Overview"}>
-            <Overview>{movieDetails.overview}</Overview>
-            <Separator verticalSpace={25} />
-            {(trailer && (
-              <>
-                <YoutubeVideo youtubeEmbedLink={trailer} />
-                <Separator verticalSpace={75} />
-              </>
-            )) || <Separator verticalSpace={40} />}
-          </Section>
-        )}
+        <OverviewSection overview={movieDetails.overview} trailer={trailer} />
         <CastSection cast={castDetails} />
         <Separator verticalSpace={50} />
         <CrewSection crew={crewDetails} />
@@ -133,10 +123,5 @@ const Movie = () => {
     </ThemeProvider>
   );
 };
-
-const Overview = styled.p`
-  line-height: 1.7;
-  white-space: pre-line;
-`;
 
 export default Movie;
