@@ -20,10 +20,8 @@ import {
 import MediaSection from "components/main/section/MediaSection";
 import CastSection from "components/main/section/CastSection";
 import CrewSection from "components/main/section/CrewSection";
-import YoutubeVideo from "components/common/YoutubeVideo";
 import StaticHero from "components/main/hero/StaticHero";
 import MainWrapper from "components/main/MainWrapper";
-import Section from "components/main/section/Section";
 import Separator from "components/common/Separator";
 import Sidebar from "components/sidebar/Sidebar";
 import Header from "components/header/Header";
