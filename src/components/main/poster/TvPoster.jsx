@@ -9,7 +9,7 @@ const TvPoster = ({ title, subtitle, posterImage, linkToTv, responsive }) => (
     posterImage={posterImage}
     linkUrl={linkToTv}
     responsive={responsive}
-    badge=""
+    badge="TV Show"
   />
 );
 
