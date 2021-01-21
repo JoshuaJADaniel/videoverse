@@ -5,8 +5,8 @@ import { kebabCase, compact } from "lodash";
 import Hero from "components/main/hero/Hero";
 import getCarouselItem from "utils/getCarouselItem";
 
-const CarouselHero = ({ mediaDetails }) => {
-  let heroSlides = mediaDetails.slice(0, 5);
+const CarouselHero = ({ mediaData }) => {
+  let heroSlides = mediaData.slice(0, 5);
   const CarouselIndicators = (
     <ol className="carousel-indicators">
       {heroSlides.map((media, index) => (
@@ -41,7 +41,7 @@ const CarouselHero = ({ mediaDetails }) => {
 };
 
 CarouselHero.propTypes = {
-  mediaDetails: PropTypes.arrayOf(
+  mediaData: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
