@@ -1,9 +1,8 @@
-import LogoDark from "images/logo-text-dark.svg";
 import commonTheme from "themes/common";
 
 const lightTheme = {
   ...commonTheme,
-  logoText: LogoDark,
+  logoFilter: "invert(0%)",
 
   heroTitleColor: "#000000",
   heroDetailsColor: "#393939",
