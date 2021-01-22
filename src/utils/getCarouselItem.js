@@ -22,7 +22,12 @@ const getCarouselItem = (media, badges, active, standalone) => {
             <Separator verticalSpace={15} />
           </>
         )}
-        <Title className="font-weight-bold">{title}</Title>
+        <div className="d-flex align-items-center mb-3">
+          <Title className="font-weight-bold">{title}</Title>
+          {!standalone && (
+            <ButtonCta href={`/movie/${id}`}>Learn More</ButtonCta>
+          )}
+        </div>
 
         <div className="ml-1">
           {overview && !standalone && (
@@ -32,9 +37,6 @@ const getCarouselItem = (media, badges, active, standalone) => {
                 separator: " ",
               })}
             </Overview>
-          )}
-          {!standalone && (
-            <ButtonCta href={`/movie/${id}`}>Learn More</ButtonCta>
           )}
           <Details>
             {badges && badges.map((text) => <Badge key={text}>{text}</Badge>)}
@@ -53,7 +55,7 @@ const CarouselCaption = styled.div.attrs((props) => ({
 `;
 
 const ButtonCta = styled.a.attrs({
-  className: "btn",
+  className: "btn ml-4",
 })`
   font-weight: bold;
 
@@ -69,10 +71,12 @@ const ButtonCta = styled.a.attrs({
 `;
 
 const Title = styled.h1`
+  margin: 0;
   color: ${(props) => props.theme.heroTitleColor};
 `;
 
 const Overview = styled.p`
+  margin-bottom: 20px;
   color: ${(props) => props.theme.heroTitleColor};
 `;
 
