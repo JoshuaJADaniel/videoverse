@@ -1,21 +1,18 @@
-import React, { useContext } from "react";
-import styled, { ThemeContext } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import Navigation from "components/sidebar/Navigation";
 import logoImage from "images/logo-image.svg";
+import logoText from "images/logo-text.svg";
 
-const Sidebar = () => {
-  const themeContext = useContext(ThemeContext);
-
-  return (
-    <Wrapper>
-      <LogoContainer>
-        <LogoImageWrapper src={logoImage} />
-        <LogoTextWrapper src={themeContext.logoText} />
-      </LogoContainer>
-      <Navigation />
-    </Wrapper>
-  );
-};
+const Sidebar = () => (
+  <Wrapper>
+    <LogoContainer>
+      <LogoImageWrapper src={logoImage} />
+      <LogoTextWrapper src={logoText} />
+    </LogoContainer>
+    <Navigation />
+  </Wrapper>
+);
 
 const Wrapper = styled.aside`
   height: 100%;
@@ -48,6 +45,8 @@ const LogoImageWrapper = styled.img`
 const LogoTextWrapper = styled.img`
   height: 20px;
   width: auto;
+
+  filter: ${(props) => props.theme.logoFilter};
 `;
 
 export default Sidebar;
