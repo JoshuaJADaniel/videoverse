@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import backgroundImage from "images/background.svg";
 
-const MainWrapper = ({ children }) => <Wrapper>{children}</Wrapper>;
+const MainWrapper = ({ children }) => (
+  <Wrapper style={{ backgroundImage: `url(${backgroundImage})` }}>
+    {children}
+  </Wrapper>
+);
 
 MainWrapper.propTypes = {
   children: PropTypes.oneOfType([
@@ -20,9 +24,8 @@ const Wrapper = styled.main`
 
   background-size: 120%;
   background-position-y: -5%;
-  background-position-x: center;
   background-repeat: repeat-y;
-  background-image: url(${backgroundImage});
+  background-position-x: center;
   background-color: ${(props) => props.theme.defaultBackground};
 `;
 

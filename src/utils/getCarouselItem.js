@@ -12,7 +12,9 @@ const getCarouselItem = (media, badges, active, standalone) => {
 
   return (
     <div key={kebabCase(`hero-${id}`)} className={classes}>
-      <CarouselBackgroundImage backdropImage={backdropImage} />
+      <CarouselBackgroundImage
+        style={{ backgroundImage: `url(${backdropImage}` }}
+      />
       <CarouselCaption standalone={standalone}>
         {rating !== 0 && (
           <>
@@ -86,7 +88,6 @@ const CarouselBackgroundImage = styled.div`
 
   background-size: cover;
   background-position: center;
-  background-image: url(${(props) => props.backdropImage});
 
   box-shadow: inset 0px -475px 200px -200px
     ${(props) => props.theme.defaultBackground};
