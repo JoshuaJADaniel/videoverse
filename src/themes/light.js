@@ -37,11 +37,11 @@ const lightTheme = {
   navigateHistoryColor: "#777777",
   navigateHistoryColorHover: "#000000",
 
-  searchbarBackground: "#ededed",
-  searchButtonColor: "#8f8f8f",
+  searchbarBackground: "#d9d9d9",
+  searchButtonColor: "#737373",
   searchButtonColorHover: "#000000",
 
-  searchFieldColor: "#8f8f8f",
+  searchFieldColor: "#737373",
   searchFieldColorHover: "#000000",
 
   toggleModeOutlineColor: "#c8c8c8",
