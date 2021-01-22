@@ -1,6 +1,5 @@
 import { getPosterImageUrl } from "requests/getTmdbEndpointUrls";
 import getProfilePlaceholder from "utils/getProfilePlaceholder";
-import getGenderText from "utils/getGenderText";
 
 const extractPersonDetails = (person) => ({
   id: person.id,
@@ -12,7 +11,7 @@ const extractPersonDetails = (person) => ({
   character: person.character || "Unknown",
   placeOfBirth: person.place_of_birth || "",
   department: person.known_for_department || "",
-  gender: getGenderText(person.gender),
+  gender: ["Not Specified", "Female", "Male"][person.gender],
   posterImage:
     (person.profile_path && getPosterImageUrl(person.profile_path)) ||
     getProfilePlaceholder(person.gender),
