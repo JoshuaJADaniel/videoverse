@@ -6,17 +6,15 @@ import GlobalStyles from "styles/GlobalStyles";
 import lightTheme from "themes/light";
 import darkTheme from "themes/dark";
 
-import tmdb from "requests/tmdb";
-import extractMediaDetails from "utils/extractMediaDetails";
+import Loading from "pages/Loading";
+import resolveLoading from "utils/resolveLoading";
 import extractPersonDetails from "utils/extractPersonDetails";
-import extractTrailerEmbedUrl from "utils/extractTrailerEmbedUrl";
-import {
-  getMovieVideosPath,
-  getMovieDetailsPath,
-  getRelatedMoviesPath,
-  getMovieCreditDetailsPath,
-} from "requests/getTmdbEndpointPaths";
 
+import getMedia from "requests/getMedia";
+import getPerson from "requests/getPerson";
+import getMediaTrailer from "requests/getMediaTrailer";
+
+import OverviewSection from "components/main/section/OverviewSection";
 import MediaSection from "components/main/section/MediaSection";
 import CastSection from "components/main/section/CastSection";
 import CrewSection from "components/main/section/CrewSection";
@@ -25,9 +23,6 @@ import MainWrapper from "components/main/MainWrapper";
 import Separator from "components/common/Separator";
 import Sidebar from "components/sidebar/Sidebar";
 import Header from "components/header/Header";
-
-import Loading from "pages/Loading";
-import OverviewSection from "../components/main/section/OverviewSection";
 
 const Movie = () => {
   const { movieId } = useParams();
@@ -40,65 +35,31 @@ const Movie = () => {
   const [movieDetails, setMovieDetails] = useState({});
   const [relatedMovies, setRelatedMovies] = useState([]);
   const getTheme = () => (dark ? darkTheme : lightTheme);
-  const loadingDelay = 500;
-  const maxCastLength = 15;
-  const maxCrewLength = 15;
 
   useEffect(() => {
-    tmdb
-      .get(getMovieDetailsPath(movieId))
-      .then((res) => {
-        let newMovieDetails = extractMediaDetails(res.data);
-        newMovieDetails.mediaType = "movie";
-        setMovieDetails(newMovieDetails);
-        setTimeout(() => setLoading(false), loadingDelay);
-      })
-      .catch(() => setTimeout(() => history.push("/404"), loadingDelay));
+    getMedia(
+      `/movie/${movieId}`,
+      (data) => {
+        setMovieDetails(data);
+        resolveLoading(setLoading);
+      },
+      [],
+      history,
+      null
+    );
 
-    tmdb
-      .get(getMovieCreditDetailsPath(movieId))
-      .then((res) => {
-        if (res.data.cast) {
-          setCastDetails(
-            res.data.cast
-              .slice(0, maxCastLength)
-              .map((person) => extractPersonDetails(person))
-          );
-        }
+    getPerson(`/movie/${movieId}/credits`, ({ cast, crew }) => {
+      if (cast) {
+        setCastDetails(cast.map((person) => extractPersonDetails(person)));
+      }
 
-        if (res.data.crew) {
-          setCrewDetails(
-            res.data.crew
-              .slice(0, maxCrewLength)
-              .map((person) => extractPersonDetails(person))
-          );
-        }
-      })
-      .catch((err) => console.log(err));
+      if (crew) {
+        setCrewDetails(crew.map((person) => extractPersonDetails(person)));
+      }
+    });
 
-    tmdb
-      .get(getRelatedMoviesPath(movieId))
-      .then((res) => {
-        if (res.data.results) {
-          setRelatedMovies(
-            res.data.results.map((movie) => {
-              let newMovie = extractMediaDetails(movie);
-              newMovie.mediaType = "movie";
-              return newMovie;
-            })
-          );
-        }
-      })
-      .catch((err) => console.log(err));
-
-    tmdb
-      .get(getMovieVideosPath(movieId))
-      .then((res) => {
-        if (res.data.results) {
-          setTrailer(extractTrailerEmbedUrl(res.data.results));
-        }
-      })
-      .catch((err) => console.log(err));
+    getMedia(`/movie/${movieId}/recommendations`, setRelatedMovies);
+    getMediaTrailer(`/movie/${movieId}/videos`, setTrailer);
   }, []);
 
   if (loading) {
