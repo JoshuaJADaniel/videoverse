@@ -26,6 +26,7 @@ const Home = () => {
   const [popularTvShows, setPopularTvShows] = useState([]);
   const [popularKidsMovies, setPopularKidsMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const popularKidsMoviesMinDate = `${new Date().getFullYear() - 5}-01-01`;
 
   useEffect(() => {
     getMedia(
@@ -42,6 +43,7 @@ const Home = () => {
     getMedia("/movie/popular", setPopularMovies);
     getMedia("/movie/top_rated", setTopRatedMovies);
     getMedia("/discover/movie", setPopularKidsMovies, [
+      `primary_release_date.gte=${popularKidsMoviesMinDate}`,
       "certification_country=US",
       "certification.lte=G",
       "with_genres=16",
