@@ -11,7 +11,9 @@ const LoadingContainer = () => (
 const Wrapper = styled.div.attrs({
   className: "d-flex justify-content-center align-items-center",
 })`
-  height: 100vh;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 `;
 
 const Loader = styled.div.attrs({
