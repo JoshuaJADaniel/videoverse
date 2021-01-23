@@ -43,10 +43,6 @@ const NavLink = styled.a`
 
   &:hover {
     color: ${(props) => props.theme.sidebarColorHover};
-
-    & svg {
-      stroke-width: 1.7;
-    }
   }
 `;
 
