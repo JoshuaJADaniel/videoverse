@@ -20,6 +20,7 @@ StaticHero.propTypes = {
     title: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     runtime: PropTypes.string.isRequired,
+    mediaType: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
     backdropImage: PropTypes.string.isRequired,
     genres: PropTypes.arrayOf(PropTypes.string).isRequired,
