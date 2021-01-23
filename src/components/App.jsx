@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "pages/Home";
-import Tv from "pages/Tv";
 import Movie from "pages/Movie";
+import TvShow from "pages/TvShow";
 import Person from "pages/Person";
 import BrowseTv from "pages/BrowseTv";
 import BrowseMovies from "pages/BrowseMovies";
@@ -17,7 +17,7 @@ const App = () => {
           <Home />
         </Route>
         <Route exact path="/tv/:tvId">
-          <Tv />
+          <TvShow />
         </Route>
         <Route exact path="/movie/:movieId">
           <Movie />
