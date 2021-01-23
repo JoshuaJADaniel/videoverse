@@ -5,8 +5,6 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "styles/GlobalStyles";
 
 import getMedia from "requests/getMedia";
-import getMovies from "requests/getMovies";
-import getTvShows from "requests/getTvShows";
 
 import Loading from "pages/Loading";
 import resolveLoading from "utils/resolveLoading";
@@ -40,10 +38,10 @@ const Home = () => {
       history
     );
 
-    getTvShows("/tv/popular", setPopularTvShows);
-    getMovies("/movie/popular", setPopularMovies);
-    getMovies("/movie/top_rated", setTopRatedMovies);
-    getMovies("/discover/movie", setPopularKidsMovies, [
+    getMedia("/tv/popular", setPopularTvShows);
+    getMedia("/movie/popular", setPopularMovies);
+    getMedia("/movie/top_rated", setTopRatedMovies);
+    getMedia("/discover/movie", setPopularKidsMovies, [
       "certification_country=US",
       "certification.lte=G",
       "with_genres=16",
