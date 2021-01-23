@@ -3,12 +3,11 @@ import { useParams, useHistory } from "react-router-dom";
 
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "styles/GlobalStyles";
-import lightTheme from "themes/light";
-import darkTheme from "themes/dark";
 
 import Loading from "pages/Loading";
 import resolveLoading from "utils/resolveLoading";
 import extractPersonDetails from "utils/extractPersonDetails";
+import { getTheme, getLocalTheme } from "utils/themeFunctionality";
 
 import getMedia from "requests/getMedia";
 import getPerson from "requests/getPerson";
@@ -27,14 +26,13 @@ import Header from "components/header/Header";
 const Movie = () => {
   const { movieId } = useParams();
   const history = useHistory();
-  const [dark, setDark] = useState(true);
   const [trailer, setTrailer] = useState("");
   const [loading, setLoading] = useState(true);
+  const [dark, setDark] = useState(getLocalTheme());
   const [castDetails, setCastDetails] = useState([]);
   const [crewDetails, setCrewDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState({});
   const [relatedMovies, setRelatedMovies] = useState([]);
-  const getTheme = () => (dark ? darkTheme : lightTheme);
 
   useEffect(() => {
     getMedia(
@@ -67,7 +65,7 @@ const Movie = () => {
   }
 
   return (
-    <ThemeProvider theme={getTheme}>
+    <ThemeProvider theme={getTheme(dark)}>
       <GlobalStyles />
       <Sidebar />
       <MainWrapper>
