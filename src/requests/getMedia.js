@@ -1,27 +1,56 @@
 import tmdb from "requests/tmdb";
 import { TMDB_KEY } from "data/configs";
-import extractMediaDetails from "utils/extractMediaDetails";
 import redirectTo404 from "utils/redirectTo404";
+import extractMediaDetails from "utils/extractMediaDetails";
 
-const getMedia = (path, callback, parameters, history) => {
-  let queryParameters = [`api_key=${TMDB_KEY}`];
-  if (parameters) {
-    queryParameters = queryParameters.concat(parameters);
-  }
+const getMedia = (
+  path,
+  callback,
+  parameters = [],
+  routerHistoryObject,
+  property = "results"
+) => {
+  const queryParameters = [`api_key=${TMDB_KEY}`].concat(parameters);
 
   tmdb
     .get(`${path}?${queryParameters.join("&")}`)
-    .then(({ data: { results } }) => {
-      if (!results || !results.length) {
-        throw new Error(`No media found! (${path})`);
+    .then(({ data }) => {
+      let mediaType;
+
+      if (path.includes("movie")) {
+        mediaType = "movie";
+      } else if (path.includes("tv")) {
+        mediaType = "tv";
       }
 
-      callback(results.map((media) => extractMediaDetails(media)));
+      if (!property) {
+        if (mediaType) {
+          callback({
+            ...extractMediaDetails(data),
+            mediaType,
+          });
+        } else {
+          callback(extractMediaDetails(data));
+        }
+      } else if (data[property] && data[property].length) {
+        if (mediaType) {
+          callback(
+            data[property].map((media) => ({
+              ...extractMediaDetails(media),
+              mediaType,
+            }))
+          );
+        } else {
+          callback(data[property].map((media) => extractMediaDetails(media)));
+        }
+      } else {
+        throw new Error(`No media found! (${path})`);
+      }
     })
     .catch((err) => {
       console.log(err);
-      if (history) {
-        redirectTo404(history);
+      if (routerHistoryObject) {
+        redirectTo404(routerHistoryObject);
       }
     });
 };
