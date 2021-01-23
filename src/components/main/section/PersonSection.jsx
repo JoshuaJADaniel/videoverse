@@ -22,7 +22,9 @@ const PersonSection = ({ personData }) => {
     <Section>
       <BootstrapRow>
         <ProfilePhotoWrapper>
-          <ProfilePhoto posterImage={posterImageHighRes} />
+          <ProfilePhoto
+            style={{ backgroundImage: `url(${posterImageHighRes})` }}
+          />
         </ProfilePhotoWrapper>
         <ProfileDetailsWrapper>
           <ProfileName>{name}</ProfileName>
@@ -68,7 +70,6 @@ const ProfilePhoto = styled.div`
   width: auto;
   padding-bottom: 150%;
   border-radius: 5px;
-  background-image: url(${(props) => props.posterImage});
   background-position: center;
   background-size: cover;
 `;
