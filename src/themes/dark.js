@@ -36,6 +36,10 @@ const darkTheme = {
   navigateHistoryColor: "#a5a5a5",
   navigateHistoryColorHover: "#ffffff",
 
+  paginationColor: "#bfbfbf",
+  paginationBackground: "#262626",
+  paginationBorderColor: "#333333",
+
   searchbarBackground: "#333333",
   searchButtonColor: "#bbbbbb",
   searchButtonColorHover: "#ffffff",

@@ -36,6 +36,11 @@ const lightTheme = {
   navigateHistoryColor: "#777777",
   navigateHistoryColorHover: "#000000",
 
+  paginationColor: "#808080",
+  paginationColorHover: "#000000",
+  paginationBackground: "#ffffff",
+  paginationBorderColor: "#d9d9d9",
+
   searchbarBackground: "#d9d9d9",
   searchButtonColor: "#737373",
   searchButtonColorHover: "#000000",
