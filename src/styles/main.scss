@@ -1,0 +1,16 @@
+@import '/src/styles/swiper-carousel';
+@import '/src/styles/scrollbar';
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Comfortaa", sans-serif;
+}
+
+body,
+#root {
+  min-height: 100%;
+}
