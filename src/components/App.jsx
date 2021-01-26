@@ -5,6 +5,7 @@ import Home from "pages/Home";
 import Movie from "pages/Movie";
 import TvShow from "pages/TvShow";
 import Person from "pages/Person";
+import Trending from "pages/Trending";
 import BrowseTv from "pages/BrowseTv";
 import BrowseMovies from "pages/BrowseMovies";
 import PageNotFound from "pages/PageNotFound";
@@ -30,6 +31,9 @@ const App = () => {
         </Route>
         <Route exact path="/browse/movies">
           <BrowseMovies />
+        </Route>
+        <Route exact path="/trending/:page?">
+          <Trending />
         </Route>
         <Route path="*">
           <PageNotFound />
