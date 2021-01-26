@@ -41,7 +41,7 @@ const PaginationSection = ({
     <Section>
       <div className="d-flex justify-content-center">
         <Wrapper>
-          <ul className="pagination">
+          <ul className="pagination m-0">
             <li
               className={`page-item ${currentPage === minPage && "disabled"}`}
             >
