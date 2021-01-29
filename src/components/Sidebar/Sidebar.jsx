@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { kebabCase } from "lodash";
 
 import menuItems from "data/menuItems";
@@ -29,4 +29,4 @@ const Sidebar = () => (
   </aside>
 );
 
-export default Sidebar;
+export default memo(Sidebar);
