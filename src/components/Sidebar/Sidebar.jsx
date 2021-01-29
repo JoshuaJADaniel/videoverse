@@ -1,21 +1,20 @@
 import React from "react";
 import { kebabCase } from "lodash";
 
+import menuItems from "data/menuItems";
 import logoText from "images/logo-text.svg";
 import logoImage from "images/logo-image.svg";
 import SvgContainer from "components/common/SvgContainer";
-import menuItems from "data/menuItems";
-import "./Sidebar.scss";
+
+import styles from "./Sidebar.module.scss";
 
 const Sidebar = () => (
-  <aside id="sidebar">
-    <div id="logo">
-      <a href="/">
-        <img alt="VideoVerse Logo" src={logoImage} />
-        <img alt="VideoVerse Text" src={logoText} />
-      </a>
-    </div>
-    <nav id="navigation">
+  <aside className={styles.sidebarContainer}>
+    <a className={styles.logoContainer} href="/">
+      <img className={styles.logoImage} alt="VideoVerse Logo" src={logoImage} />
+      <img className={styles.logoText} alt="VideoVerse Text" src={logoText} />
+    </a>
+    <nav className={styles.navbar}>
       <ul>
         {menuItems.map((item) => (
           <li key={kebabCase(`nav-${item.title}`)}>

@@ -1,0 +1,76 @@
+@import "src/styles/variables";
+
+.sidebarContainer {
+  width: 230px;
+  height: 100%;
+
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  position: fixed;
+  background: #ededed;
+
+  font-size: 14px;
+}
+
+.logoContainer {
+  padding: 22px;
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  width: 28px;
+  height: 28px;
+  margin-right: 14px;
+}
+
+.logoText {
+  height: 20px;
+}
+
+.navbar {
+  padding: 0 22px;
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & a {
+      height: 45px;
+      display: flex;
+      align-items: center;
+
+      color: #646464;
+      text-decoration: none;
+      transition: color $transition;
+
+      &:hover {
+        color: #000;
+      }
+
+      & svg {
+        margin-right: 18px;
+      }
+    }
+  }
+}
+
+:global(body.dark) {
+  & .sidebarContainer {
+    background: #222;
+  }
+
+  & .navbar a {
+    color: #bbb;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  & .logoText {
+    filter: invert(100%);
+  }
+}
