@@ -14,7 +14,8 @@
 }
 
 .logoContainer {
-  padding: 22px;
+  margin: 12px;
+  padding: 12px;
   display: flex;
   align-items: center;
 }
@@ -30,7 +31,7 @@
 }
 
 .navbar {
-  padding: 0 22px;
+  padding: 0 16px;
 
   & ul {
     margin: 0;
@@ -39,6 +40,8 @@
 
     & a {
       height: 45px;
+      padding: 0 6px;
+
       display: flex;
       align-items: center;
 
