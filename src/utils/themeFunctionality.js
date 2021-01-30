@@ -1,19 +1,27 @@
-import lightTheme from "themes/light";
-import darkTheme from "themes/dark";
-
-const THEME_KEY = "dark";
-const DEFAULT_THEME = true;
-
-const getTheme = (isDark) => {
-  localStorage.setItem(THEME_KEY, String(isDark));
-
-  return isDark ? darkTheme : lightTheme;
-};
+const THEME_KEY = "theme";
+const DARK = "dark";
+const LIGHT = "light";
 
 const getLocalTheme = () => {
   const localTheme = localStorage.getItem(THEME_KEY);
 
-  return localTheme !== null ? localTheme === String(true) : DEFAULT_THEME;
+  if (localTheme !== LIGHT) {
+    document.body.classList.add(DARK);
+  } else {
+    document.body.classList.remove(DARK);
+  }
+
+  return localTheme !== LIGHT;
 };
 
-export { getTheme, getLocalTheme };
+const toggleTheme = () => {
+  if (document.body.classList.contains(DARK)) {
+    localStorage.setItem(THEME_KEY, LIGHT);
+    document.body.classList.remove(DARK);
+  } else {
+    localStorage.setItem(THEME_KEY, DARK);
+    document.body.classList.add(DARK);
+  }
+};
+
+export { getLocalTheme, toggleTheme };
