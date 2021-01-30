@@ -61,11 +61,11 @@
 }
 
 :global(body.dark) {
-  & .sidebarContainer {
+  .sidebarContainer {
     background: #222;
   }
 
-  & .navbar a {
+  .navbar a {
     color: #bbb;
 
     &:hover {
@@ -73,7 +73,7 @@
     }
   }
 
-  & .logoText {
+  .logoText {
     filter: invert(100%);
   }
 }
