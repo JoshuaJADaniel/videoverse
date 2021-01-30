@@ -1,15 +1,39 @@
-@import '/src/styles/swiper-carousel';
+@import "/src/styles/swiper-carousel";
+@import "src/styles/variables.scss";
 
 html,
 body,
-#root {
+#root,
+#wrapper {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "Comfortaa", sans-serif;
+}
+
+#wrapper {
+  overflow-x: hidden;
 }
 
 body,
-#root {
-  min-height: 100%;
+input {
+  font-family: "Comfortaa", sans-serif;
+}
+
+input:focus,
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+@media (max-width: $sm) {
+  #root {
+    transition: transform $transition;
+
+    &.sidebarShift {
+      transform: translateX($sidebarWidth);
+    }
+  }
 }
