@@ -1,22 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import backgroundImage from "images/background.svg";
-import "./MainWrapper.scss";
 
-const MainWrapper = ({ children }) => (
+import styles from "./MainContainer.module.scss";
+
+const MainContainer = ({ children }) => (
   <main
-    id="main-wrapper"
+    className={styles.mainContainer}
     style={{ backgroundImage: `url(${backgroundImage})` }}
   >
     {children}
   </main>
 );
 
-MainWrapper.propTypes = {
+MainContainer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
 };
 
-export default MainWrapper;
+export default MainContainer;

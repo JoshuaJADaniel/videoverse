@@ -1,0 +1,29 @@
+@import "src/styles/variables";
+
+$backgroundColor: #ffffff;
+$darkBackgroundColor: #000000;
+
+.mainContainer {
+  min-height: 100%;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+  margin-left: $sidebarWidth;
+
+  background-size: 120%;
+  background-position-y: -5%;
+  background-repeat: repeat-y;
+  background-position-x: center;
+  background-color: $backgroundColor;
+}
+
+@media (max-width: $sm) {
+  .mainContainer {
+    margin-left: 0;
+  }
+}
+
+:global(body.dark) {
+  .mainContainer {
+    background-color: $darkBackgroundColor;
+  }
+}
