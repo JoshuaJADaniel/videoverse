@@ -10,22 +10,37 @@ body,
   height: 100%;
 }
 
-#wrapper {
-  overflow-x: hidden;
-}
-
 body,
 input {
   font-family: "Comfortaa", sans-serif;
 }
 
-input:focus,
-button:focus {
-  outline: none;
+#wrapper {
+  overflow-x: hidden;
 }
 
-button:hover {
-  cursor: pointer;
+button {
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  text-decoration: none;
 }
 
 @media (max-width: $sm) {
