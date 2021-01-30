@@ -1,14 +1,19 @@
 @import "src/styles/variables";
 
-.sidebarContainer {
-  width: 230px;
-  height: 100%;
+// Light theme
+$menuLinkColor: #646464;
+$menuLinkColorHover: #000000;
+$backgroundColor: #ededed;
 
-  top: 0;
-  bottom: 0;
-  z-index: 1;
+// Dark theme
+$darkMenuLinkColor: #bbbbbb;
+$darkMenuLinkColorHover: #ffffff;
+$darkBackgroundColor: #222222;
+
+.sidebarContainer {
   position: fixed;
-  background: #ededed;
+  height: 100%;
+  width: $sidebarWidth;
 
   font-size: 14px;
 }
@@ -30,7 +35,7 @@
   height: 20px;
 }
 
-.navbar {
+.navbarContainer {
   padding: 0 16px;
 
   & ul {
@@ -45,12 +50,12 @@
       display: flex;
       align-items: center;
 
-      color: #646464;
+      color: $menuLinkColor;
       text-decoration: none;
       transition: color $transition;
 
       &:hover {
-        color: #000;
+        color: $menuLinkColorHover;
       }
 
       & svg {
@@ -60,16 +65,24 @@
   }
 }
 
-:global(body.dark) {
+@media (max-width: $sm) {
   .sidebarContainer {
-    background: #222;
+    left: -$sidebarWidth;
   }
+}
 
-  .navbar a {
-    color: #bbb;
+:global(body) {
+  background: $backgroundColor;
+}
+
+:global(body.dark) {
+  background: $darkBackgroundColor;
+
+  .navbarContainer a {
+    color: $darkMenuLinkColor;
 
     &:hover {
-      color: #fff;
+      color: $darkMenuLinkColorHover;
     }
   }
 

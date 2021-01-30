@@ -4,7 +4,7 @@ import { kebabCase } from "lodash";
 import menuItems from "data/menuItems";
 import logoText from "images/logo-text.svg";
 import logoImage from "images/logo-image.svg";
-import SvgContainer from "components/common/SvgContainer";
+import SvgContainer from "components/SvgContainer";
 
 import styles from "./Sidebar.module.scss";
 
@@ -14,7 +14,7 @@ const Sidebar = () => (
       <img className={styles.logoImage} alt="VideoVerse Logo" src={logoImage} />
       <img className={styles.logoText} alt="VideoVerse Text" src={logoText} />
     </a>
-    <nav className={styles.navbar}>
+    <nav className={styles.navbarContainer}>
       <ul>
         {menuItems.map((item) => (
           <li key={kebabCase(`nav-${item.title}`)}>
