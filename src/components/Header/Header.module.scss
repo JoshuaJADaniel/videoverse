@@ -81,6 +81,8 @@ $toggleThemeTransformTransition: 0.5s ease;
 
 .menuContainer,
 .historyContainer {
+  @include buttonContainerColors($defaultButtonColor, $defaultButtonColorHover);
+
   flex-grow: 0;
   flex-shrink: 0;
 
@@ -125,10 +127,9 @@ $toggleThemeTransformTransition: 0.5s ease;
 .toggleThemeContainer {
   width: 80px;
   height: 40px;
-  position: relative;
-
   flex-grow: 0;
   flex-shrink: 0;
+  position: relative;
 
   input {
     width: 100%;
@@ -173,8 +174,8 @@ $toggleThemeTransformTransition: 0.5s ease;
 
       width: 32px;
       height: 32px;
-
       position: absolute;
+
       border-radius: 50%;
       transition: transform $toggleThemeTransformTransition,
         background $toggleThemeColorTransition;
