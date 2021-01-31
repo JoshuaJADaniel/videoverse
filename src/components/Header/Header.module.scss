@@ -117,10 +117,9 @@ $toggleThemeTransformTransition: 0.5s ease;
   input {
     width: 100%;
     padding: 12px;
-    border-radius: 0 $searchbarBorderRadius $searchbarBorderRadius 0;
-
     font-size: 18px;
     font-weight: 700;
+    border-radius: 0 $searchbarBorderRadius $searchbarBorderRadius 0;
   }
 }
 
@@ -165,6 +164,7 @@ $toggleThemeTransformTransition: 0.5s ease;
 
     border-radius: 50px;
     background: #ffffff;
+    transform: translateZ(0);
     box-shadow: $toggleThemeShadow;
     transition: background $toggleThemeColorTransition;
 
