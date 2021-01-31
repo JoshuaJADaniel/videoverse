@@ -213,15 +213,15 @@ $toggleThemeTransformTransition: 0.5s ease;
 
 :global(.sidebarClose) {
   line {
-    transform: rotate(45deg) translate(5px, -11px);
+    transform: translateX(-22px);
   }
 
   line:first-child {
-    transform: rotate(135deg) translate(-10px, -20px);
+    transform: rotate(45deg) translate(5px, -4px);
   }
 
   line:last-child {
-    transform: translateX(-22px);
+    transform: rotate(-45deg) translate(-11px, -4px);
   }
 }
 
