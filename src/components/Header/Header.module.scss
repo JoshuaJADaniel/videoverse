@@ -1,34 +1,74 @@
-@import 'src/styles/variables';
+@import "src/styles/variables";
 
-// Light theme
+// Searchbar colors
+$searchbarBackground: #d9d9d9;
 $searchbarTextColor: #737373;
 $searchbarTextColorHover: #000000;
-$searchbarBackground: #d9d9d9;
 
-$themeToggleShadow: 0 0 0 2px #c8c8c8;
-
-$historyColor: #777777;
-$historyColorHover: #000000;
-
-// Dark theme
+$darkSearchbarBackground: #333333;
 $darkSearchbarTextColor: #8c8c8c;
 $darkSearchbarTextColorHover: #ffffff;
-$darkSearchbarBackground: #333333;
 
-$darkThemeToggleShadow: 0 0 0 2px #6e6e6e;
+// Toggle theme colors
+$toggleThemeShadow: 0 0 0 2px #c8c8c8;
+$darkToggleThemeShadow: 0 0 0 2px #6e6e6e;
 
-$darkHistoryColor: #a5a5a5;
-$darkHistoryColorHover: #ffffff;
+// Default button colors
+$defaultButtonColor: #777777;
+$defaultButtonColorHover: #000000;
+
+$darkDefaultButtonColor: #a5a5a5;
+$darkDefaultButtonColorHover: #ffffff;
 
 // Misc.
 $searchbarBorderRadius: 3px;
+$toggleThemeColorTransition: 0.2s ease;
+$toggleThemeTransformTransition: 0.5s ease;
+
+@mixin formColors($textColor, $textHover, $background) {
+  input,
+  button {
+    background: $background;
+  }
+
+  button {
+    color: $textColor;
+
+    &:hover,
+    &:focus {
+      color: $textHover;
+    }
+  }
+
+  input {
+    color: $textHover;
+    caret-color: $textHover;
+
+    &::placeholder {
+      color: $textColor;
+    }
+  }
+}
+
+@mixin buttonContainerColors($textColor, $textHover) {
+  button {
+    svg {
+      color: $textColor;
+    }
+
+    &:focus svg,
+    &:hover svg {
+      color: $textHover;
+    }
+  }
+}
 
 .headerContainer {
   display: flex;
   align-items: center;
   padding: 16px 24px 16px 16px;
 
-  & svg {
+  svg {
     stroke-width: 2;
     vertical-align: middle;
     transition: color $transition;
@@ -44,63 +84,41 @@ $searchbarBorderRadius: 3px;
   flex-grow: 0;
   flex-shrink: 0;
 
-  & button {
+  button {
     width: 40px;
     height: 40px;
-    padding: 8px;
-
     background: transparent;
 
-    & svg {
-      color: $historyColor;
-
-      & line {
-        transition: transform 0.75s ease-in-out;
-      }
-    }
-
-    &:hover svg,
-    &:focus svg {
-      color: $historyColorHover;
+    line {
+      transition: transform 0.75s ease-in-out;
     }
   }
 }
 
 .formContainer {
+  @include formColors(
+    $searchbarTextColor,
+    $searchbarTextColorHover,
+    $searchbarBackground
+  );
+
   width: 100%;
   display: flex;
   padding: 0 24px 0 16px;
 
-  & input,
-  & button {
-    background: $searchbarBackground;
-  }
-
-  & button {
+  button {
     padding: 8px 16px;
-    color: $searchbarTextColor;
     border-right: 2px solid rgba(128, 128, 128, 0.1);
     border-radius: $searchbarBorderRadius 0 0 $searchbarBorderRadius;
-
-    &:hover,
-    &:focus {
-      color: $searchbarTextColorHover;
-    }
   }
 
-  & input {
+  input {
     width: 100%;
     padding: 12px;
+    border-radius: 0 $searchbarBorderRadius $searchbarBorderRadius 0;
 
     font-size: 18px;
     font-weight: 700;
-    color: $searchbarTextColorHover;
-    caret-color: $searchbarTextColorHover;
-    border-radius: 0 $searchbarBorderRadius $searchbarBorderRadius 0;
-
-    &::placeholder {
-      color: $searchbarTextColor;
-    }
   }
 }
 
@@ -112,49 +130,42 @@ $searchbarBorderRadius: 3px;
   flex-grow: 0;
   flex-shrink: 0;
 
-  & input {
+  input {
     width: 100%;
     height: 100%;
-
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
+    position: relative;
 
     opacity: 0;
     z-index: 999;
     cursor: pointer;
 
     &:checked + span {
-      background-color: #000000;
+      background: #000000;
     }
 
     &:checked + span:before {
-      background-color: #000000;
+      background: #000000;
       transform: translate(55px, -25px);
     }
 
     &:checked + span:after {
-      background-color: #ffffff;
+      background: #ffffff;
       transform: translateX(40px);
     }
   }
 
-  & span {
+  span {
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     position: absolute;
-
-    opacity: 1;
     overflow: hidden;
 
     border-radius: 50px;
-    background-color: #ffffff;
-    transition: 0.2s ease background-color, 0.2s ease opacity;
-    box-shadow: $themeToggleShadow;
+    background: #ffffff;
+    box-shadow: $toggleThemeShadow;
+    transition: background $toggleThemeColorTransition;
 
     &:before,
     &:after {
@@ -165,32 +176,28 @@ $searchbarBorderRadius: 3px;
 
       position: absolute;
       border-radius: 50%;
-      transition: 0.5s ease transform, 0.2s ease background-color;
+      transition: transform $toggleThemeTransformTransition,
+        background $toggleThemeColorTransition;
     }
 
     &:before {
       top: 20px;
       left: -25px;
       z-index: 1;
-
-      background-color: #ffffff;
+      background: #ffffff;
     }
 
     &:after {
       top: 4px;
       left: 4px;
       z-index: 0;
-
-      background-color: #000000;
+      background: #000000;
     }
   }
 }
 
 @media (max-width: $sm) {
-  .historyContainer {
-    display: none;
-  }
-
+  .historyContainer,
   .toggleThemeContainer {
     display: none;
   }
@@ -205,60 +212,37 @@ $searchbarBorderRadius: 3px;
 }
 
 :global(.sidebarClose) {
-  line:first-child {
-    transform: rotate(45deg) translate(5px, -4px);
+  line {
+    transform: rotate(45deg) translate(5px, -11px);
   }
 
-  line:not(:first-child):not(:last-child) {
-    transform: translateX(-22px);
+  line:first-child {
+    transform: rotate(135deg) translate(-10px, -20px);
   }
 
   line:last-child {
-    transform: rotate(-45deg) translate(-11px, -4px);
+    transform: translateX(-22px);
   }
 }
 
 :global(body.dark) {
   .menuContainer,
   .historyContainer {
-    & button {
-      & svg {
-        color: $darkHistoryColor;
-      }
-
-      &:focus svg,
-      &:hover svg {
-        color: $darkHistoryColorHover;
-      }
-    }
+    @include buttonContainerColors(
+      $darkDefaultButtonColor,
+      $darkDefaultButtonColorHover
+    );
   }
 
   .formContainer {
-    & input,
-    & button {
-      background: $darkSearchbarBackground;
-    }
-
-    & button {
-      color: $darkSearchbarTextColor;
-
-      &:hover,
-      &:focus {
-        color: $darkSearchbarTextColorHover;
-      }
-    }
-
-    & input {
-      color: $darkSearchbarTextColorHover;
-      caret-color: $darkSearchbarTextColorHover;
-
-      &::placeholder {
-        color: $darkSearchbarTextColor;
-      }
-    }
+    @include formColors(
+      $darkSearchbarTextColor,
+      $darkSearchbarTextColorHover,
+      $darkSearchbarBackground
+    );
   }
 
   .toggleThemeContainer span {
-    box-shadow: $darkThemeToggleShadow;
+    box-shadow: $darkToggleThemeShadow;
   }
 }
