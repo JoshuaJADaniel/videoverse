@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { kebabCase } from "lodash";
+import PropTypes from "prop-types";
 
 import menuItems from "data/menuItems";
 import logoText from "images/logo-text.svg";
@@ -8,7 +9,7 @@ import SvgContainer from "components/SvgContainer";
 
 import styles from "./Sidebar.module.scss";
 
-const Sidebar = () => (
+const Sidebar = ({ page }) => (
   <aside className={styles.sidebarContainer}>
     <a className={styles.logoContainer} href="/">
       <img className={styles.logoImage} alt="VideoVerse Logo" src={logoImage} />
@@ -18,7 +19,10 @@ const Sidebar = () => (
       <ul>
         {menuItems.map((item) => (
           <li key={kebabCase(`nav-${item.title}`)}>
-            <a href={item.url}>
+            <a
+              className={page === item.title ? styles.activeLink : ""}
+              href={item.url}
+            >
               <SvgContainer>{item.path}</SvgContainer>
               <p>{item.title}</p>
             </a>
@@ -28,5 +32,9 @@ const Sidebar = () => (
     </nav>
   </aside>
 );
+
+Sidebar.propTypes = {
+  page: PropTypes.string.isRequired,
+};
 
 export default memo(Sidebar);

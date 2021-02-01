@@ -1,14 +1,24 @@
 @import "src/styles/variables";
 
-// Light theme
+// Menu colors
 $menuLinkColor: #646464;
 $menuLinkColorHover: #000000;
 $backgroundColor: #ededed;
 
-// Dark theme
 $darkMenuLinkColor: #bbbbbb;
 $darkMenuLinkColorHover: #ffffff;
 $darkBackgroundColor: #222222;
+
+@mixin navbarColors($textColor, $textHover) {
+  a {
+    color: $textColor;
+
+    &:hover,
+    &.activeLink {
+      color: $textHover;
+    }
+  }
+}
 
 .sidebarContainer {
   position: fixed;
@@ -35,33 +45,29 @@ $darkBackgroundColor: #222222;
   height: 20px;
 }
 
-.navbarContainer {
-  padding: 0 16px;
+.navbarContainer ul {
+  @include navbarColors($menuLinkColor, $menuLinkColorHover);
 
-  & ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-    & a {
-      height: 45px;
-      padding: 0 6px;
+  a {
+    padding: 0 22px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    transition: color $transition;
 
-      display: flex;
-      align-items: center;
-
-      color: $menuLinkColor;
-      transition: color $transition;
-
-      &:hover {
-        color: $menuLinkColorHover;
-      }
-
-      & svg {
-        margin-right: 18px;
-      }
+    svg {
+      margin-right: 18px;
     }
   }
+}
+
+.activeLink {
+  background: rgba(128, 128, 128, 0.1);
+  box-shadow: inset -3px 0 0 0 $secondary;
 }
 
 @media (max-width: $sm) {
@@ -77,12 +83,8 @@ $darkBackgroundColor: #222222;
 :global(body.dark) {
   background: $darkBackgroundColor;
 
-  .navbarContainer a {
-    color: $darkMenuLinkColor;
-
-    &:hover {
-      color: $darkMenuLinkColorHover;
-    }
+  .navbarContainer ul {
+    @include navbarColors($darkMenuLinkColor, $darkMenuLinkColorHover);
   }
 
   .logoText {
