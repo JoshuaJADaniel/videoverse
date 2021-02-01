@@ -6,7 +6,7 @@ import Home from "pages/Home";
 
 const App = () => {
   return (
-    <Router basename={"videoverse"}>
+    <Router>
       <Switch>
         <Route exact path="/">
           <Home />
