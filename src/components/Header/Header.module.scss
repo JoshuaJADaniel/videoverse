@@ -1,29 +1,22 @@
 @import "src/styles/variables";
 
+// General colors
+$background: #dedede;
+$darkBackground: #333333;
+
 // Searchbar colors
-$searchbarBackground: #d9d9d9;
 $searchbarTextColor: #737373;
 $searchbarTextColorHover: #000000;
 
-$darkSearchbarBackground: #333333;
 $darkSearchbarTextColor: #8c8c8c;
 $darkSearchbarTextColorHover: #ffffff;
 
-// Toggle theme colors
-$toggleThemeShadow: 0 0 0 2px #c8c8c8;
-$darkToggleThemeShadow: 0 0 0 2px #6e6e6e;
+// Button colors
+$buttonColor: #777777;
+$buttonColorHover: #000000;
 
-// Default button colors
-$defaultButtonColor: #777777;
-$defaultButtonColorHover: #000000;
-
-$darkDefaultButtonColor: #a5a5a5;
-$darkDefaultButtonColorHover: #ffffff;
-
-// Misc.
-$searchbarBorderRadius: 3px;
-$toggleThemeColorTransition: 0.2s ease;
-$toggleThemeTransformTransition: 0.5s ease;
+$darkButtonColor: #a5a5a5;
+$darkButtonColorHover: #ffffff;
 
 @mixin formColors($textColor, $textHover, $background) {
   input,
@@ -50,8 +43,10 @@ $toggleThemeTransformTransition: 0.5s ease;
   }
 }
 
-@mixin buttonContainerColors($textColor, $textHover) {
+@mixin buttonContainerColors($textColor, $textHover, $background) {
   button {
+    background: $background;
+
     svg {
       color: $textColor;
     }
@@ -64,14 +59,14 @@ $toggleThemeTransformTransition: 0.5s ease;
 }
 
 .headerContainer {
+  padding: 16px;
   display: flex;
   align-items: center;
-  padding: 16px 24px 16px 16px;
 
   svg {
     stroke-width: 2;
     vertical-align: middle;
-    transition: color $transition;
+    transition: transform $transition, color $transition;
   }
 }
 
@@ -80,8 +75,9 @@ $toggleThemeTransformTransition: 0.5s ease;
 }
 
 .menuContainer,
-.historyContainer {
-  @include buttonContainerColors($defaultButtonColor, $defaultButtonColorHover);
+.historyContainer,
+.toggleThemeContainer {
+  @include buttonContainerColors($buttonColor, $buttonColorHover, $background);
 
   flex-grow: 0;
   flex-shrink: 0;
@@ -89,7 +85,8 @@ $toggleThemeTransformTransition: 0.5s ease;
   button {
     width: 40px;
     height: 40px;
-    background: transparent;
+    margin: 0 5px;
+    border-radius: 50%;
 
     line {
       transition: transform 0.75s ease-in-out;
@@ -97,21 +94,33 @@ $toggleThemeTransformTransition: 0.5s ease;
   }
 }
 
+.buttonRotation {
+  svg {
+    transform: rotate(10deg);
+  }
+}
+
+.undoButtonRotation {
+  svg {
+    transform: rotate(-10deg);
+  }
+}
+
 .formContainer {
   @include formColors(
     $searchbarTextColor,
     $searchbarTextColorHover,
-    $searchbarBackground
+    $background
   );
 
   width: 100%;
   display: flex;
-  padding: 0 24px 0 16px;
+  padding: 0 16px;
 
   button {
     padding: 8px 16px;
     border-right: 2px solid rgba(128, 128, 128, 0.1);
-    border-radius: $searchbarBorderRadius 0 0 $searchbarBorderRadius;
+    border-radius: 3px 0 0 3px;
   }
 
   input {
@@ -119,112 +128,33 @@ $toggleThemeTransformTransition: 0.5s ease;
     padding: 12px;
     font-size: 18px;
     font-weight: 700;
-    border-radius: 0 $searchbarBorderRadius $searchbarBorderRadius 0;
-  }
-}
-
-.toggleThemeContainer {
-  width: 80px;
-  height: 40px;
-  flex-grow: 0;
-  flex-shrink: 0;
-  position: relative;
-
-  input {
-    width: 100%;
-    height: 100%;
-    position: relative;
-
-    opacity: 0;
-    z-index: 999;
-    cursor: pointer;
-
-    &:checked + span {
-      background: #000000;
-    }
-
-    &:checked + span:before {
-      background: #000000;
-      transform: translate(55px, -25px);
-    }
-
-    &:checked + span:after {
-      background: #ffffff;
-      transform: translateX(40px);
-    }
-  }
-
-  span {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    overflow: hidden;
-
-    border-radius: 50px;
-    background: #ffffff;
-    transform: translateZ(0);
-    box-shadow: $toggleThemeShadow;
-    transition: background $toggleThemeColorTransition;
-
-    &:before,
-    &:after {
-      content: "";
-
-      width: 32px;
-      height: 32px;
-      position: absolute;
-
-      border-radius: 50%;
-      transition: transform $toggleThemeTransformTransition,
-        background $toggleThemeColorTransition;
-    }
-
-    &:before {
-      top: 20px;
-      left: -25px;
-      z-index: 1;
-      background: #ffffff;
-    }
-
-    &:after {
-      top: 4px;
-      left: 4px;
-      z-index: 0;
-      background: #000000;
-    }
+    border-radius: 0 3px 3px 0;
   }
 }
 
 @media (max-width: $xs) {
   .headerContainer {
-    padding: 8px 12px 8px 8px;
+    padding: 12px 6px;
   }
 
   .formContainer {
-    padding-left: 8px;
+    padding: 0 6px;
   }
 }
 
 @media (max-width: $sm) {
-  .historyContainer,
-  .toggleThemeContainer {
+  .historyContainer {
     display: none;
   }
 
   .menuContainer {
     display: block;
   }
-
-  .formContainer {
-    padding-right: 0;
-  }
 }
 
 :global(.sidebarClose) {
   line {
-    transform: translateX(-22px);
+    transform: translateX(-24px);
   }
 
   line:first-child {
@@ -232,16 +162,18 @@ $toggleThemeTransformTransition: 0.5s ease;
   }
 
   line:last-child {
-    transform: rotate(-45deg) translate(-11px, -4px);
+    transform: rotate(-45deg) translate(-12px, -3px);
   }
 }
 
 :global(body.dark) {
   .menuContainer,
-  .historyContainer {
+  .historyContainer,
+  .toggleThemeContainer {
     @include buttonContainerColors(
-      $darkDefaultButtonColor,
-      $darkDefaultButtonColorHover
+      $darkButtonColor,
+      $darkButtonColorHover,
+      $darkBackground
     );
   }
 
@@ -249,11 +181,7 @@ $toggleThemeTransformTransition: 0.5s ease;
     @include formColors(
       $darkSearchbarTextColor,
       $darkSearchbarTextColorHover,
-      $darkSearchbarBackground
+      $darkBackground
     );
-  }
-
-  .toggleThemeContainer span {
-    box-shadow: $darkToggleThemeShadow;
   }
 }
