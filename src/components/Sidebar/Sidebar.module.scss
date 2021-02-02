@@ -1,26 +1,27 @@
 @import "src/styles/variables";
 
 // Menu colors
-$menuLinkColor: #646464;
-$menuLinkColorHover: #000000;
+$menuLinkColor: #000000;
 $backgroundColor: #ededed;
 
-$darkMenuLinkColor: #bbbbbb;
-$darkMenuLinkColorHover: #ffffff;
+$darkMenuLinkColor: #ffffff;
 $darkBackgroundColor: #222222;
 
-@mixin navbarColors($textColor, $textHover) {
+$menuLinkHoverBackground: rgba(128, 128, 128, 0.1);
+
+@mixin navbarColors($textColor) {
   a {
     color: $textColor;
 
     &:hover,
     &.activeLink {
-      color: $textHover;
+      background: $menuLinkHoverBackground;
     }
   }
 }
 
 .sidebarContainer {
+  overflow-y: auto;
   position: fixed;
   height: 100%;
   width: $sidebarWidth;
@@ -46,7 +47,7 @@ $darkBackgroundColor: #222222;
 }
 
 .navbarContainer ul {
-  @include navbarColors($menuLinkColor, $menuLinkColorHover);
+  @include navbarColors($menuLinkColor);
 
   margin: 0;
   padding: 0;
@@ -57,7 +58,7 @@ $darkBackgroundColor: #222222;
     height: 60px;
     display: flex;
     align-items: center;
-    transition: color $transition;
+    transition: background $transition;
 
     svg {
       margin-right: 18px;
@@ -66,7 +67,6 @@ $darkBackgroundColor: #222222;
 }
 
 .activeLink {
-  background: rgba(128, 128, 128, 0.1);
   box-shadow: inset -3px 0 0 0 $secondary;
 }
 
@@ -84,7 +84,7 @@ $darkBackgroundColor: #222222;
   background: $darkBackgroundColor;
 
   .navbarContainer ul {
-    @include navbarColors($darkMenuLinkColor, $darkMenuLinkColorHover);
+    @include navbarColors($darkMenuLinkColor);
   }
 
   .logoText {
