@@ -1,0 +1,81 @@
+@import "src/styles/variables";
+
+// Used for SVG animation
+$rightLetterDashArray: 23;
+$leftLetterDashArray: 14;
+$defaultDashArray: 13;
+
+@mixin animationColors($fill, $stroke) {
+  svg path {
+    fill: darken($fill, 2.5);
+    stroke: $stroke;
+  }
+}
+
+.loadingContainer {
+  @include animationColors($primary, $secondary);
+
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100px;
+    height: 100px;
+    animation: pulse 3s ease-in-out infinite;
+
+    path {
+      animation: dash 30s linear infinite;
+
+      stroke-width: 0.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: $defaultDashArray;
+    }
+
+    path:first-child {
+      stroke-dasharray: $leftLetterDashArray;
+    }
+
+    path:last-child {
+      stroke-dasharray: $rightLetterDashArray;
+    }
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 500;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+:global(body.dark) {
+  .loadingContainer {
+    @include animationColors($secondary, $primary);
+  }
+}
