@@ -21,10 +21,14 @@ $menuLinkHoverBackground: rgba(128, 128, 128, 0.1);
 }
 
 .sidebarContainer {
-  overflow-y: auto;
-  position: fixed;
   height: 100%;
+  position: fixed;
+  overflow-y: auto;
   width: $sidebarWidth;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   font-size: 14px;
 }
@@ -46,7 +50,8 @@ $menuLinkHoverBackground: rgba(128, 128, 128, 0.1);
   height: 20px;
 }
 
-.navbarContainer ul {
+.navbarContainer ul,
+.bottomNavbarContainer ul {
   @include navbarColors($menuLinkColor);
 
   margin: 0;
@@ -83,7 +88,8 @@ $menuLinkHoverBackground: rgba(128, 128, 128, 0.1);
 :global(body.dark) {
   background: $darkBackgroundColor;
 
-  .navbarContainer ul {
+  .navbarContainer ul,
+  .bottomNavbarContainer ul {
     @include navbarColors($darkMenuLinkColor);
   }
 

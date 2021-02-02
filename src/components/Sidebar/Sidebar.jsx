@@ -11,25 +11,39 @@ import styles from "./Sidebar.module.scss";
 
 const Sidebar = ({ page }) => (
   <aside className={styles.sidebarContainer}>
-    <a className={styles.logoContainer} href="/">
-      <img className={styles.logoImage} alt="VideoVerse Logo" src={logoImage} />
-      <img className={styles.logoText} alt="VideoVerse Text" src={logoText} />
-    </a>
-    <nav className={styles.navbarContainer}>
+    <div>
+      <a className={styles.logoContainer} href="/">
+        <img className={styles.logoImage} alt="VideoVerse" src={logoImage} />
+        <img className={styles.logoText} alt="VideoVerse" src={logoText} />
+      </a>
+      <nav className={styles.navbarContainer}>
+        <ul>
+          {menuItems.map((item) => (
+            <li key={kebabCase(`nav-${item.title}`)}>
+              <a
+                className={page === item.title ? styles.activeLink : ""}
+                href={item.url}
+              >
+                <SvgContainer>{item.path}</SvgContainer>
+                <span>{item.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+    <div className={styles.bottomNavbarContainer}>
       <ul>
-        {menuItems.map((item) => (
-          <li key={kebabCase(`nav-${item.title}`)}>
-            <a
-              className={page === item.title ? styles.activeLink : ""}
-              href={item.url}
-            >
-              <SvgContainer>{item.path}</SvgContainer>
-              <p>{item.title}</p>
-            </a>
-          </li>
-        ))}
+        <a href="#">
+          <SvgContainer>
+            <polyline points="18 16 22 12 18 8" />
+            <polyline points="6 8 2 12 6 16" />
+            <line x1="10" y1="18" x2="14" y2="6" />
+          </SvgContainer>
+          <span>Source</span>
+        </a>
       </ul>
-    </nav>
+    </div>
   </aside>
 );
 
