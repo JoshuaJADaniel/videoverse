@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./LoadingContainer.module.scss";
+import styles from "./Loading.module.scss";
 
-const LoadingContainer = () => (
+const Loading = () => (
   <div className={styles.loadingContainer}>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 28.5 26">
       <path
@@ -21,4 +21,4 @@ const LoadingContainer = () => (
   </div>
 );
 
-export default LoadingContainer;
+export default Loading;
