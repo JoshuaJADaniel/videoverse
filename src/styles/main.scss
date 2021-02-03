@@ -12,7 +12,6 @@ body,
 
 body,
 input {
-  font-size: 18px;
   font-family: "Comfortaa", sans-serif;
 }
 
@@ -20,19 +19,7 @@ input {
   overflow-x: hidden;
 }
 
-button {
-  padding: 0;
-  border: none;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
+button,
 input {
   border: none;
 
@@ -41,17 +28,35 @@ input {
   }
 }
 
-a {
-  text-decoration: none;
-}
-
 h1 {
   margin: 0;
   font-size: 40px;
   font-weight: 700;
 }
 
+button {
+  padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+@media (max-width: $lg) {
+  h1 {
+    font-size: 30px;
+  }
+}
+
 @media (max-width: $sm) {
+  h1 {
+    font-size: 24px;
+  }
+
   #root {
     transition: transform $transition;
 
