@@ -30,13 +30,7 @@ const Hero = ({ mediaData, multislide }) => {
             })
           : getCarouselItem(mediaData)}
       </div>
-      {multislide && (
-        <>
-          <div className="swiper-pagination" />
-          <div className="swiper-button-next" />
-          <div className="swiper-button-prev" />
-        </>
-      )}
+      {multislide && <div className="swiper-pagination" />}
     </div>
   );
 };
