@@ -1,0 +1,69 @@
+@import "src/styles/variables";
+
+$defaultColor: #000000;
+$darkDefaultColor: #ffffff;
+
+$boxShadowColor: #ffffff;
+$darkBoxShadowColor: #000000;
+
+$overviewColor: #393939;
+$darkOverviewColor: #cccccc;
+
+@mixin carouselSlideColors($textColor, $overviewColor, $boxShadowColor) {
+  color: $textColor;
+
+  [data-purpose="overview"] {
+    color: $overviewColor;
+  }
+
+  box-shadow: inset 0px -475px 200px -200px $boxShadowColor;
+}
+
+.heroContainer {
+  height: 85vh;
+  min-height: 700px;
+}
+
+.carouselSlide {
+  @include carouselSlideColors($defaultColor, $overviewColor, $boxShadowColor);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  [data-purpose="rating"] {
+    font-size: 20px;
+    margin-bottom: 16px;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+      vertical-align: bottom;
+
+      stroke: none;
+      fill: $primary;
+    }
+  }
+
+  [data-purpose="overview"] {
+    margin: 16px 0;
+  }
+
+  > div {
+    left: 100px;
+    right: 100px;
+    bottom: 50px;
+    position: absolute;
+  }
+}
+
+:global(body.dark) {
+  .carouselSlide {
+    @include carouselSlideColors(
+      $darkDefaultColor,
+      $darkOverviewColor,
+      $darkBoxShadowColor
+    );
+  }
+}
