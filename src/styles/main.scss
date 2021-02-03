@@ -12,6 +12,7 @@ body,
 
 body,
 input {
+  font-size: 18px;
   font-family: "Comfortaa", sans-serif;
 }
 
@@ -42,6 +43,12 @@ input {
 
 a {
   text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 @media (max-width: $sm) {
