@@ -1,21 +1,8 @@
-div.swiper-button-prev {
-  left: 20px;
-}
-
-div.swiper-button-next {
-  right: 20px;
-}
-
-div.swiper-button-prev:after,
-div.swiper-button-next:after {
-  color: $secondary;
-}
-
 span.swiper-pagination-bullet {
   opacity: 1;
-  background: #9f9f9f;
+  background: rgba(128, 128, 128, 0.5);
 }
 
-span.swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background: $primary;
+span.swiper-pagination-bullet-active {
+  background: $secondary;
 }
