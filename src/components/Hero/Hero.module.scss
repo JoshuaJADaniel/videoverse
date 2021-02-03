@@ -9,11 +9,27 @@ $darkBoxShadowColor: #000000;
 $overviewColor: #393939;
 $darkOverviewColor: #cccccc;
 
-@mixin carouselSlideColors($textColor, $overviewColor, $boxShadowColor) {
+@mixin carouselSlideColors(
+  $textColor,
+  $overviewColor,
+  $boxShadowColor,
+  $ctaBackground,
+  $ctaBorder
+) {
   color: $textColor;
 
-  [data-purpose="overview"] {
+  [data-info="overview"] {
     color: $overviewColor;
+  }
+
+  [data-info="title"] a {
+    color: #ffffff;
+    background: $ctaBackground;
+    border: 2px solid $ctaBorder;
+
+    &:hover {
+      background: $ctaBorder;
+    }
   }
 
   box-shadow: inset 0px -475px 200px -200px $boxShadowColor;
@@ -21,33 +37,55 @@ $darkOverviewColor: #cccccc;
 
 .heroContainer {
   height: 85vh;
-  min-height: 700px;
+  min-height: 500px;
 }
 
 .carouselSlide {
-  @include carouselSlideColors($defaultColor, $overviewColor, $boxShadowColor);
+  @include carouselSlideColors(
+    $defaultColor,
+    $overviewColor,
+    $boxShadowColor,
+    lighten($secondary, 5),
+    $secondary
+  );
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  [data-purpose="rating"] {
+  [data-info="rating"] {
     font-size: 20px;
-    margin-bottom: 16px;
 
     svg {
       width: 30px;
       height: 30px;
-      margin-right: 8px;
+      margin-right: 4px;
       vertical-align: bottom;
 
       stroke: none;
-      fill: $primary;
+      fill: $secondary;
     }
   }
 
-  [data-purpose="overview"] {
+  [data-info="title"] {
     margin: 16px 0;
+    display: flex;
+    align-items: center;
+
+    a {
+      padding: 8px 16px;
+      margin-left: 24px;
+      transition: background $transition;
+
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+  }
+
+  [data-info="overview"] {
+    font-size: 18px;
+    line-height: 1.4;
   }
 
   > div {
@@ -63,7 +101,55 @@ $darkOverviewColor: #cccccc;
     @include carouselSlideColors(
       $darkDefaultColor,
       $darkOverviewColor,
-      $darkBoxShadowColor
+      $darkBoxShadowColor,
+      darken($secondary, 5),
+      $secondary
     );
+  }
+}
+
+@media (max-width: $lg) {
+  .carouselSlide {
+    > div {
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+    }
+  }
+}
+
+@media (max-width: $sm) {
+  .heroContainer {
+    min-height: 350px;
+    height: calc(100vh - 70px);
+  }
+
+  .carouselSlide {
+    [data-info="rating"] {
+      font-size: 16px;
+
+      svg {
+        height: 24px;
+        width: 24px;
+      }
+    }
+
+    [data-info="title"] {
+      margin: 12px 0;
+
+      a {
+        display: none;
+      }
+    }
+
+    [data-info="overview"] {
+      font-size: 16px;
+    }
+
+    > div {
+      left: 15px;
+      right: 15px;
+      bottom: 20px;
+    }
   }
 }
