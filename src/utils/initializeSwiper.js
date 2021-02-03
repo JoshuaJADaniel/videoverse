@@ -1,24 +1,21 @@
-import Swiper, { Navigation, Scrollbar } from "swiper";
+import Swiper, { Autoplay, Pagination } from "swiper";
 import "swiper/swiper-bundle.css";
 
-Swiper.use([Navigation, Scrollbar]);
+Swiper.use([Autoplay, Pagination]);
 
-const initializeSwiper = () => {
+const initializeHeroCarousel = () => {
   new Swiper(".swiper-container", {
-    direction: "horizontal",
-    slidesPerView: "auto",
-    slidesPerGroup: 2,
+    loop: true,
 
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+    autoplay: {
+      delay: 5000,
     },
 
-    scrollbar: {
-      el: ".swiper-scrollbar",
-      hide: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
     },
   });
 };
 
-export default initializeSwiper;
+export { initializeHeroCarousel };
