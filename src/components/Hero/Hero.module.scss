@@ -32,7 +32,32 @@ $darkOverviewColor: #cccccc;
     }
   }
 
-  box-shadow: inset 0px -475px 200px -200px $boxShadowColor;
+  [data-info="shadow"] {
+    bottom: 0;
+    width: 100%;
+    height: 350px;
+    position: absolute;
+
+    background-image: linear-gradient(
+      to top,
+      $boxShadowColor,
+      rgba($boxShadowColor, 0.943) 13.9%,
+      rgba($boxShadowColor, 0.878) 25.7%,
+      rgba($boxShadowColor, 0.806) 35.6%,
+      rgba($boxShadowColor, 0.728) 44%,
+      rgba($boxShadowColor, 0.647) 51%,
+      rgba($boxShadowColor, 0.564) 56.9%,
+      rgba($boxShadowColor, 0.481) 62%,
+      rgba($boxShadowColor, 0.399) 66.4%,
+      rgba($boxShadowColor, 0.32) 70.4%,
+      rgba($boxShadowColor, 0.246) 74.3%,
+      rgba($boxShadowColor, 0.178) 78.3%,
+      rgba($boxShadowColor, 0.117) 82.6%,
+      rgba($boxShadowColor, 0.067) 87.5%,
+      rgba($boxShadowColor, 0.027) 93.2%,
+      rgba($boxShadowColor, 0) 100%
+    );
+  }
 }
 
 .heroContainer {
@@ -88,7 +113,8 @@ $darkOverviewColor: #cccccc;
     line-height: 1.4;
   }
 
-  > div {
+  [data-info="content"] {
+    z-index: 1;
     left: 100px;
     right: 100px;
     bottom: 50px;
@@ -109,12 +135,10 @@ $darkOverviewColor: #cccccc;
 }
 
 @media (max-width: $lg) {
-  .carouselSlide {
-    > div {
-      left: 30px;
-      right: 30px;
-      bottom: 30px;
-    }
+  .carouselSlide [data-info="content"] {
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
   }
 }
 
@@ -146,7 +170,7 @@ $darkOverviewColor: #cccccc;
       font-size: 16px;
     }
 
-    > div {
+    [data-info="content"] {
       left: 15px;
       right: 15px;
       bottom: 20px;
