@@ -22,8 +22,6 @@ const Hero = ({ mediaData, multislide }) => {
                 media.releaseDate.split("-")[0],
                 media.mediaType &&
                   (media.mediaType === "movie" ? "Movie" : "TV Show"),
-                media.originalLanguage &&
-                  `Original Language: ${media.originalLanguage}`,
               ]);
 
               return getCarouselItem(media, badges, styles.carouselSlide);
