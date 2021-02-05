@@ -1,10 +1,10 @@
-import Swiper, { Autoplay, Pagination } from "swiper";
+import Swiper, { Autoplay, Navigation, Pagination, Scrollbar } from "swiper";
 import "swiper/swiper-bundle.css";
 
-Swiper.use([Autoplay, Pagination]);
+Swiper.use([Autoplay, Navigation, Scrollbar, Pagination]);
 
-const initializeHeroCarousel = () => {
-  new Swiper(".swiper-container", {
+const initializeHeroCarousel = (customClass) => {
+  new Swiper(`.swiper-container.${customClass}`, {
     loop: true,
 
     autoplay: {
@@ -18,4 +18,22 @@ const initializeHeroCarousel = () => {
   });
 };
 
-export { initializeHeroCarousel };
+const initializeRowCarousel = (customClass) => {
+  new Swiper(`.swiper-container.${customClass}`, {
+    direction: "horizontal",
+    slidesPerView: "auto",
+    slidesPerGroup: 2,
+
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    scrollbar: {
+      el: ".swiper-scrollbar",
+      hide: true,
+    },
+  });
+};
+
+export { initializeHeroCarousel, initializeRowCarousel };

@@ -10,11 +10,11 @@ import { compact } from "lodash";
 
 const Hero = ({ mediaData, multislide }) => {
   useEffect(() => {
-    initializeHeroCarousel();
+    initializeHeroCarousel("hero");
   }, []);
 
   return (
-    <div className={`${styles.heroContainer} swiper-container`}>
+    <div className={`${styles.heroContainer} swiper-container hero`}>
       <div className="swiper-wrapper">
         {multislide
           ? mediaData.slice(0, 5).map((media) => {
