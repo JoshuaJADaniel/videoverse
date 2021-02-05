@@ -74,9 +74,20 @@ $darkOverviewColor: #cccccc;
     $secondary
   );
 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  [data-info="backdrop"],
+  [data-info="poster"] {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  [data-info="poster"] {
+    display: none;
+  }
 
   [data-info="rating"] {
     font-size: 20px;
@@ -143,11 +154,6 @@ $darkOverviewColor: #cccccc;
 }
 
 @media (max-width: $sm) {
-  .heroContainer {
-    min-height: 350px;
-    height: calc(100vh - 70px);
-  }
-
   .carouselSlide {
     [data-info="rating"] {
       font-size: 16px;
@@ -175,5 +181,16 @@ $darkOverviewColor: #cccccc;
       right: 15px;
       bottom: 20px;
     }
+  }
+}
+
+@media (max-width: $xs) {
+  .heroContainer {
+    min-height: 300px;
+    height: calc(100vh - 100px);
+  }
+
+  .carouselSlide [data-info="poster"] {
+    display: block;
   }
 }
