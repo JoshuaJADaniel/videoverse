@@ -5,6 +5,7 @@ import {
 
 import posterPlaceholder from "images/poster-placeholder.png";
 import backdropPlaceholder from "images/backdrop-placeholder.png";
+import posterPlaceholderHighRes from "images/poster-placeholder-high-res.png";
 
 const getRuntime = (runtimes) => {
   if (runtimes.length) {
@@ -38,6 +39,9 @@ const extractMediaDetails = (media) => ({
   posterImage:
     (media.poster_path && getPosterImageUrl(media.poster_path)) ||
     posterPlaceholder,
+  posterImageHighRes:
+    (media.poster_path && getPosterImageUrl(media.poster_path, true)) ||
+    posterPlaceholderHighRes,
   backdropImage:
     (media.backdrop_path && getBackdropImageUrl(media.backdrop_path)) ||
     backdropPlaceholder,
