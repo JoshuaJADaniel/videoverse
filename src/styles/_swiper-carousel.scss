@@ -6,3 +6,9 @@ span.swiper-pagination-bullet {
 span.swiper-pagination-bullet-active {
   background: $secondary;
 }
+
+// Fix for Swiper IOS mobile flickering on transform
+div.swiper-slide {
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
