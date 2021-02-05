@@ -9,12 +9,16 @@ $darkBoxShadowColor: #000000;
 $overviewColor: #393939;
 $darkOverviewColor: #cccccc;
 
+$badgeBackground: #e6e6e6;
+$darkBadgeBackground: #333333;
+
 @mixin carouselSlideColors(
   $textColor,
   $overviewColor,
   $boxShadowColor,
   $ctaBackground,
-  $ctaBorder
+  $ctaBorder,
+  $badge
 ) {
   color: $textColor;
 
@@ -30,6 +34,11 @@ $darkOverviewColor: #cccccc;
     &:hover {
       background: $ctaBorder;
     }
+  }
+
+  [data-info="badge"] {
+    color: $textColor;
+    background: $badge;
   }
 
   [data-info="shadow"] {
@@ -71,7 +80,8 @@ $darkOverviewColor: #cccccc;
     $overviewColor,
     $boxShadowColor,
     lighten($secondary, 5),
-    $secondary
+    $secondary,
+    $badgeBackground
   );
 
   [data-info="backdrop"],
@@ -124,6 +134,17 @@ $darkOverviewColor: #cccccc;
     line-height: 1.4;
   }
 
+  [data-info="badge-wrapper"] {
+    margin-top: 16px;
+  }
+
+  [data-info="badge"] {
+    border-radius: 2px;
+    padding: 6px 12px;
+    margin-right: 6px;
+    display: inline-block;
+  }
+
   [data-info="content"] {
     z-index: 1;
     left: 100px;
@@ -140,7 +161,8 @@ $darkOverviewColor: #cccccc;
       $darkOverviewColor,
       $darkBoxShadowColor,
       darken($secondary, 5),
-      $secondary
+      $secondary,
+      $darkBadgeBackground
     );
   }
 }
@@ -149,7 +171,7 @@ $darkOverviewColor: #cccccc;
   .carouselSlide [data-info="content"] {
     left: 30px;
     right: 30px;
-    bottom: 30px;
+    bottom: 40px;
   }
 }
 
@@ -179,7 +201,6 @@ $darkOverviewColor: #cccccc;
     [data-info="content"] {
       left: 15px;
       right: 15px;
-      bottom: 20px;
     }
   }
 }
