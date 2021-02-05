@@ -1,0 +1,26 @@
+@import "src/styles/variables";
+
+.sectionWrapper {
+  padding: 0 100px;
+}
+
+.title {
+}
+
+.subtitle {
+}
+
+.childrenWrapper {
+}
+
+@media (max-width: $lg) {
+  .sectionWrapper {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: $sm) {
+  .sectionWrapper {
+    padding: 0 15px;
+  }
+}
