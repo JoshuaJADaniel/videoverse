@@ -10,23 +10,29 @@ import { compact } from "lodash";
 
 const Hero = ({ mediaData, multislide }) => {
   useEffect(() => {
-    initializeHeroCarousel("hero");
+    initializeHeroCarousel("hero", multislide);
   }, []);
 
   return (
     <div className={`${styles.heroContainer} swiper-container hero`}>
       <div className="swiper-wrapper">
         {multislide
-          ? mediaData.slice(0, 5).map((media) => {
-              const badges = compact([
-                media.releaseDate.split("-")[0],
-                media.mediaType &&
-                  (media.mediaType === "movie" ? "Movie" : "TV Show"),
-              ]);
-
-              return getCarouselItem(media, badges, styles.carouselSlide);
-            })
-          : getCarouselItem(mediaData)}
+          ? mediaData
+              .slice(0, 5)
+              .map((media) =>
+                getCarouselItem(
+                  media,
+                  getBadges(media),
+                  styles.carouselSlide,
+                  multislide
+                )
+              )
+          : getCarouselItem(
+              mediaData,
+              getBadges(mediaData),
+              styles.carouselSlide,
+              multislide
+            )}
       </div>
       {multislide && <div className="swiper-pagination" />}
     </div>
@@ -51,5 +57,11 @@ Hero.propTypes = {
   ]),
   multislide: PropTypes.bool,
 };
+
+const getBadges = (media) =>
+  compact([
+    media.releaseDate.split("-")[0],
+    media.mediaType && (media.mediaType === "movie" ? "Movie" : "TV Show"),
+  ]);
 
 export default Hero;
