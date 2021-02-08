@@ -3,9 +3,10 @@ import "swiper/swiper-bundle.css";
 
 Swiper.use([Autoplay, Navigation, Scrollbar, Pagination]);
 
-const initializeHeroCarousel = (customClass) => {
+const initializeHeroCarousel = (customClass, multislide) => {
   new Swiper(`.swiper-container.${customClass}`, {
-    loop: true,
+    loop: multislide,
+    watchOverflow: true,
 
     autoplay: {
       delay: 5000,
