@@ -2,7 +2,7 @@ import React from "react";
 import { kebabCase, truncate } from "lodash";
 import SvgContainer from "components/SvgContainer";
 
-const getCarouselItem = (media, badges, styling) => {
+const getCarouselItem = (media, badges, styling, multislide) => {
   const {
     id,
     title,
@@ -36,7 +36,7 @@ const getCarouselItem = (media, badges, styling) => {
         )}
         <div data-info="title">
           <h1>{title}</h1>
-          <a href="#">Learn More</a>
+          {multislide && <a href="#">Learn More</a>}
         </div>
         {overview && (
           <div data-info="overview">
