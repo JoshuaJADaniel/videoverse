@@ -1,100 +1,67 @@
 import React from "react";
-import styled from "styled-components";
 import { kebabCase, truncate } from "lodash";
+import SvgContainer from "components/SvgContainer";
 
-import RatingDisplay from "components/main/RatingDisplay";
-import Separator from "components/common/Separator";
-import Badge from "components/common/Badge";
-
-const getCarouselItem = (media, badges, active, standalone) => {
-  const { id, title, rating, overview, backdropImage } = media;
-  const classes = active ? "carousel-item active" : "carousel-item";
+const getCarouselItem = (media, badges, styling) => {
+  const {
+    id,
+    title,
+    rating,
+    overview,
+    backdropImage,
+    posterImageHighRes,
+  } = media;
 
   return (
-    <div key={kebabCase(`hero-${id}`)} className={classes}>
-      <CarouselBackgroundImage
-        style={{ backgroundImage: `url(${backdropImage}` }}
-      />
-      <CarouselCaption standalone={standalone}>
-        {rating !== 0 && (
-          <>
-            <RatingDisplay rating={rating} outOf={10} />
-            <Separator verticalSpace={15} />
-          </>
+    <div key={kebabCase(`hero-${id}`)} className={`${styling} swiper-slide`}>
+      <div data-info="background">
+        <div
+          data-info="backdrop"
+          style={{ backgroundImage: `url(${backdropImage}` }}
+        />
+        <div
+          data-info="poster"
+          style={{ backgroundImage: `url(${posterImageHighRes}` }}
+        />
+      </div>
+      <div data-info="shadow" />
+      <div data-info="content">
+        {rating && (
+          <div data-info="rating">
+            <SvgContainer>
+              <polygon points="10 2 13.09 8.26 20 9.27 15 14.14 16.18 21.02 10 17.77 3.82 21.02 5 14.14 0 9.27 6.91 8.26 10 2" />
+            </SvgContainer>
+            <span>{rating} / 10</span>
+          </div>
         )}
-        <div className="d-flex align-items-center mb-3">
-          <Title className="font-weight-bold">{title}</Title>
-          {!standalone && (
-            <ButtonCta href={`/movie/${id}`}>Learn More</ButtonCta>
-          )}
+        <div data-info="title">
+          <h1>{title}</h1>
+          <a href="#">Learn More</a>
         </div>
-
-        <div className="ml-1">
-          {overview && !standalone && (
-            <Overview>
+        {overview && (
+          <div data-info="overview">
+            <p>
               {truncate(overview, {
-                length: 260,
+                length: 200,
                 separator: " ",
               })}
-            </Overview>
-          )}
-          <Details>
-            {badges && badges.map((text) => <Badge key={text}>{text}</Badge>)}
-          </Details>
+            </p>
+          </div>
+        )}
+        <div data-info="badge-wrapper">
+          {badges &&
+            badges.length &&
+            badges.map((badgeText) => {
+              return (
+                <span data-info="badge" key={kebabCase(badgeText)}>
+                  {badgeText}
+                </span>
+              );
+            })}
         </div>
-      </CarouselCaption>
+      </div>
     </div>
   );
 };
-
-const CarouselCaption = styled.div.attrs((props) => ({
-  className: `carousel-caption text-left ${props.standalone && "mx-5 px-5"}`,
-}))`
-  left: ${(props) => props.standalone && "0"};
-  right: ${(props) => props.standalone && "0"};
-`;
-
-const ButtonCta = styled.a.attrs({
-  className: "btn ml-4",
-})`
-  font-weight: bold;
-
-  text-shadow: 0.5px 0 0 currentColor;
-  color: ${(props) => props.theme.buttonColor};
-  background: ${(props) => props.theme.buttonBackground};
-  border: 2px solid ${(props) => props.theme.primaryColor};
-
-  &:hover {
-    color: ${(props) => props.theme.buttonColor};
-    background: ${(props) => props.theme.buttonBackgroundHover};
-  }
-`;
-
-const Title = styled.h1`
-  margin: 0;
-  color: ${(props) => props.theme.heroTitleColor};
-`;
-
-const Overview = styled.p`
-  margin-bottom: 20px;
-  color: ${(props) => props.theme.heroTitleColor};
-`;
-
-const Details = styled.div.attrs({
-  className: "mt-3",
-})`
-  color: ${(props) => props.theme.heroDetailsColor};
-`;
-
-const CarouselBackgroundImage = styled.div`
-  height: 100%;
-  width: 100%;
-
-  background-size: cover;
-  background-position: center;
-
-  box-shadow: inset 0px -475px 200px -200px
-    ${(props) => props.theme.defaultBackground};
-`;
 
 export default getCarouselItem;
