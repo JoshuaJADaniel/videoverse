@@ -8,6 +8,7 @@ const getCarouselItem = (media, badges, styling, multislide) => {
     title,
     rating,
     overview,
+    mediaType,
     backdropImage,
     posterImageHighRes,
   } = media;
@@ -26,7 +27,7 @@ const getCarouselItem = (media, badges, styling, multislide) => {
       </div>
       <div data-info="shadow" />
       <div data-info="content">
-        {rating && (
+        {rating !== 0 && (
           <div data-info="rating">
             <SvgContainer>
               <polygon points="10 2 13.09 8.26 20 9.27 15 14.14 16.18 21.02 10 17.77 3.82 21.02 5 14.14 0 9.27 6.91 8.26 10 2" />
@@ -36,7 +37,7 @@ const getCarouselItem = (media, badges, styling, multislide) => {
         )}
         <div data-info="title">
           <h1>{title}</h1>
-          {multislide && <a href="#">Learn More</a>}
+          {multislide && <a href={`/${mediaType}/${id}`}>Learn More</a>}
         </div>
         {overview && (
           <div data-info="overview">
@@ -49,15 +50,12 @@ const getCarouselItem = (media, badges, styling, multislide) => {
           </div>
         )}
         <div data-info="badge-wrapper">
-          {badges &&
-            badges.length &&
-            badges.map((badgeText) => {
-              return (
-                <span data-info="badge" key={kebabCase(badgeText)}>
-                  {badgeText}
-                </span>
-              );
-            })}
+          {badges.length &&
+            badges.map((badgeText) => (
+              <span data-info="badge" key={kebabCase(badgeText)}>
+                {badgeText}
+              </span>
+            ))}
         </div>
       </div>
     </div>
