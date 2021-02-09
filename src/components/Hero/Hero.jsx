@@ -1,32 +1,38 @@
-import styled from "styled-components";
-import PropTypes from "prop-types";
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import { compact } from "lodash";
 
 import getCarouselItem from "utils/getCarouselItem";
+import { mediaPropTypes } from "utils/propTypeValues";
 import { initializeHeroCarousel } from "utils/initializeSwiper";
 
 import styles from "./Hero.module.scss";
-import { compact } from "lodash";
 
 const Hero = ({ mediaData, multislide }) => {
+  const componentId = "hero";
+
+  const getBadges = ({ releaseDate, mediaType }) => {
+    const year = new Date(releaseDate).getFullYear();
+    const media = mediaType && (mediaType === "movie" ? "Movie" : "TV Show");
+    return compact([year, media]);
+  };
+
   useEffect(() => {
-    initializeHeroCarousel("hero", multislide);
+    initializeHeroCarousel(componentId, multislide);
   }, []);
 
   return (
-    <div className={`${styles.heroContainer} swiper-container hero`}>
+    <div className={`${styles.heroContainer} ${componentId} swiper-container`}>
       <div className="swiper-wrapper">
         {multislide
-          ? mediaData
-              .slice(0, 5)
-              .map((media) =>
-                getCarouselItem(
-                  media,
-                  getBadges(media),
-                  styles.carouselSlide,
-                  multislide
-                )
+          ? mediaData.map((media) =>
+              getCarouselItem(
+                media,
+                getBadges(media),
+                styles.carouselSlide,
+                multislide
               )
+            )
           : getCarouselItem(
               mediaData,
               getBadges(mediaData),
@@ -39,29 +45,12 @@ const Hero = ({ mediaData, multislide }) => {
   );
 };
 
-let mediaDataShape = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  overview: PropTypes.string.isRequired,
-  releaseDate: PropTypes.string.isRequired,
-  backdropImage: PropTypes.string.isRequired,
-  originalLanguage: PropTypes.string.isRequired,
-  mediaType: PropTypes.string.isRequired,
-};
-
 Hero.propTypes = {
   mediaData: PropTypes.oneOfType([
-    PropTypes.shape(mediaDataShape),
-    PropTypes.arrayOf(PropTypes.shape(mediaDataShape)),
-  ]),
+    mediaPropTypes,
+    PropTypes.arrayOf(mediaPropTypes),
+  ]).isRequired,
   multislide: PropTypes.bool,
 };
-
-const getBadges = (media) =>
-  compact([
-    media.releaseDate.split("-")[0],
-    media.mediaType && (media.mediaType === "movie" ? "Movie" : "TV Show"),
-  ]);
 
 export default Hero;
