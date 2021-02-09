@@ -6,7 +6,7 @@ const mediaPropTypes = exact({
   status: string.isRequired,
   tagline: string.isRequired,
   overview: string.isRequired,
-  originalLanguage: string.isRequired,
+  language: string.isRequired,
   mediaType: string.isRequired,
   rating: number.isRequired,
   title: string.isRequired,

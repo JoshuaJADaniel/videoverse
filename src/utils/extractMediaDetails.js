@@ -26,7 +26,7 @@ const extractMediaDetails = (media) => ({
   status: media.status || "",
   tagline: media.tagline || "",
   overview: media.overview || "",
-  originalLanguage: media.original_language || "",
+  language: media.original_language || "",
   mediaType: media.media_type || "",
   rating: media.vote_average || 0,
   title: media.title || media.name || "Unknown",
