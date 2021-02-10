@@ -6,13 +6,15 @@ import Section from "components/Section";
 import { initializeRowCarousel } from "utils/initializeSwiper";
 
 const SectionSwiper = ({ title, children }) => {
+  const componentId = kebabCase(title);
+
   useEffect(() => {
-    initializeRowCarousel(kebabCase(title));
+    initializeRowCarousel(componentId);
   }, []);
 
   return (
     <Section title={title}>
-      <div className={`swiper-container ${kebabCase(title)}`}>
+      <div className={`${componentId} swiper-container`}>
         <div className="swiper-wrapper">{children}</div>
         <button className="swiper-button-prev" />
         <button className="swiper-button-next" />
@@ -23,11 +25,11 @@ const SectionSwiper = ({ title, children }) => {
 };
 
 SectionSwiper.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
-  ]).isRequired,
+  ]),
 };
 
 export default SectionSwiper;
