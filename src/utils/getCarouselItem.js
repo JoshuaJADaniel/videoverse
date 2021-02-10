@@ -18,11 +18,11 @@ const getCarouselItem = (media, badges, styling, multislide) => {
       <div data-info="background">
         <div
           data-info="backdrop"
-          style={{ backgroundImage: `url(${backdropImage}` }}
+          style={{ backgroundImage: `url(${backdropImage})` }}
         />
         <div
           data-info="poster"
-          style={{ backgroundImage: `url(${posterImageHighRes}` }}
+          style={{ backgroundImage: `url(${posterImageHighRes})` }}
         />
       </div>
       <div data-info="shadow" />
