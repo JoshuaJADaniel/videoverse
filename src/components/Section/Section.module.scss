@@ -13,6 +13,12 @@
 .childrenWrapper {
 }
 
+@media (max-width: $xl) {
+  .sectionWrapper {
+    padding: 0 70px;
+  }
+}
+
 @media (max-width: $lg) {
   .sectionWrapper {
     padding: 0 30px;

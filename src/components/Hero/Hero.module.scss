@@ -167,6 +167,13 @@ $darkBadgeBackground: #333333;
   }
 }
 
+@media (max-width: $xl) {
+  .carouselSlide [data-info="content"] {
+    left: 70px;
+    right: 70px;
+  }
+}
+
 @media (max-width: $lg) {
   .carouselSlide [data-info="content"] {
     left: 30px;
