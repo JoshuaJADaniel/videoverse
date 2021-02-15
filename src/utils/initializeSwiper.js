@@ -23,7 +23,8 @@ const initializeRowCarousel = (customClass) => {
   new Swiper(`.swiper-container.${customClass}`, {
     direction: "horizontal",
     slidesPerView: "auto",
-    slidesPerGroup: 2,
+    slidesPerGroup: 1,
+    spaceBetween: 20,
 
     navigation: {
       nextEl: ".swiper-button-next",
