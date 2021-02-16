@@ -24,25 +24,17 @@ const getMedia = (
       }
 
       if (!property) {
-        if (mediaType) {
-          callback({
-            ...extractMediaDetails(data),
-            mediaType,
-          });
-        } else {
-          callback(extractMediaDetails(data));
-        }
+        callback({
+          ...extractMediaDetails(data),
+          mediaType: data.media_type ?? mediaType,
+        });
       } else if (data[property] && data[property].length) {
-        if (mediaType) {
-          callback(
-            data[property].map((media) => ({
-              ...extractMediaDetails(media),
-              mediaType,
-            }))
-          );
-        } else {
-          callback(data[property].map((media) => extractMediaDetails(media)));
-        }
+        callback(
+          data[property].map((media) => ({
+            ...extractMediaDetails(media),
+            mediaType: media.media_type ?? mediaType,
+          }))
+        );
       } else {
         throw new Error(`No media found! (${path})`);
       }
