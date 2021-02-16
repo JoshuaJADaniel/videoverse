@@ -14,7 +14,11 @@ const getCarouselItem = (media, badges, styling, multislide) => {
   } = media;
 
   return (
-    <div key={kebabCase(`hero-${id}`)} className={`${styling} swiper-slide`}>
+    <a
+      key={kebabCase(`hero-${id}`)}
+      className={`${styling} swiper-slide`}
+      href={multislide && `/${mediaType}/${id}`}
+    >
       <div data-info="background">
         <div
           data-info="backdrop"
@@ -37,7 +41,6 @@ const getCarouselItem = (media, badges, styling, multislide) => {
         )}
         <div data-info="title">
           <h1>{title}</h1>
-          {multislide && <a href={`/${mediaType}/${id}`}>Learn More</a>}
         </div>
         {overview && (
           <div data-info="overview">
@@ -58,7 +61,7 @@ const getCarouselItem = (media, badges, styling, multislide) => {
             ))}
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 

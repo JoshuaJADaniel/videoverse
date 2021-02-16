@@ -16,8 +16,6 @@ $darkBadgeBackground: #333333;
   $textColor,
   $overviewColor,
   $boxShadowColor,
-  $ctaBackground,
-  $ctaBorder,
   $badge
 ) {
   color: $textColor;
@@ -28,12 +26,6 @@ $darkBadgeBackground: #333333;
 
   [data-info="title"] a {
     color: #ffffff;
-    background: $ctaBackground;
-    border: 2px solid $ctaBorder;
-
-    &:hover {
-      background: $ctaBorder;
-    }
   }
 
   [data-info="badge"] {
@@ -80,8 +72,6 @@ $darkBadgeBackground: #333333;
     $defaultColor,
     $overviewColor,
     $boxShadowColor,
-    lighten($secondary, 5),
-    $secondary,
     $badgeBackground
   );
 
@@ -116,18 +106,6 @@ $darkBadgeBackground: #333333;
 
   [data-info="title"] {
     margin: 16px 0;
-    display: flex;
-    align-items: center;
-
-    a {
-      padding: 8px 16px;
-      margin-left: 24px;
-      transition: background $transition;
-
-      font-size: 18px;
-      font-weight: bold;
-      border-radius: 4px;
-    }
   }
 
   [data-info="overview"] {
@@ -161,8 +139,6 @@ $darkBadgeBackground: #333333;
       $darkDefaultColor,
       $darkOverviewColor,
       $darkBoxShadowColor,
-      darken($secondary, 5),
-      $secondary,
       $darkBadgeBackground
     );
   }
@@ -196,10 +172,6 @@ $darkBadgeBackground: #333333;
 
     [data-info="title"] {
       margin: 12px 0;
-
-      a {
-        display: none;
-      }
     }
 
     [data-info="overview"] {
