@@ -17,7 +17,7 @@ const SectionMedia = ({ title, mediaData, responsive }) => {
       ({ id, title, posterImage, rating, releaseDate, mediaType }) => (
         <Poster
           badge={mediaType === "tv" ? "Tv Show" : "Movie"}
-          key={kebabCase(`${title}-movie-${id}`)}
+          key={kebabCase(`${title}-${mediaType}-${id}`)}
           title={title}
           subtitle={createMediaSubtitle(releaseDate, rating)}
           linkUrl={`/${mediaType}/${id}`}
