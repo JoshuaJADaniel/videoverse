@@ -1,0 +1,137 @@
+@import "src/styles/variables";
+
+$posterHeight: 278px;
+$posterWidth: 185px;
+
+$posterColor: #000000;
+$posterDetailsColor: #414141;
+$posterBadgeBackground: rgba(0, 0, 0, 0.075);
+
+$darkPosterColor: #ffffff;
+$darkPosterDetailsColor: #cccccc;
+$darkPosterBadgeBackground: rgba(255, 255, 255, 0.1);
+
+@mixin posterColors($defaultColor, $detailsColor, $badgeBackground) {
+  color: $defaultColor;
+
+  .posterDetails {
+    color: $detailsColor;
+
+    .posterBadge {
+      background: $badgeBackground;
+      border: 1px solid rgba($detailsColor, 0.075);
+    }
+  }
+}
+
+@mixin responsiveWidth($items) {
+  flex: 0 0 100 / $items * 1%;
+}
+
+.posterResponsive {
+  @include responsiveWidth(6);
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.posterWrapper {
+  @include posterColors(
+    $posterColor,
+    $posterDetailsColor,
+    $posterBadgeBackground
+  );
+
+  padding-bottom: 30px !important;
+  width: $posterWidth !important;
+
+  &:hover .posterImage {
+    filter: none;
+  }
+
+  .posterImage {
+    margin-bottom: 16px;
+    padding-bottom: 150%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    filter: brightness(0.7);
+    transition: filter $transition;
+  }
+
+  .posterTitle {
+    margin: 8px 0;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .posterDetails {
+    font-size: 14px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .posterSubtitle {
+    padding-bottom: 4px;
+  }
+
+  .posterBadge {
+    border-radius: 2px;
+    padding: 6px 6px 4px 6px;
+  }
+}
+
+@media (max-width: $xxl) {
+  .posterResponsive {
+    @include responsiveWidth(5);
+  }
+}
+
+@media (max-width: $xl) {
+  .posterResponsive {
+    padding: 15px;
+    @include responsiveWidth(4);
+  }
+}
+
+@media (max-width: $lg) {
+  .posterResponsive {
+    @include responsiveWidth(3);
+  }
+}
+
+@media (max-width: $sm) {
+  .posterResponsive {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .posterResponsive {
+    padding: 10px;
+    @include responsiveWidth(2);
+  }
+}
+
+@media (max-width: 380px) {
+  .posterResponsive {
+    @include responsiveWidth(1);
+  }
+}
+
+:global(body.dark) {
+  .posterWrapper {
+    @include posterColors(
+      $darkPosterColor,
+      $darkPosterDetailsColor,
+      $darkPosterBadgeBackground
+    );
+  }
+}
