@@ -3,12 +3,12 @@ import getProfilePlaceholder from "utils/getProfilePlaceholder";
 
 const extractPersonDetails = (person) => ({
   id: person.id,
-  job: person.job || "Unknown",
-  name: person.name || "Unknown",
+  job: person.job || "",
+  name: person.name || "",
   birthday: person.birthday || "",
   deathday: person.deathday || "",
   biography: person.biography || "",
-  character: person.character || "Unknown",
+  character: person.character || "",
   placeOfBirth: person.place_of_birth || "",
   department: person.known_for_department || "",
   gender: ["Not Specified", "Female", "Male"][person.gender],
