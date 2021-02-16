@@ -13,13 +13,8 @@ $darkDefaultColor: #ffffff;
 }
 
 .title {
-  margin-bottom: 20px;
-}
-
-.subtitle {
-}
-
-.childrenWrapper {
+  font-size: 30px;
+  margin: 0 0 20px 0;
 }
 
 @media (max-width: $xl) {
