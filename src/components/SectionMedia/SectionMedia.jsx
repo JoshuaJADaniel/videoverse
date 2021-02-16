@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { kebabCase } from "lodash";
 
 import { mediaPropTypes } from "data/propTypeValues";
-import createPosterSubtitle from "utils/createPosterSubtitle";
+import createMediaSubtitle from "utils/createMediaSubtitle";
 
 import SectionSwiper from "components/SectionSwiper";
 import Section from "components/Section";
@@ -19,7 +19,7 @@ const SectionMedia = ({ title, mediaData, responsive }) => {
           badge={mediaType === "tv" ? "Tv Show" : "Movie"}
           key={kebabCase(`${title}-movie-${id}`)}
           title={title}
-          subtitle={createPosterSubtitle(releaseDate, rating)}
+          subtitle={createMediaSubtitle(releaseDate, rating)}
           linkUrl={`/${mediaType}/${id}`}
           posterImage={posterImage}
           responsive={responsive}
