@@ -1,7 +1,4 @@
-import {
-  getPosterImageUrl,
-  getBackdropImageUrl,
-} from "requests/getTmdbEndpointUrls";
+import { getPosterImageUrl, getBackdropImageUrl } from "requests/getImageUrls";
 
 import posterPlaceholder from "images/poster-placeholder.png";
 import backdropPlaceholder from "images/backdrop-placeholder.png";

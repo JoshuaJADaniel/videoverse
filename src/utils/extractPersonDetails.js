@@ -1,4 +1,4 @@
-import { getPosterImageUrl } from "requests/getTmdbEndpointUrls";
+import { getPosterImageUrl } from "requests/getImageUrls";
 import getProfilePlaceholder from "utils/getProfilePlaceholder";
 
 const extractPersonDetails = (person) => ({
