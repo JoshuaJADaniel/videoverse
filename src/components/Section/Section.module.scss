@@ -1,10 +1,19 @@
 @import "src/styles/variables";
 
+$defaultColor: #000000;
+$darkDefaultColor: #ffffff;
+
+@mixin sectionColors($textColor) {
+  color: $textColor;
+}
+
 .sectionWrapper {
+  @include sectionColors($defaultColor);
   padding: 0 100px;
 }
 
 .title {
+  margin-bottom: 20px;
 }
 
 .subtitle {
@@ -28,5 +37,11 @@
 @media (max-width: $sm) {
   .sectionWrapper {
     padding: 0 15px;
+  }
+}
+
+:global(body.dark) {
+  .sectionWrapper {
+    @include sectionColors($darkDefaultColor);
   }
 }
