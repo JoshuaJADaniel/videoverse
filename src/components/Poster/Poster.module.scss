@@ -77,15 +77,17 @@ $darkPosterBadgeBackground: rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-  }
 
-  .posterSubtitle {
-    padding-bottom: 4px;
-  }
+    .posterSubtitle {
+      padding-bottom: 4px;
+    }
 
-  .posterBadge {
-    border-radius: 2px;
-    padding: 6px 6px 4px 6px;
+    .posterBadge {
+      border-radius: 2px;
+      align-self: baseline;
+      padding: 6px 6px 4px 6px;
+      margin-left: 8px;
+    }
   }
 }
 
