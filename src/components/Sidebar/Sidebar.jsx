@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { kebabCase } from "lodash";
 import PropTypes from "prop-types";
 
@@ -51,4 +51,4 @@ Sidebar.propTypes = {
   page: PropTypes.string.isRequired,
 };
 
-export default memo(Sidebar);
+export default Sidebar;
