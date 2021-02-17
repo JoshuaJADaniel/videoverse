@@ -1,0 +1,11 @@
+@import "src/styles/variables";
+
+.defaultSpacer {
+  padding-bottom: 60px;
+}
+
+@media (max-width: $md) {
+  .defaultSpacer {
+    padding-bottom: 40px;
+  }
+}

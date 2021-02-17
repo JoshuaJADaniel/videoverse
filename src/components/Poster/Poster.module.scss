@@ -41,7 +41,8 @@ $darkPosterBadgeBackground: rgba(255, 255, 255, 0.1);
     $posterBadgeBackground
   );
 
-  padding-bottom: 30px !important;
+  padding-top: 0px !important;
+  padding-bottom: 50px !important;
   width: $posterWidth !important;
 
   &:hover .posterImage {
