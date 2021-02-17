@@ -42,7 +42,7 @@ const getCarouselItem = (media, badges, styling, multislide) => {
         <div data-info="title">
           <h1>{title}</h1>
         </div>
-        {overview && (
+        {multislide && overview && (
           <div data-info="overview">
             <p>
               {truncate(overview, {
