@@ -1,6 +1,4 @@
 import { string, number, arrayOf, exact } from "prop-types";
-import { getPosterImageUrl } from "../requests/getImageUrls";
-import getProfilePlaceholder from "../utils/getProfilePlaceholder";
 
 const mediaPropTypes = exact({
   // Common to movies and TV shows
