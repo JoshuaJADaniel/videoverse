@@ -1,0 +1,99 @@
+@import "src/styles/variables";
+
+$defaultColor: #000000;
+$darkDefaultColor: #ffffff;
+
+$bioBadgeBackground: rgba(0, 0, 0, 0.075);
+$darkBioBadgeBackground: rgba(255, 255, 255, 0.1);
+
+@mixin bioColors($textColor, $badgeBackground) {
+  color: $textColor;
+
+  .bioBadge {
+    background: $badgeBackground;
+    border: 1px solid rgba($textColor, 0.075);
+  }
+}
+
+.bioContainer {
+  @include bioColors($defaultColor, $bioBadgeBackground);
+
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+
+  h1 {
+    font-size: 40px;
+
+    &.bioMobileTitle {
+      display: none;
+      margin-top: -10px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .bioImageContainer {
+    float: left;
+    width: 30%;
+    min-width: 250px;
+    margin: 0 30px 15px 0;
+
+    .bioImage {
+      padding-bottom: 150%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .bioInformationContainer {
+    float: none;
+
+    p {
+      padding-top: 40px;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .bioBadge {
+      display: inline-block;
+      margin: 12px 12px 0 0;
+      padding: 8px 8px 6px 8px;
+      border-radius: 2px;
+    }
+  }
+}
+
+@media (max-width: $sm) {
+  .bioContainer {
+    h1 {
+      &.bioDesktopTitle {
+        display: none;
+      }
+
+      &.bioMobileTitle {
+        display: block;
+      }
+    }
+
+    .bioImageContainer {
+      width: 100%;
+
+      .bioImage {
+        padding-bottom: 80%;
+      }
+    }
+
+    .bioInformationContainer p {
+      padding-top: 20px;
+    }
+  }
+}
+
+:global(body.dark) {
+  .bioContainer {
+    @include bioColors($darkDefaultColor, $darkBioBadgeBackground);
+  }
+}
