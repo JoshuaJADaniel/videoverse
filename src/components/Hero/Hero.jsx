@@ -49,7 +49,7 @@ const Hero = ({ mediaData, multislide }) => {
 Hero.propTypes = {
   mediaData: PropTypes.oneOfType([
     mediaPropTypes,
-    PropTypes.exact({}),
+    PropTypes.shape({}),
     PropTypes.arrayOf(mediaPropTypes),
   ]).isRequired,
   multislide: PropTypes.bool,

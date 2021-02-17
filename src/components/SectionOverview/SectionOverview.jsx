@@ -36,7 +36,7 @@ const SectionOverview = ({ mediaData, trailer }) => {
 SectionOverview.propTypes = {
   mediaData: PropTypes.oneOfType([
     mediaPropTypes,
-    PropTypes.exact({}),
+    PropTypes.shape({}),
     PropTypes.arrayOf(mediaPropTypes),
   ]).isRequired,
 };
