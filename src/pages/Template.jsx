@@ -5,22 +5,27 @@ import Header from "components/Header";
 import Loading from "components/Loading";
 import Sidebar from "components/Sidebar";
 import MainContainer from "components/MainContainer";
+import { getLocalTheme } from "utils/themeFunctionality";
 
-const Template = ({ page, loading, children }) => (
-  <>
-    <Sidebar page={page} />
-    <MainContainer>
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <Header />
-          {children}
-        </>
-      )}
-    </MainContainer>
-  </>
-);
+const Template = ({ page, loading, children }) => {
+  getLocalTheme();
+
+  return (
+    <>
+      <Sidebar page={page} />
+      <MainContainer>
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <Header />
+            {children}
+          </>
+        )}
+      </MainContainer>
+    </>
+  );
+};
 
 Template.propTypes = {
   page: PropTypes.string.isRequired,
