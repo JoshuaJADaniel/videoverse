@@ -1,4 +1,6 @@
 import { string, number, arrayOf, exact } from "prop-types";
+import { getPosterImageUrl } from "../requests/getImageUrls";
+import getProfilePlaceholder from "../utils/getProfilePlaceholder";
 
 const mediaPropTypes = exact({
   // Common to movies and TV shows
@@ -29,4 +31,19 @@ const mediaPropTypes = exact({
   seasons: arrayOf(string).isRequired,
 });
 
-export { mediaPropTypes };
+const personPropTypes = exact({
+  id: number.isRequired,
+  job: string.isRequired,
+  name: string.isRequired,
+  birthday: string.isRequired,
+  deathday: string.isRequired,
+  biography: string.isRequired,
+  character: string.isRequired,
+  placeOfBirth: string.isRequired,
+  department: string.isRequired,
+  gender: string.isRequired,
+  posterImage: string.isRequired,
+  posterImageHighRes: string.isRequired,
+});
+
+export { mediaPropTypes, personPropTypes };
