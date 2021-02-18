@@ -1,4 +1,5 @@
 @import "src/styles/variables";
+@import "src/styles/common";
 
 $posterHeight: 278px;
 $posterWidth: 185px;
@@ -35,6 +36,7 @@ $darkPosterBadgeBackground: rgba(255, 255, 255, 0.1);
 }
 
 .posterWrapper {
+  @include fadeIn(0.5s);
   @include posterColors(
     $posterColor,
     $posterDetailsColor,

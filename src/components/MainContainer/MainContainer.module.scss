@@ -1,4 +1,5 @@
 @import "src/styles/variables";
+@import "src/styles/common";
 
 $backgroundColor: #ffffff;
 $darkBackgroundColor: #000000;
@@ -17,17 +18,7 @@ $darkBackgroundColor: #000000;
   background-color: $backgroundColor;
 
   > * {
-    animation: fade $transition forwards;
-  }
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
+    @include fadeIn(0.25s);
   }
 }
 
