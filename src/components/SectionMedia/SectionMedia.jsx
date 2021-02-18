@@ -16,7 +16,7 @@ const SectionMedia = ({ title, mediaData, responsive }) => {
     const content = mediaData.map(
       ({ id, title, posterImage, rating, releaseDate, mediaType }) => (
         <Poster
-          badge={mediaType === "tv" ? "Tv Show" : "Movie"}
+          badge={mediaType === "tv" ? "TV Show" : "Movie"}
           key={kebabCase(`${title}-${mediaType}-${id}`)}
           title={title}
           subtitle={createMediaSubtitle(releaseDate, rating)}
