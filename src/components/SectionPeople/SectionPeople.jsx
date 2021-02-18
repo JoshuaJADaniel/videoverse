@@ -4,10 +4,13 @@ import { kebabCase } from "lodash";
 
 import { personPropTypes } from "data/propTypeValues";
 
-import SectionSwiper from "components/SectionSwiper";
 import Poster from "components/Poster";
+import Section from "components/Section";
+import SectionSwiper from "components/SectionSwiper";
 
-const SectionPeople = ({ title, badge, peopleData }) => {
+import styles from "./SectionPeople.module.scss";
+
+const SectionPeople = ({ title, badge, peopleData, responsive }) => {
   if (peopleData.length) {
     const content = peopleData.map(
       ({ id, name, department, job, character, posterImage }) => (
@@ -18,17 +21,25 @@ const SectionPeople = ({ title, badge, peopleData }) => {
           subtitle={job || character || department || "Unknown"}
           linkUrl={`/person/${id}`}
           posterImage={posterImage}
+          responsive={responsive}
         />
       )
     );
 
-    return <SectionSwiper title={title}>{content}</SectionSwiper>;
+    return responsive ? (
+      <Section title={title}>
+        <div className={styles.responsiveContainer}>{content}</div>
+      </Section>
+    ) : (
+      <SectionSwiper title={title}>{content}</SectionSwiper>
+    );
   }
 
   return null;
 };
 
 SectionPeople.propTypes = {
+  responsive: PropTypes.bool,
   badge: PropTypes.string,
   title: PropTypes.string.isRequired,
   peopleData: PropTypes.arrayOf(personPropTypes).isRequired,
