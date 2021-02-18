@@ -1,34 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
-import { ThemeProvider } from "styled-components";
-import GlobalStyles from "styles/GlobalStyles";
-
-import Loading from "pages/Loading";
-import resolveLoading from "utils/resolveLoading";
-import extractPersonDetails from "utils/extractPersonDetails";
-import { getTheme, getLocalTheme } from "utils/themeFunctionality";
-
 import getMedia from "requests/getMedia";
 import getPerson from "requests/getPerson";
 import getMediaTrailer from "requests/getMediaTrailer";
 
-import OverviewSection from "components/main/section/OverviewSection";
-import MediaSection from "components/main/section/MediaSection";
-import CastSection from "components/main/section/CastSection";
-import CrewSection from "components/main/section/CrewSection";
-import StaticHero from "components/main/hero/StaticHero";
-import MainWrapper from "components/main/MainWrapper";
-import Separator from "components/common/Separator";
-import Sidebar from "components/sidebar/Sidebar";
-import Header from "components/header/Header";
+import resolveLoading from "utils/resolveLoading";
+
+import Hero from "components/Hero";
+import Spacer from "components/Spacer";
+import SectionMedia from "components/SectionMedia";
+import SectionPeople from "components/SectionPeople";
+import SectionOverview from "components/SectionOverview";
+
+import Template from "templates/Template";
 
 const Movie = () => {
   const { movieId } = useParams();
   const history = useHistory();
   const [trailer, setTrailer] = useState("");
   const [loading, setLoading] = useState(true);
-  const [dark, setDark] = useState(getLocalTheme());
   const [castDetails, setCastDetails] = useState([]);
   const [crewDetails, setCrewDetails] = useState([]);
   const [movieDetails, setMovieDetails] = useState({});
@@ -48,11 +39,11 @@ const Movie = () => {
 
     getPerson(`/movie/${movieId}/credits`, ({ cast, crew }) => {
       if (cast) {
-        setCastDetails(cast.map((person) => extractPersonDetails(person)));
+        setCastDetails(cast);
       }
 
       if (crew) {
-        setCrewDetails(crew.map((person) => extractPersonDetails(person)));
+        setCrewDetails(crew);
       }
     });
 
@@ -60,26 +51,19 @@ const Movie = () => {
     getMediaTrailer(`/movie/${movieId}/videos`, setTrailer);
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
-    <ThemeProvider theme={getTheme(dark)}>
-      <GlobalStyles />
-      <Sidebar />
-      <MainWrapper>
-        <Header mode={dark} setMode={setDark} />
-        <StaticHero data={movieDetails} />
-        <Separator verticalSpace={50} />
-        <OverviewSection overview={movieDetails.overview} trailer={trailer} />
-        <CastSection cast={castDetails} />
-        <Separator verticalSpace={50} />
-        <CrewSection crew={crewDetails} />
-        <Separator verticalSpace={50} />
-        <MediaSection title="Related Movies" mediaData={relatedMovies} />
-      </MainWrapper>
-    </ThemeProvider>
+    <Template loading={loading} page={"Movies"}>
+      <Hero mediaData={movieDetails} />
+      <Spacer />
+      <SectionOverview mediaData={movieDetails} trailer={trailer} />
+      {trailer && <Spacer space={50} />}
+      <Spacer />
+      <SectionPeople title="Cast" badge="Cast" peopleData={castDetails} />
+      <Spacer />
+      <SectionPeople title="Crew" badge="Crew" peopleData={crewDetails} />
+      <Spacer />
+      <SectionMedia title="Related Movies" mediaData={relatedMovies} />
+    </Template>
   );
 };
 
