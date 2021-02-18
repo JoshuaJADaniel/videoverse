@@ -23,15 +23,6 @@ const menuItems = [
     ),
   },
   {
-    title: "Top Rated",
-    url: "#",
-    path: (
-      <>
-        <path d="M14 7V3a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 20H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
-      </>
-    ),
-  },
-  {
     title: "People",
     url: "/people",
     path: (
@@ -69,7 +60,7 @@ const menuItems = [
   },
   {
     title: "Movies",
-    url: "#",
+    url: "/movies",
     path: (
       <>
         <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
@@ -85,7 +76,7 @@ const menuItems = [
   },
   {
     title: "TV Shows",
-    url: "#",
+    url: "/tv-shows",
     path: (
       <>
         <polyline points="17 0 12 4 7 0" />
