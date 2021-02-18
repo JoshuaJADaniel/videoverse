@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import SvgContainer from "components/SvgContainer";
 import { getLocalTheme, toggleTheme } from "utils/themeFunctionality";
@@ -6,6 +7,7 @@ import { getLocalTheme, toggleTheme } from "utils/themeFunctionality";
 import styles from "./Header.module.scss";
 
 const Header = () => {
+  const history = useHistory();
   const [mode, setMode] = useState(getLocalTheme());
 
   return (
@@ -20,19 +22,19 @@ const Header = () => {
         </button>
       </div>
       <div className={styles.historyContainer}>
-        <button>
+        <button title="Go Back" onClick={() => history.goBack()}>
           <SvgContainer>
             <polyline points="15 4 6 12 15 20" />
           </SvgContainer>
         </button>
-        <button>
+        <button title="Go Forward" onClick={() => history.goForward()}>
           <SvgContainer>
             <polyline points="9 4 18 12 9 20" />
           </SvgContainer>
         </button>
       </div>
       <form className={styles.formContainer}>
-        <button>
+        <button title="Search">
           <SvgContainer>
             <circle cx="11" cy="11" r="7" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -42,6 +44,7 @@ const Header = () => {
       </form>
       <div className={styles.toggleThemeContainer}>
         <button
+          title="Change Theme"
           className={mode ? styles.buttonRotation : styles.undoButtonRotation}
           onClick={() => {
             setMode(!mode);
