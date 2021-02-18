@@ -13,3 +13,21 @@
     opacity: 1;
   }
 }
+
+.responsiveContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -20px;
+}
+
+@media (max-width: $lg) {
+  .responsiveContainer {
+    margin: 0 -15px;
+  }
+}
+
+@media (max-width: $sm) {
+  .responsiveContainer {
+    margin: 0 -10px;
+  }
+}
