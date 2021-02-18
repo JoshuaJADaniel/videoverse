@@ -11,7 +11,7 @@ const extractPersonDetails = (person) => ({
   character: person.character || "",
   placeOfBirth: person.place_of_birth || "",
   department: person.known_for_department || "",
-  gender: ["Not Specified", "Female", "Male"][person.gender],
+  gender: ["Not Specified", "Female", "Male", "Non-Binary"][person.gender],
   posterImage:
     (person.profile_path && getPosterImageUrl(person.profile_path)) ||
     getProfilePlaceholder(person.gender),
