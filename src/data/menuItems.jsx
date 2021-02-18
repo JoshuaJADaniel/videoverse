@@ -3,7 +3,7 @@ import React from "react";
 const menuItems = [
   {
     title: "Home",
-    url: "#",
+    url: "/",
     path: (
       <>
         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -13,7 +13,7 @@ const menuItems = [
   },
   {
     title: "Trending",
-    url: "#",
+    url: "/trending",
     path: (
       <>
         <line x1="12" y1="20" x2="12" y2="10" />
@@ -32,8 +32,8 @@ const menuItems = [
     ),
   },
   {
-    title: "Genre",
-    url: "#",
+    title: "People",
+    url: "/people",
     path: (
       <>
         <path
