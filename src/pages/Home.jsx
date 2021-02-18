@@ -1,38 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import { ThemeProvider } from "styled-components";
-import GlobalStyles from "styles/GlobalStyles";
-
 import getMedia from "requests/getMedia";
-
-import Loading from "pages/Loading";
+import getPerson from "requests/getPerson";
 import resolveLoading from "utils/resolveLoading";
-import { getTheme, getLocalTheme } from "utils/themeFunctionality";
 
-import Header from "components/header/Header";
-import Sidebar from "components/sidebar/Sidebar";
-import MainWrapper from "components/main/MainWrapper";
-import CarouselHero from "components/main/hero/CarouselHero";
-import MediaSection from "components/main/section/MediaSection";
-import Separator from "components/common/Separator";
+import Hero from "components/Hero";
+import Spacer from "components/Spacer";
+import SectionMedia from "components/SectionMedia";
+import SectionPeople from "components/SectionPeople";
+
+import Template from "templates/Template";
 
 const Home = () => {
   const history = useHistory();
   const [loading, setLoading] = useState(true);
-  const [dark, setDark] = useState(getLocalTheme());
+
   const [trendingMedia, setTrendingMedia] = useState([]);
+  const [trendingPeople, setTrendingPeople] = useState([]);
+
   const [popularMovies, setPopularMovies] = useState([]);
   const [popularTvShows, setPopularTvShows] = useState([]);
   const [popularKidsMovies, setPopularKidsMovies] = useState([]);
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
+
   const popularKidsMoviesMinDate = `${new Date().getFullYear() - 5}-01-01`;
 
   useEffect(() => {
     getMedia(
       "/trending/all/week",
       (data) => {
-        setTrendingMedia(data);
+        // Makes sure to remove people mixed in with other media
+        setTrendingMedia(data.filter((media) => media.mediaType !== "person"));
         resolveLoading(setLoading);
       },
       [],
@@ -41,41 +39,32 @@ const Home = () => {
 
     getMedia("/tv/popular", setPopularTvShows);
     getMedia("/movie/popular", setPopularMovies);
-    getMedia("/movie/top_rated", setTopRatedMovies);
     getMedia("/discover/movie", setPopularKidsMovies, [
       `primary_release_date.gte=${popularKidsMoviesMinDate}`,
       "certification_country=US",
       "certification.lte=G",
       "with_genres=16",
     ]);
+
+    getPerson("/trending/person/week", (data) => {
+      setTrendingPeople(data.results || []);
+    });
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
-
   return (
-    <ThemeProvider theme={getTheme(dark)}>
-      <GlobalStyles />
-      <Sidebar />
-      <MainWrapper>
-        <Header mode={dark} setMode={setDark} />
-        <CarouselHero mediaData={trendingMedia} />
-        <Separator verticalSpace={75} />
-        <MediaSection mediaData={trendingMedia} title="Trending" />
-        <Separator verticalSpace={75} />
-        <MediaSection mediaData={popularMovies} title="Popular Movies" />
-        <Separator verticalSpace={75} />
-        <MediaSection mediaData={popularTvShows} title="Popular TV Shows" />
-        <Separator verticalSpace={75} />
-        <MediaSection
-          mediaData={popularKidsMovies}
-          title="Popular Kids Movies"
-        />
-        <Separator verticalSpace={75} />
-        <MediaSection mediaData={topRatedMovies} title="Top Rated Movies" />
-      </MainWrapper>
-    </ThemeProvider>
+    <Template loading={loading} page={"Home"}>
+      <Hero mediaData={trendingMedia.slice(0, 5)} multislide />
+      <Spacer />
+      <SectionMedia mediaData={trendingMedia} title="Trending" />
+      <Spacer />
+      <SectionMedia mediaData={popularMovies} title="Popular Movies" />
+      <Spacer />
+      <SectionMedia mediaData={popularTvShows} title="Popular TV Shows" />
+      <Spacer />
+      <SectionMedia mediaData={popularKidsMovies} title="Popular Kids Movies" />
+      <Spacer />
+      <SectionPeople peopleData={trendingPeople} title="Trending People" />
+    </Template>
   );
 };
 
