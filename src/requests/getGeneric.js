@@ -2,9 +2,11 @@ import tmdb from "requests/tmdb";
 import { TMDB_KEY } from "data/configs";
 import redirectTo404 from "utils/redirectTo404";
 
-const getGeneric = (path, callback, routerHistoryObject) => {
+const getGeneric = (path, callback, parameters, routerHistoryObject) => {
+  const queryParameters = [`api_key=${TMDB_KEY}`].concat(parameters);
+
   tmdb
-    .get(`${path}?api_key=${TMDB_KEY}`)
+    .get(`${path}?${queryParameters.join("&")}`)
     .then(({ data }) => {
       callback(data);
     })
