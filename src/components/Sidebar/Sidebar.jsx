@@ -34,7 +34,7 @@ const Sidebar = ({ page }) => (
     </div>
     <div className={styles.bottomNavbarContainer}>
       <ul>
-        <a href="#">
+        <a href="https://github.com/joshuajadaniel/videoverse">
           <SvgContainer>
             <polyline points="18 16 22 12 18 8" />
             <polyline points="6 8 2 12 6 16" />
