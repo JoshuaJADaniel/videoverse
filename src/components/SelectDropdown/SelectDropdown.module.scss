@@ -1,0 +1,24 @@
+@import "src/styles/variables";
+
+$color: #1a1a1a;
+$darkColor: #cccccc;
+
+$background: #ffffff;
+$darkBackground: #333333;
+
+$borderColor: rgba(128, 128, 128, 0.6);
+
+:root {
+  --selectDropdownColor: #{$color};
+  --selectDropdownBorder: #{$borderColor};
+  --selectDropdownBackground: #{$background};
+
+  --selectDropdownPrimary: #{$secondary};
+  --selectDropdownPrimaryHover: #{rgba($secondary, 0.1)};
+}
+
+:global(body.dark) {
+  --selectDropdownColor: #{$darkColor};
+  --selectDropdownBackground: #{$darkBackground};
+  --selectDropdownPrimaryHover: #{mix($secondary, $darkBackground, 10)};
+}
