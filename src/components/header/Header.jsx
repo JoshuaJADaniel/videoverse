@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import SvgContainer from "components/SvgContainer";
+import { encodeSearch } from "utils/searchUrlConverter";
 import { getLocalTheme, toggleTheme } from "utils/themeFunctionality";
+import SvgContainer from "components/SvgContainer";
 
 import styles from "./Header.module.scss";
 
-const Header = () => {
+const Header = ({ searchText }) => {
   const history = useHistory();
   const [mode, setMode] = useState(getLocalTheme());
+  const [search, setSearch] = useState(searchText || "");
+
+  useEffect(() => {
+    setSearch(searchText || "");
+  }, [searchText]);
 
   return (
     <div className={styles.headerContainer}>
@@ -22,25 +29,38 @@ const Header = () => {
         </button>
       </div>
       <div className={styles.historyContainer}>
-        <button title="Go Back" onClick={() => history.goBack()}>
+        <button title="Go Back" onClick={() => history.go(-1)}>
           <SvgContainer>
             <polyline points="15 4 6 12 15 20" />
           </SvgContainer>
         </button>
-        <button title="Go Forward" onClick={() => history.goForward()}>
+        <button title="Go Forward" onClick={() => history.go(+1)}>
           <SvgContainer>
             <polyline points="9 4 18 12 9 20" />
           </SvgContainer>
         </button>
       </div>
-      <form className={styles.formContainer}>
-        <button title="Search">
+      <form
+        className={styles.formContainer}
+        onSubmit={(e) => {
+          e.preventDefault();
+          history.push(`/search/1?s=${encodeSearch(search)}`);
+          history.go(0);
+        }}
+      >
+        <button type="submit" title="Search">
           <SvgContainer>
             <circle cx="11" cy="11" r="7" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </SvgContainer>
         </button>
-        <input type="text" placeholder="Search..." />
+        <input
+          required
+          type="text"
+          value={search}
+          placeholder="Search..."
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </form>
       <div className={styles.toggleThemeContainer}>
         <button
@@ -72,6 +92,10 @@ const Header = () => {
       </div>
     </div>
   );
+};
+
+Header.propTypes = {
+  searchText: PropTypes.string,
 };
 
 const toggleMenu = () => {
