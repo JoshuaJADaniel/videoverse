@@ -1,10 +1,13 @@
 import React from "react";
 import Template from "templates/Template";
-import SectionNoMatch from "components/SectionNoMatch";
+import SectionMessage from "components/SectionMessage";
 
 const NoMatch = () => (
   <Template loading={false} page={"Page Not Found"}>
-    <SectionNoMatch />
+    <SectionMessage
+      title="Page not found"
+      subtitle="We're sorry, we couldn't find the page you requested"
+    />
   </Template>
 );
 
