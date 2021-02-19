@@ -44,4 +44,9 @@ const personPropTypes = exact({
   posterImageHighRes: string.isRequired,
 });
 
-export { mediaPropTypes, personPropTypes };
+const selectPropTypes = exact({
+  value: string.isRequired,
+  label: string.isRequired,
+});
+
+export { mediaPropTypes, personPropTypes, selectPropTypes };
