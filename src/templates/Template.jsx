@@ -7,7 +7,7 @@ import Sidebar from "components/Sidebar";
 import MainContainer from "components/MainContainer";
 import { getLocalTheme } from "utils/themeFunctionality";
 
-const Template = ({ page, loading, children }) => {
+const Template = ({ page, loading, searchText, children }) => {
   getLocalTheme();
 
   return (
@@ -18,7 +18,7 @@ const Template = ({ page, loading, children }) => {
           <Loading />
         ) : (
           <>
-            <Header />
+            <Header searchText={searchText} />
             {children}
           </>
         )}
@@ -28,6 +28,7 @@ const Template = ({ page, loading, children }) => {
 };
 
 Template.propTypes = {
+  searchText: PropTypes.string,
   page: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   children: PropTypes.oneOfType([
