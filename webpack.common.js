@@ -1,21 +1,18 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  mode: "development",
   entry: "./src/index.jsx",
-  devtool: "eval-source-map",
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "js/[contenthash].bundle.js",
     publicPath: "/",
   },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: "/",
-    port: 8080,
-    open: true,
+  performance: {
+    maxAssetSize: 512000,
+    maxEntrypointSize: 512000,
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -42,11 +39,19 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public/index.html"),
     }),
     new CopyPlugin({
-      patterns: [{ from: "public/static" }],
+      patterns: [
+        {
+          from: "public",
+          globOptions: {
+            ignore: "**/index.html",
+          },
+        },
+      ],
     }),
   ],
 };
