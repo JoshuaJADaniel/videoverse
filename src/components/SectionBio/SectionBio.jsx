@@ -22,6 +22,10 @@ const SectionBio = ({ personData }) => {
     <div className={styles.bioBadge}>{children}</div>
   );
 
+  Badge.propTypes = {
+    children: PropTypes.string.isRequired,
+  };
+
   return (
     <Section>
       <div className={styles.bioContainer}>

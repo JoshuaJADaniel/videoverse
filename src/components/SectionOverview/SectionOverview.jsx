@@ -34,6 +34,7 @@ const SectionOverview = ({ mediaData, trailer }) => {
 };
 
 SectionOverview.propTypes = {
+  trailer: PropTypes.string,
   mediaData: PropTypes.oneOfType([
     mediaPropTypes,
     PropTypes.shape({}),
