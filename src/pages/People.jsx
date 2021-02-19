@@ -8,7 +8,7 @@ const People = () => (
     title="People"
     pageLink="people"
     pageName="People"
-    requestLink="/people/popular"
+    requestLink="/person/popular"
     extractDetails={(peopleData) =>
       peopleData.map((person) => extractPersonDetails(person))
     }
