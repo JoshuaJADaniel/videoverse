@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import styles from "./Poster.module.scss";
 
@@ -11,11 +12,11 @@ const Poster = ({
   badge,
   responsive,
 }) => (
-  <a
+  <Link
+    to={linkUrl}
     className={`${styles.posterWrapper} ${
       responsive ? styles.posterResponsive : "swiper-slide"
     }`}
-    href={linkUrl}
   >
     <div
       className={styles.posterImage}
@@ -26,7 +27,7 @@ const Poster = ({
       <div className={styles.posterSubtitle}>{subtitle}</div>
       <div className={styles.posterBadge}>{badge}</div>
     </div>
-  </a>
+  </Link>
 );
 
 Poster.propTypes = {

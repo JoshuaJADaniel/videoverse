@@ -1,6 +1,7 @@
 import React from "react";
 import { kebabCase } from "lodash";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import menuItems from "data/menuItems";
 import logoText from "images/logo-text.svg";
@@ -12,21 +13,21 @@ import styles from "./Sidebar.module.scss";
 const Sidebar = ({ page }) => (
   <aside className={styles.sidebarContainer}>
     <div>
-      <a className={styles.logoContainer} href="/">
+      <Link to="/" className={styles.logoContainer}>
         <img className={styles.logoImage} alt="VideoVerse" src={logoImage} />
         <img className={styles.logoText} alt="VideoVerse" src={logoText} />
-      </a>
+      </Link>
       <nav className={styles.navbarContainer}>
         <ul>
           {menuItems.map((item) => (
             <li key={kebabCase(`nav-${item.title}`)}>
-              <a
+              <Link
+                to={item.url}
                 className={page === item.title ? styles.activeLink : ""}
-                href={item.url}
               >
                 <SvgContainer>{item.path}</SvgContainer>
                 <span>{item.title}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

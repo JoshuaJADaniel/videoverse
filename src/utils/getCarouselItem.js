@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { kebabCase, truncate } from "lodash";
 import SvgContainer from "components/SvgContainer";
 
@@ -14,10 +15,10 @@ const getCarouselItem = (media, badges, styling, multislide) => {
   } = media;
 
   return (
-    <a
+    <Link
       key={kebabCase(`hero-${id}`)}
       className={`${styling} swiper-slide`}
-      href={multislide && `/${mediaType}/${id}`}
+      to={multislide && `/${mediaType}/${id}`}
     >
       <div data-info="background">
         <div
@@ -61,7 +62,7 @@ const getCarouselItem = (media, badges, styling, multislide) => {
             ))}
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 
