@@ -11,37 +11,35 @@ import Pagination from "components/Pagination";
 import SectionMedia from "components/SectionMedia";
 import SectionPeople from "components/SectionPeople";
 import SelectDropdown from "components/SelectDropdown";
+import SectionMessage from "components/SectionMessage";
 import Section from "components/Section";
 
 import Template from "templates/Template";
 
 const BrowseGeneral = ({
   title,
+  query,
   pageName,
   pageLink,
   requestLink,
   extractDetails,
   sortByOptions,
   defaultSort,
+  currentPage,
   media,
 }) => {
-  const { page } = useParams();
   const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(750);
-  const [popularGeneral, setPopularGeneral] = useState([]);
+  const [generalMedia, setGeneralMedia] = useState([]);
   const [selectedSort, setSelectedSort] = useState(defaultSort);
-  const [currentPage, setCurrentPage] = useState(
-    parsePageNumber(history, page, pageLink)
-  );
 
   const paginationData = {
     startPage: 1,
     endPage: totalPages,
     currentPage: currentPage,
     eventHandler: (page) => {
-      setCurrentPage(page);
-      history.replace(`/${pageLink}/${page}`);
+      history.push(createUrl(pageLink, page, query));
     },
   };
 
@@ -55,6 +53,10 @@ const BrowseGeneral = ({
       queryParameters.push(`sort_by=${selectedSort.value}`);
     }
 
+    if (query) {
+      queryParameters.push(`query=${encodeURIComponent(query)}`);
+    }
+
     getGeneric(
       requestLink,
       ({ results, total_pages }) => {
@@ -63,43 +65,55 @@ const BrowseGeneral = ({
         }
 
         if (results) {
-          setPopularGeneral(extractDetails(results));
-          resolveLoading(setLoading);
+          setGeneralMedia(extractDetails(results));
         }
+
+        resolveLoading(setLoading);
       },
       queryParameters,
       history
     );
-  }, [currentPage, selectedSort]);
+  }, [currentPage, selectedSort, query]);
 
   return (
-    <Template loading={loading} page={pageName}>
-      <Spacer />
-      {paginationWithTitle}
-      {!sortByOptions || !selectedSort ? <Spacer /> : <Spacer space={20} />}
-      {sortByOptions && selectedSort && (
-        <Section>
-          <SelectDropdown
-            options={sortByOptions}
-            defaultValue={defaultSort}
-            onChange={(data) => setSelectedSort(data)}
-          />
+    <Template loading={loading} page={pageName} searchText={query}>
+      {generalMedia.length ? (
+        <>
           <Spacer />
-        </Section>
-      )}
-      {media ? (
-        <SectionMedia title="" mediaData={popularGeneral} responsive />
+          {paginationWithTitle}
+          {!sortByOptions || !selectedSort ? <Spacer /> : <Spacer space={20} />}
+          {sortByOptions && selectedSort && (
+            <Section>
+              <SelectDropdown
+                options={sortByOptions}
+                defaultValue={defaultSort}
+                onChange={(data) => setSelectedSort(data)}
+              />
+              <Spacer />
+            </Section>
+          )}
+          {media ? (
+            <SectionMedia title="" mediaData={generalMedia} responsive />
+          ) : (
+            <SectionPeople title="" peopleData={generalMedia} responsive />
+          )}
+          {paginationWithoutTitle}
+        </>
       ) : (
-        <SectionPeople title="" peopleData={popularGeneral} responsive />
+        <SectionMessage
+          title="Oops!"
+          subtitle="Looks like there are no results..."
+        />
       )}
-      {paginationWithoutTitle}
     </Template>
   );
 };
 
 BrowseGeneral.propTypes = {
   media: PropTypes.bool,
+  query: PropTypes.string,
   title: PropTypes.string.isRequired,
+  currentPage: PropTypes.number.isRequired,
   pageName: PropTypes.string.isRequired,
   pageLink: PropTypes.string.isRequired,
   requestLink: PropTypes.string.isRequired,
@@ -108,13 +122,16 @@ BrowseGeneral.propTypes = {
   selectedSort: selectPropTypes,
 };
 
-const parsePageNumber = (history, pageNumber, pageLink) => {
+const parsePageNumber = (history, pageNumber, pageLink, query) => {
   if (!/^\d+$/.test(pageNumber)) {
-    history.replace(`/${pageLink}/1`);
+    history.replace(createUrl(pageLink, 1, query));
     return 1;
   }
 
   return parseInt(pageNumber);
 };
+
+const createUrl = (pageLink, pageNumber, query) =>
+  `/${pageLink}/${pageNumber}${(query && `?s=${query}`) || ""}`;
 
 export default BrowseGeneral;
