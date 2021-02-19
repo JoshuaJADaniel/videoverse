@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import getGeneric from "requests/getGeneric";
@@ -119,16 +119,7 @@ BrowseGeneral.propTypes = {
   requestLink: PropTypes.string.isRequired,
   extractDetails: PropTypes.func.isRequired,
   sortByOptions: PropTypes.arrayOf(selectPropTypes),
-  selectedSort: selectPropTypes,
-};
-
-const parsePageNumber = (history, pageNumber, pageLink, query) => {
-  if (!/^\d+$/.test(pageNumber)) {
-    history.replace(createUrl(pageLink, 1, query));
-    return 1;
-  }
-
-  return parseInt(pageNumber);
+  defaultSort: selectPropTypes,
 };
 
 const createUrl = (pageLink, pageNumber, query) =>
