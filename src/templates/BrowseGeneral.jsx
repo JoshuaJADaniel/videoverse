@@ -83,7 +83,7 @@ const BrowseGeneral = ({
           {paginationWithTitle}
           {!sortByOptions || !selectedSort ? <Spacer /> : <Spacer space={20} />}
           {sortByOptions && selectedSort && (
-            <Section>
+            <Section dropdown>
               <SelectDropdown
                 options={sortByOptions}
                 defaultValue={defaultSort}

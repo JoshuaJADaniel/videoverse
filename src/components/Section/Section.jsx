@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import styles from "./Section.module.scss";
 
-const Section = ({ title, children }) => (
-  <section className={styles.sectionWrapper}>
+const Section = ({ title, dropdown, children }) => (
+  <section className={`${styles.sectionWrapper} ${dropdown && styles.elevate}`}>
     {title && <h2 className={styles.title}>{title}</h2>}
     {children && <div>{children}</div>}
   </section>
@@ -12,6 +12,7 @@ const Section = ({ title, children }) => (
 
 Section.propTypes = {
   title: PropTypes.string,
+  dropdown: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
