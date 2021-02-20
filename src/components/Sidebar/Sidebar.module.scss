@@ -34,19 +34,19 @@ $menuLinkHoverBackground: rgba(128, 128, 128, 0.1);
 }
 
 .logoContainer {
-  margin: 12px;
+  margin: 12px 12px 8px 12px;
   padding: 12px;
   display: flex;
   align-items: center;
 }
 
-.logoImage {
+.logoImage svg {
   width: 28px;
   height: 28px;
   margin-right: 14px;
 }
 
-.logoText {
+.logoText svg {
   height: 20px;
 }
 
@@ -93,7 +93,7 @@ $menuLinkHoverBackground: rgba(128, 128, 128, 0.1);
     @include navbarColors($darkMenuLinkColor);
   }
 
-  .logoText {
+  .logoText svg {
     filter: invert(100%);
   }
 }

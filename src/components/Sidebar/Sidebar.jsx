@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import menuItems from "data/menuItems";
-import logoText from "images/logo-text.svg";
-import logoImage from "images/logo-image.svg";
+import { logoText, logoImage } from "images/imageLogo";
 import SvgContainer from "components/SvgContainer";
 
 import styles from "./Sidebar.module.scss";
@@ -14,8 +13,8 @@ const Sidebar = ({ page }) => (
   <aside className={styles.sidebarContainer}>
     <div>
       <Link to="/" className={styles.logoContainer}>
-        <img className={styles.logoImage} alt="VideoVerse" src={logoImage} />
-        <img className={styles.logoText} alt="VideoVerse" src={logoText} />
+        <div className={styles.logoImage}>{logoImage}</div>
+        <div className={styles.logoText}>{logoText}</div>
       </Link>
       <nav className={styles.navbarContainer}>
         <ul>
