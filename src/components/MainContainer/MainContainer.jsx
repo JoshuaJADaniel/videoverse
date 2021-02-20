@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import backgroundImage from "images/background.svg";
+import backgroundImage from "images/imageBackground";
 
 import styles from "./MainContainer.module.scss";
 
