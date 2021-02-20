@@ -44,8 +44,9 @@ const Header = ({ searchText }) => {
         className={styles.formContainer}
         onSubmit={(e) => {
           e.preventDefault();
-          history.push(`/search/1?s=${encodeSearch(search)}`);
-          history.go(0);
+          if (search !== searchText) {
+            history.push(`/search/1?s=${encodeSearch(search)}`);
+          }
         }}
       >
         <button type="submit" title="Search">
