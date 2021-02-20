@@ -15,9 +15,6 @@ const extractPersonDetails = (person) => ({
   posterImage:
     (person.profile_path && getPosterImageUrl(person.profile_path)) ||
     getProfilePlaceholder(person.gender),
-  posterImageHighRes:
-    (person.profile_path && getPosterImageUrl(person.profile_path, true)) ||
-    getProfilePlaceholder(person.gender, true),
 });
 
 export default extractPersonDetails;

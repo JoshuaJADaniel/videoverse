@@ -14,7 +14,6 @@ const mediaPropTypes = exact({
   genres: arrayOf(string).isRequired,
   runtime: string.isRequired,
   posterImage: string.isRequired,
-  posterImageHighRes: string.isRequired,
   backdropImage: string.isRequired,
 
   // Specific to movies
@@ -41,7 +40,6 @@ const personPropTypes = exact({
   department: string.isRequired,
   gender: string.isRequired,
   posterImage: string.isRequired,
-  posterImageHighRes: string.isRequired,
 });
 
 const selectPropTypes = exact({

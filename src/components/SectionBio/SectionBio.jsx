@@ -15,7 +15,7 @@ const SectionBio = ({ personData }) => {
     biography,
     department,
     placeOfBirth,
-    posterImageHighRes,
+    posterImage,
   } = personData;
 
   const Badge = ({ children }) => (
@@ -33,7 +33,7 @@ const SectionBio = ({ personData }) => {
         <div className={styles.bioImageContainer}>
           <div
             className={styles.bioImage}
-            style={{ backgroundImage: `url(${posterImageHighRes})` }}
+            style={{ backgroundImage: `url(${posterImage})` }}
           />
         </div>
         <div className={styles.bioInformationContainer}>
