@@ -24,67 +24,65 @@ import NoMatch from "pages/NoMatch";
 import "normalize.css";
 import "styles/main.scss";
 
-const App = () => {
-  return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
+const App = () => (
+  <Router>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
 
-        <Route exact path="/trending">
-          <Redirect to="/trending/1" />
-        </Route>
-        <Route exact path="/trending/:page?">
-          <Trending />
-        </Route>
+      <Route exact path="/trending">
+        <Redirect to="/trending/1" />
+      </Route>
+      <Route exact path="/trending/:page?">
+        <Trending />
+      </Route>
 
-        <Route exact path="/people">
-          <Redirect to="/people/1" />
-        </Route>
-        <Route exact path="/people/:page?">
-          <People />
-        </Route>
+      <Route exact path="/people">
+        <Redirect to="/people/1" />
+      </Route>
+      <Route exact path="/people/:page?">
+        <People />
+      </Route>
 
-        <Route exact path="/movies">
-          <Redirect to="/movies/1" />
-        </Route>
-        <Route exact path="/movies/:page?">
-          <Movies />
-        </Route>
+      <Route exact path="/movies">
+        <Redirect to="/movies/1" />
+      </Route>
+      <Route exact path="/movies/:page?">
+        <Movies />
+      </Route>
 
-        <Route exact path="/tv-shows">
-          <Redirect to="/tv-shows/1" />
-        </Route>
-        <Route exact path="/tv-shows/:page?">
-          <TvShows />
-        </Route>
+      <Route exact path="/tv-shows">
+        <Redirect to="/tv-shows/1" />
+      </Route>
+      <Route exact path="/tv-shows/:page?">
+        <TvShows />
+      </Route>
 
-        <Route exact path="/search">
-          <Redirect to="/search/1" />
-        </Route>
-        <Route exact path="/search/:page?">
-          <Search />
-        </Route>
+      <Route exact path="/search">
+        <Redirect to="/search/1" />
+      </Route>
+      <Route exact path="/search/:page?">
+        <Search />
+      </Route>
 
-        <Route exact path="/movie/:movieId">
-          <Movie />
-        </Route>
+      <Route exact path="/movie/:movieId">
+        <Movie />
+      </Route>
 
-        <Route exact path="/tv/:tvId">
-          <TvShow />
-        </Route>
+      <Route exact path="/tv/:tvId">
+        <TvShow />
+      </Route>
 
-        <Route exact path="/person/:personId">
-          <Person />
-        </Route>
+      <Route exact path="/person/:personId">
+        <Person />
+      </Route>
 
-        <Route path="*">
-          <NoMatch />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
+      <Route path="*">
+        <NoMatch />
+      </Route>
+    </Switch>
+  </Router>
+);
 
 export default App;
