@@ -17,6 +17,14 @@ const Header = ({ searchText }) => {
     setSearch(searchText || "");
   }, [searchText]);
 
+  useEffect(() => {
+    const root = document.getElementById("root");
+    const toggle = document.getElementById("sidebarToggle");
+    if (root.classList.contains("sidebarShift")) {
+      toggle.classList.add("sidebarClose");
+    }
+  }, []);
+
   return (
     <div className={styles.headerContainer}>
       <div className={styles.menuContainer}>
