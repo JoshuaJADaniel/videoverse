@@ -39,7 +39,9 @@ const BrowseGeneral = ({
     endPage: totalPages,
     currentPage: currentPage,
     eventHandler: (page) => {
-      history.push(createUrl(pageLink, page, query));
+      if (page !== currentPage) {
+        history.push(createUrl(pageLink, page, query));
+      }
     },
   };
 
