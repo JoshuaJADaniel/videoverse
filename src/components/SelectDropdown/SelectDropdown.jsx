@@ -25,9 +25,9 @@ const SelectDropdown = ({ onChange, defaultValue, options }) => {
     <Select
       options={options}
       defaultValue={defaultValue}
-      menuPortalTarget={document.body}
       onChange={(data) => onChange(data)}
       styles={customStyles}
+      isSearchable={false}
       theme={(theme) => ({
         ...theme,
         colors: {
