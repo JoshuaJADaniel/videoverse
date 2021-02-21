@@ -1,7 +1,7 @@
 {
   "name": "videoverse",
   "version": "1.0.0",
-  "description": "Discover movies, view trailers, see what's playing in theaters, and much more!",
+  "description": "A real-time web app to browse your favorite movies, TV shows, and actors built on ES6, React, and SASS.",
   "main": "./src/index.jsx",
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
