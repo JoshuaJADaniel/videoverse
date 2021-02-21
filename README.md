@@ -1,13 +1,11 @@
 <!-- PROJECT LOGO -->
 <br />
-<div style="text-align: center">
+<div align="center">
   <a href="https://joshuajadaniel.com/videoverse">
     <img src="https://joshuajadaniel.com/videoverse/showcase/logo.png" alt="VideoVerse Logo" width="auto" height="80">
   </a>
-  <a href="https://joshuajadaniel.com/videoverse">
-    <h2>VideoVerse</h2>
-  </a>
-  <h6> 
+  <h3 style="font-size: 200%;">VideoVerse</h3>
+  <p> 
     A real-time web app to browse your favorite movies, TV shows, and actors built on ES6, React, and SASS.
     <br />
     <br />
@@ -16,7 +14,7 @@
     <a href="https://github.com/joshuajadaniel/videoverse/issues/new">Report Bug</a>
     ·
     <a href="https://github.com/joshuajadaniel/videoverse/issues/new">Request Feature</a>
-  </h6>
+  </p>
 
   <!-- PROJECT SHIELDS -->
   <a href="https://linkedin.com/in/joshuajadaniel">
