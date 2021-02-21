@@ -4,7 +4,7 @@
   <a href="https://joshuajadaniel.com/videoverse">
     <img src="https://joshuajadaniel.com/videoverse/showcase/logo.png" alt="VideoVerse Logo" width="auto" height="80">
   </a>
-  <h3 style="font-size: 200%;">VideoVerse</h3>
+  <h3>VideoVerse</h3>
   <p> 
     A real-time web app to browse your favorite movies, TV shows, and actors built on ES6, React, and SASS.
     <br />
@@ -66,6 +66,7 @@ This responsive, multi-page React application allows you to browse and search ov
 
 * [React](https://reactjs.org)
 * [SASS](https://sass-lang.com)
+* [Axios](https://github.com/axios/axios)
 * [Babel](https://babeljs.io)
 * [Webpack](https://webpack.js.org)
 
