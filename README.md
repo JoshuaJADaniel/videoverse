@@ -26,37 +26,11 @@
   <a href="https://github.com/joshuajadaniel/videoverse/blob/master/LICENSE">
     <img alt="License" src="https://img.shields.io/github/license/joshuajadaniel/videoverse" />
   </a>
+  <br />
+  <br />
 </div>
 
 
-
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
-
-
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
 
 [![VideoVerse Screenshot](https://joshuajadaniel.com/videoverse/showcase/videoverse.jpg)](https://joshuajadaniel.com/videoverse)
 
